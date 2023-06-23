@@ -18,8 +18,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Images.amasyaPageview2,
     Images.amasyaPageview3,
     Images.amasyaPageview4,
-
-    // Diğer resimleri buraya ekleyin
   ];
   Timer? timer;
   PageController pageController = PageController();
