@@ -2,7 +2,6 @@ import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/ui/widgets/revo_home_button.dart";
 import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
 import "package:revogarageapp/core/data_sources/local_data_source/secure_data_storage.dart";
 import "package:revogarageapp/core/enums.dart";
@@ -76,64 +75,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
       },
       child: Column(
         children: [
-          RevoScreenHeader(
-            title: AppLocalizations.of(context).profile,
+          const RevoScreenHeader(
+            title: "Profil",
           ),
           Expanded(
-            child: Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  
-                    // RevoHomeButton(
-                    //   onPressed: () {
-                    //     context.router.navigate(const BoughtVehicleListScreenRoute());
-                    //   },
-                    //   title: AppLocalizations.of(context).boughtVehicles,
-                    //   icon: Icons.car_rental_outlined,
-                    // ),
-                    // RevoHomeButton(
-                    //   onPressed: () {
-                    //     context.router.navigate(const InviteDealerScreenRoute());
-                    //   },
-                    //   title: AppLocalizations.of(context).inviteDealer,
-                    //   icon: Icons.people_alt_outlined,
-                    // ),
-
-                    ElevatedButton.icon(
-                      icon: const Icon(Icons.logout),
-                      onPressed: () async {
-                        context.router.popUntilRoot();
-                        context.router.popForced();
-                        await context.router.root.replaceAll([const SplashScreenRoute()]);
-                      },
-                      label: Text(
-                        AppLocalizations.of(context).logout.toUpperCase(),
-                      ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const RevoScreenHeader(
+                    title: "Merhaba Yiğit",
+                  ),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.logout),
+                    onPressed: () async {
+                      context.router.popUntilRoot();
+                      context.router.popForced();
+                      await context.router.root.replaceAll([const SplashScreenRoute()]);
+                    },
+                    label: Text(
+                      AppLocalizations.of(context).logout.toUpperCase(),
                     ),
-
-                    const SizedBox(height: 32),
-                    TextButton(
-                      onPressed: () async {
-                        // final secureDataStorage = getIt<SecureDataStorage>();
-                        // secureDataStorage.deleteAll();
-                        // context.router.popUntilRoot();
-                        // context.router.popForced();
-                        // await context.router.root.replaceAll([const SplashScreenRoute()]);
-
-                        _displayDeleteAccountConfirmationDialog(context);
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).deleteAccount.toUpperCase(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelSmall
-                            ?.copyWith(color: Theme.of(context).colorScheme.error),
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 32),
+                  TextButton(
+                    onPressed: () async {
+                      _displayDeleteAccountConfirmationDialog(context);
+                    },
+                    child: Text(
+                      AppLocalizations.of(context).deleteAccount.toUpperCase(),
+                      style:
+                          Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
+                    ),
+                  )
+                ],
               ),
             ),
           ),

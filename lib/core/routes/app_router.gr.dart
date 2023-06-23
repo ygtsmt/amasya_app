@@ -134,6 +134,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    HilalMasaScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const HilalMasaScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     PeScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -330,10 +339,10 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    VehicleListScreenRoute.name: (routeData) {
+    Communication_ScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: const VehicleListScreen(),
+        child: const Communication_Screen(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -609,6 +618,11 @@ class _$AppRouter extends RootStackRouter {
                   path: 'user-summary',
                   parent: DashbordTabRouter.name,
                 ),
+                RouteConfig(
+                  HilalMasaScreenRoute.name,
+                  path: 'hilalmasa-screen',
+                  parent: DashbordTabRouter.name,
+                ),
               ],
             ),
             RouteConfig(
@@ -724,12 +738,12 @@ class _$AppRouter extends RootStackRouter {
                   '#redirect',
                   path: '',
                   parent: CollectionTabRouter.name,
-                  redirectTo: 'vehicles',
+                  redirectTo: 'communication-screen',
                   fullMatch: true,
                 ),
                 RouteConfig(
-                  VehicleListScreenRoute.name,
-                  path: 'vehicles',
+                  Communication_ScreenRoute.name,
+                  path: 'communication-screen',
                   parent: CollectionTabRouter.name,
                 ),
                 RouteConfig(
@@ -1028,6 +1042,18 @@ class UserSummaryScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'UserSummaryScreenRoute';
+}
+
+/// generated route for
+/// [HilalMasaScreen]
+class HilalMasaScreenRoute extends PageRouteInfo<void> {
+  const HilalMasaScreenRoute()
+      : super(
+          HilalMasaScreenRoute.name,
+          path: 'hilalmasa-screen',
+        );
+
+  static const String name = 'HilalMasaScreenRoute';
 }
 
 /// generated route for
@@ -1402,15 +1428,15 @@ class ScanDriverLicenceScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [VehicleListScreen]
-class VehicleListScreenRoute extends PageRouteInfo<void> {
-  const VehicleListScreenRoute()
+/// [Communication_Screen]
+class Communication_ScreenRoute extends PageRouteInfo<void> {
+  const Communication_ScreenRoute()
       : super(
-          VehicleListScreenRoute.name,
-          path: 'vehicles',
+          Communication_ScreenRoute.name,
+          path: 'communication-screen',
         );
 
-  static const String name = 'VehicleListScreenRoute';
+  static const String name = 'Communication_ScreenRoute';
 }
 
 /// generated route for

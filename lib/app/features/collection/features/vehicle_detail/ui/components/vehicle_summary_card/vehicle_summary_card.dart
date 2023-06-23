@@ -203,7 +203,7 @@ class VehicleSummaryCard extends StatelessWidget {
                         onPressed: () {
                           getIt<VehicleDetailBloc>().add(DeleteVehicleEvent(vehicle.id));
                           context.router.pop();
-                          context.router.navigate(const VehicleListScreenRoute());
+                          context.router.navigate(const Communication_ScreenRoute());
                         },
                         child: Text(AppLocalizations.of(context).yes),
                       )

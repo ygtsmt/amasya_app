@@ -1,8 +1,10 @@
 import "dart:async";
 
+import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:revogarageapp/app/ui/widgets/revo_home_button.dart";
 import "package:revogarageapp/core/images.dart";
+import "package:revogarageapp/core/routes/app_router.dart";
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -86,7 +88,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               RevoHomeButton(onPressed: () {}, title: "OTOBÜS NEREDE", icon: Icons.directions_bus_filled_outlined),
               RevoHomeButton(onPressed: () {}, title: "BELEDIYE\nBAŞKANIMIZ", icon: Icons.person_outline_outlined),
-              RevoHomeButton(onPressed: () {}, title: "HİLAL MASA", icon: Icons.message_outlined),
+              RevoHomeButton(
+                  onPressed: () {
+                    context.router.navigate(const HilalMasaScreenRoute());
+                  },
+                  title: "HİLAL MASA",
+                  icon: Icons.message_outlined),
             ],
           ),
           Row(

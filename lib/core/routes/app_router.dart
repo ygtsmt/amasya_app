@@ -24,6 +24,7 @@ import "package:revogarageapp/app/features/collection/features/vehicle_list/ui/v
 import "package:revogarageapp/app/features/collection/features/vehicle_photo/ui/vehicle_photo_screen.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_services_screen/ui/vehicle_services_screen.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_tire_screen/ui/vehicle_tire_screen.dart";
+import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/hilal_masa.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/dashboard_screen.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/user_summary_screen.dart";
 import "package:revogarageapp/app/features/pe/features/customer_form/data/models/customer_dto.dart";
@@ -85,12 +86,13 @@ part "app_router.gr.dart";
           transitionsBuilder: TransitionsBuilders.fadeIn,
           children: [
             CustomRoute(
-              page: DashboardScreen,
-              path: "dashboard-screen",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
+                page: DashboardScreen,
+                path: "dashboard-screen",
+                initial: true,
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(page: UserSummaryScreen, path: "user-summary", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: HilalMasaScreen, path: "hilalmasa-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(
@@ -200,8 +202,8 @@ part "app_router.gr.dart";
           transitionsBuilder: TransitionsBuilders.fadeIn,
           children: [
             CustomRoute(
-              page: VehicleListScreen,
-              path: "vehicles",
+              page: Communication_Screen,
+              path: "communication-screen",
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
@@ -270,9 +272,7 @@ part "app_router.gr.dart";
           path: "auction",
           transitionsBuilder: TransitionsBuilders.fadeIn,
           guards: [AuctionGuard],
-          children: [
-            
-          ],
+          children: [],
         ),
         CustomRoute(
           page: EmptyRouterPage,
