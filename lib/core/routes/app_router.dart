@@ -5,9 +5,6 @@ import "package:auto_route/empty_router_widgets.dart";
 import "package:flutter/material.dart";
 import "package:injectable/injectable.dart";
 import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/features/auction/features/auction_list_screen/ui/auction_list_screen.dart";
-import "package:revogarageapp/app/features/auction/features/auction_list_screen/ui/components/auction_vehicle_details/auction_vehicle_details.dart";
-import "package:revogarageapp/app/features/auction/ui/screens/auction_screen.dart";
 import "package:revogarageapp/app/features/auth/features/create_account/ui/create_account_screen.dart";
 import "package:revogarageapp/app/features/auth/features/create_garage/ui/garage_screen.dart";
 import "package:revogarageapp/app/features/auth/features/login/ui/login_screen.dart";
@@ -274,24 +271,7 @@ part "app_router.gr.dart";
           transitionsBuilder: TransitionsBuilders.fadeIn,
           guards: [AuctionGuard],
           children: [
-            CustomRoute(
-              page: AuctionScreen,
-              path: "auction-screen",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
-            CustomRoute(
-              page: AuctionListScreen,
-              path: "auction-list-screen",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
-            CustomRoute(
-              page: AuctionVehicleDetails,
-              path: "auction-vehicle-details",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
+            
           ],
         ),
         CustomRoute(

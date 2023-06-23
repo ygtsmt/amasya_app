@@ -472,33 +472,6 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    AuctionScreenRoute.name: (routeData) {
-      return CustomPage<dynamic>(
-        routeData: routeData,
-        child: const AuctionScreen(),
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
-    AuctionListScreenRoute.name: (routeData) {
-      return CustomPage<dynamic>(
-        routeData: routeData,
-        child: const AuctionListScreen(),
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
-    AuctionVehicleDetailsRoute.name: (routeData) {
-      return CustomPage<dynamic>(
-        routeData: routeData,
-        child: const AuctionVehicleDetails(),
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
     ProfileScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -821,30 +794,6 @@ class _$AppRouter extends RootStackRouter {
               path: 'auction',
               parent: HomeScreenRoute.name,
               guards: [auctionGuard],
-              children: [
-                RouteConfig(
-                  '#redirect',
-                  path: '',
-                  parent: AuctionTabRoute.name,
-                  redirectTo: 'auction-screen',
-                  fullMatch: true,
-                ),
-                RouteConfig(
-                  AuctionScreenRoute.name,
-                  path: 'auction-screen',
-                  parent: AuctionTabRoute.name,
-                ),
-                RouteConfig(
-                  AuctionListScreenRoute.name,
-                  path: 'auction-list-screen',
-                  parent: AuctionTabRoute.name,
-                ),
-                RouteConfig(
-                  AuctionVehicleDetailsRoute.name,
-                  path: 'auction-vehicle-details',
-                  parent: AuctionTabRoute.name,
-                ),
-              ],
             ),
             RouteConfig(
               ProfileTabRouter.name,
@@ -1035,11 +984,10 @@ class CollectionTabRouter extends PageRouteInfo<void> {
 /// generated route for
 /// [EmptyRouterPage]
 class AuctionTabRoute extends PageRouteInfo<void> {
-  const AuctionTabRoute({List<PageRouteInfo>? children})
+  const AuctionTabRoute()
       : super(
           AuctionTabRoute.name,
           path: 'auction',
-          initialChildren: children,
         );
 
   static const String name = 'AuctionTabRoute';
@@ -1814,42 +1762,6 @@ class VehicleCostListScreenRouteArgs {
   String toString() {
     return 'VehicleCostListScreenRouteArgs{vehicleId: $vehicleId, key: $key}';
   }
-}
-
-/// generated route for
-/// [AuctionScreen]
-class AuctionScreenRoute extends PageRouteInfo<void> {
-  const AuctionScreenRoute()
-      : super(
-          AuctionScreenRoute.name,
-          path: 'auction-screen',
-        );
-
-  static const String name = 'AuctionScreenRoute';
-}
-
-/// generated route for
-/// [AuctionListScreen]
-class AuctionListScreenRoute extends PageRouteInfo<void> {
-  const AuctionListScreenRoute()
-      : super(
-          AuctionListScreenRoute.name,
-          path: 'auction-list-screen',
-        );
-
-  static const String name = 'AuctionListScreenRoute';
-}
-
-/// generated route for
-/// [AuctionVehicleDetails]
-class AuctionVehicleDetailsRoute extends PageRouteInfo<void> {
-  const AuctionVehicleDetailsRoute()
-      : super(
-          AuctionVehicleDetailsRoute.name,
-          path: 'auction-vehicle-details',
-        );
-
-  static const String name = 'AuctionVehicleDetailsRoute';
 }
 
 /// generated route for

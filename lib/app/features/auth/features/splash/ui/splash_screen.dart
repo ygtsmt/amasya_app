@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context.replaceRoute(const HomeScreenRoute());
           }
         } else if (state.autoLoginStatus == EventStatus.failure) {
-          context.replaceRoute(const HomeScreenRoute());
+          context.replaceRoute(const LoginScreenRoute());
         }
       },
       child: const Scaffold(

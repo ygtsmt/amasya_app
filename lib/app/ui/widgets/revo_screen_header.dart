@@ -13,6 +13,7 @@ class RevoScreenHeader extends StatelessWidget {
   Widget build(final BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
+        left: 16,
         bottom: 16,
       ),
       child: Row(

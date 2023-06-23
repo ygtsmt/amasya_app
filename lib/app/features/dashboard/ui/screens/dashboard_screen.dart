@@ -86,7 +86,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               RevoHomeButton(onPressed: () {}, title: "OTOBÜS NEREDE", icon: Icons.directions_bus_filled_outlined),
               RevoHomeButton(onPressed: () {}, title: "BELEDIYE\nBAŞKANIMIZ", icon: Icons.person_outline_outlined),
-              RevoHomeButton(onPressed: () {}, title: "title", icon: Icons.abc),
+              RevoHomeButton(onPressed: () {}, title: "HİLAL MASA", icon: Icons.message_outlined),
             ],
           ),
           Row(
@@ -100,7 +100,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               RevoHomeButton(onPressed: () {}, title: "BELEDIYE\nHIZMETLERI", icon: Icons.text_snippet_outlined),
               RevoHomeButton(onPressed: () {}, title: "BELEDIYE\nPROJELERI", icon: Icons.design_services_outlined),
-              RevoHomeButton(onPressed: () {}, title: "title", icon: Icons.abc),
+              RevoHomeButton(onPressed: () {}, title: "NÖBETÇİ\nECZANELER", icon: Icons.e_mobiledata_outlined),
             ],
           ),
         ],

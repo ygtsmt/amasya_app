@@ -3,11 +3,9 @@ import "package:flutter/material.dart";
 import "package:flutter_adaptive_ui/flutter_adaptive_ui.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/features/auction/ui/widgets/active_auctions.dart";
 import "package:revogarageapp/app/ui/widgets/revo_logo.dart";
 import "package:revogarageapp/app/ui/widgets/side_bar.dart";
 import "package:revogarageapp/core/routes/app_router.dart";
-import "package:revogarageapp/generated/l10n.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -42,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 FocusScope.of(context).unfocus();
               },
               child: Scaffold(
+                drawer: const Drawer(),
                 appBar: AppBar(
                   leading: const AutoLeadingButton(),
                   elevation: screen.isHandset ? 0 : 1,
@@ -61,9 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           context: context,
                           builder: (final context) {
                             return const AboutDialog(
-                              applicationName: "Revo Garage",
+                              applicationName: "AMASYA APP",
                               applicationVersion: "1.0.0",
-                              applicationLegalese: "© 2023 Revo Garage",
+                              applicationLegalese: "© 2023 AMASYA APP",
                             );
                           },
                         );
@@ -116,7 +115,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 padding: EdgeInsets.symmetric(
                                   vertical: MediaQuery.of(context).size.height * 0.1,
                                 ),
-                                child: const ActiveAuctions(),
                               ),
                             ),
                           ],
@@ -141,24 +139,24 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: BottomNavigationBar(
                           enableFeedback: true,
                           type: BottomNavigationBarType.fixed,
-                          showSelectedLabels: false,
-                          showUnselectedLabels: false,
-                          items: <BottomNavigationBarItem>[
+                          showSelectedLabels: true,
+                          showUnselectedLabels: true,
+                          items: const <BottomNavigationBarItem>[
                             BottomNavigationBarItem(
-                              icon: const Icon(Icons.dashboard_outlined),
-                              label: AppLocalizations.of(context).dashboard,
+                              icon: Icon(Icons.dashboard_outlined),
+                              label: "DASHBOARD",
                             ),
                             BottomNavigationBarItem(
-                              icon: const Icon(Icons.location_city_outlined),
-                              label: AppLocalizations.of(context).pAndE,
+                              icon: Icon(Icons.location_city_outlined),
+                              label: "KENT BİLGİSİ",
                             ),
-                            const BottomNavigationBarItem(
+                            BottomNavigationBarItem(
                               icon: Icon(Icons.info_outlined),
                               label: "İLETİŞİM",
                             ),
                             BottomNavigationBarItem(
-                              icon: const Icon(Icons.person_outline),
-                              label: AppLocalizations.of(context).profile,
+                              icon: Icon(Icons.person_outline),
+                              label: "PROFİL",
                             ),
                           ],
                           currentIndex: tabsRouter.activeIndex,

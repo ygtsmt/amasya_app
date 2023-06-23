@@ -6,14 +6,20 @@ part of 'account_permission_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AccountPermissionDto _$AccountPermissionDtoFromJson(Map<String, dynamic> json) => AccountPermissionDto(
+AccountPermissionDto _$AccountPermissionDtoFromJson(
+        Map<String, dynamic> json) =>
+    AccountPermissionDto(
       id: json['id'] as int?,
       name: json['name'] as String?,
       valueText: json['valueText'] as String?,
-      enDate: json['enDate'] == null ? null : DateTime.parse(json['enDate'] as String),
+      enDate: json['enDate'] == null
+          ? null
+          : DateTime.parse(json['enDate'] as String),
     );
 
-Map<String, dynamic> _$AccountPermissionDtoToJson(AccountPermissionDto instance) => <String, dynamic>{
+Map<String, dynamic> _$AccountPermissionDtoToJson(
+        AccountPermissionDto instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'valueText': instance.valueText,

@@ -5,7 +5,6 @@ import "dart:convert";
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/features/auction/features/release_auction_filter_sheet/ui/realase_auction_filter_sheet.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_detail/bloc/bloc/vehicle_detail_bloc.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_detail/data/models/vehicle_long_dto.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_photo/bloc/vehicle_photo_bloc.dart";
@@ -105,7 +104,7 @@ class VehicleSummaryCard extends StatelessWidget {
                         color: Theme.of(context).colorScheme.secondary,
                       ),
                     ),
-                    IconButton(
+                    /*   IconButton(
                       onPressed: () {
                         getIt<BottomSheetService>().show(
                           context,
@@ -116,7 +115,7 @@ class VehicleSummaryCard extends StatelessWidget {
                         Icons.gavel_outlined,
                         color: Theme.of(context).colorScheme.secondary,
                       ),
-                    ),
+                    ), */
                   ],
                 ),
               ],

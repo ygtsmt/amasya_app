@@ -4,8 +4,6 @@ import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/features/auction/features/auction_list_screen/bloc/auction_list_bloc.dart";
-import "package:revogarageapp/app/features/auction/features/release_auction_filter_sheet/bloc/release_auction_filter_sheet_bloc.dart";
 import "package:revogarageapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart";
 import "package:revogarageapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
 import "package:revogarageapp/app/features/auth/features/login/bloc/login_bloc.dart";
@@ -154,12 +152,6 @@ class _AppScreenState extends State<AppScreen> {
         ),
         BlocProvider<DriveArchiveListBloc>(
           create: (final context) => getIt<DriveArchiveListBloc>(),
-        ),
-        BlocProvider<ReleaseAuctionFilterSheetBloc>(
-          create: (final context) => getIt<ReleaseAuctionFilterSheetBloc>(),
-        ),
-        BlocProvider<AuctionListBloc>(
-          create: (final context) => getIt<AuctionListBloc>(),
         ),
       ],
       child: BlocBuilder<AppBloc, AppState>(
