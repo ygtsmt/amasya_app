@@ -143,6 +143,24 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    BelediyeProjeleriScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const BelediyeProjeleriScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NobetciEczaneScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const NobetciEczaneScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     PeScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -623,6 +641,16 @@ class _$AppRouter extends RootStackRouter {
                   path: 'hilalmasa-screen',
                   parent: DashbordTabRouter.name,
                 ),
+                RouteConfig(
+                  BelediyeProjeleriScreenRoute.name,
+                  path: 'belediye-projeleri-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NobetciEczaneScreenRoute.name,
+                  path: 'nobetci-eczane-screen',
+                  parent: DashbordTabRouter.name,
+                ),
               ],
             ),
             RouteConfig(
@@ -1054,6 +1082,30 @@ class HilalMasaScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HilalMasaScreenRoute';
+}
+
+/// generated route for
+/// [BelediyeProjeleriScreen]
+class BelediyeProjeleriScreenRoute extends PageRouteInfo<void> {
+  const BelediyeProjeleriScreenRoute()
+      : super(
+          BelediyeProjeleriScreenRoute.name,
+          path: 'belediye-projeleri-screen',
+        );
+
+  static const String name = 'BelediyeProjeleriScreenRoute';
+}
+
+/// generated route for
+/// [NobetciEczaneScreen]
+class NobetciEczaneScreenRoute extends PageRouteInfo<void> {
+  const NobetciEczaneScreenRoute()
+      : super(
+          NobetciEczaneScreenRoute.name,
+          path: 'nobetci-eczane-screen',
+        );
+
+  static const String name = 'NobetciEczaneScreenRoute';
 }
 
 /// generated route for

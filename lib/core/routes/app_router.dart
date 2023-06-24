@@ -24,7 +24,9 @@ import "package:revogarageapp/app/features/collection/features/vehicle_list/ui/v
 import "package:revogarageapp/app/features/collection/features/vehicle_photo/ui/vehicle_photo_screen.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_services_screen/ui/vehicle_services_screen.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_tire_screen/ui/vehicle_tire_screen.dart";
+import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/belediye_projeleri.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/hilal_masa.dart";
+import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/nobetci_eczane.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/dashboard_screen.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/user_summary_screen.dart";
 import "package:revogarageapp/app/features/pe/features/customer_form/data/models/customer_dto.dart";
@@ -93,6 +95,10 @@ part "app_router.gr.dart";
             CustomRoute(page: UserSummaryScreen, path: "user-summary", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: HilalMasaScreen, path: "hilalmasa-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: BelediyeProjeleriScreen, path: "belediye-projeleri-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NobetciEczaneScreen, path: "nobetci-eczane-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(
