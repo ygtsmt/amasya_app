@@ -14,6 +14,8 @@ class AmasyaSplash extends StatelessWidget {
       tag: "logo",
       child: Image.asset(
         Images.splashAmasya,
+                  height: MediaQuery.of(context).size.height / 4,
+
         color: themeMode == ThemeMode.dark ? Colors.white : Colors.black,
       ),
     );
