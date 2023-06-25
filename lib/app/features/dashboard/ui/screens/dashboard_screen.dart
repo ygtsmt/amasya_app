@@ -107,7 +107,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Row(
             children: [
-              RevoHomeButton(onPressed: () {}, title: "HABERLER", icon: Icons.newspaper_outlined),
+              RevoHomeButton(
+                  onPressed: () {
+                    context.router.navigate(const HaberListScreenRoute());
+                  },
+                  title: "HABERLER",
+                  icon: Icons.newspaper_outlined),
               RevoHomeButton(onPressed: () {}, title: "DUYURULAR", icon: Icons.notifications_active_outlined),
               RevoHomeButton(onPressed: () {}, title: "HAL FİYATLARI", icon: Icons.currency_lira_outlined),
             ],

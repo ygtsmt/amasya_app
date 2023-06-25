@@ -161,6 +161,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    HaberListScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const HaberListScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     PeScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -651,6 +660,11 @@ class _$AppRouter extends RootStackRouter {
                   path: 'nobetci-eczane-screen',
                   parent: DashbordTabRouter.name,
                 ),
+                RouteConfig(
+                  HaberListScreenRoute.name,
+                  path: 'haber-list-screen',
+                  parent: DashbordTabRouter.name,
+                ),
               ],
             ),
             RouteConfig(
@@ -1106,6 +1120,18 @@ class NobetciEczaneScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'NobetciEczaneScreenRoute';
+}
+
+/// generated route for
+/// [HaberListScreen]
+class HaberListScreenRoute extends PageRouteInfo<void> {
+  const HaberListScreenRoute()
+      : super(
+          HaberListScreenRoute.name,
+          path: 'haber-list-screen',
+        );
+
+  static const String name = 'HaberListScreenRoute';
 }
 
 /// generated route for
