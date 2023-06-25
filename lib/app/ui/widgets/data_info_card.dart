@@ -27,37 +27,35 @@ class DataInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     String plainText = _removeHtmlTags(icerik ?? "");
 
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: CachedNetworkImage(
-                imageUrl: 'https://amasya.bel.tr/$imagePath',
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: CachedNetworkImage(
+              imageUrl: 'https://amasya.bel.tr/$imagePath',
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-              child: Text(
-                baslik,
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+            child: Text(
+              baslik,
+              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.center,
             ),
-            OutlinedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.touch_app_outlined),
-              label: const Text("Haberin devami için tıklayın."),
-            ),
-            const Divider()
-            /* Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Text(plainText),
-            ), */
-          ],
-        ),
+          ),
+          OutlinedButton.icon(
+            onPressed: onPressed,
+            icon: const Icon(Icons.touch_app_outlined),
+            label: const Text("Haberin devami için tıklayın."),
+          ),
+          const Divider()
+          /* Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Text(plainText),
+          ), */
+        ],
       ),
     );
   }

@@ -170,6 +170,19 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    HaberIcerikScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<HaberIcerikScreenRouteArgs>();
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: HaberIcerikScreen(
+          key: args.key,
+          parameter: args.parameter,
+        ),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     PeScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -665,6 +678,11 @@ class _$AppRouter extends RootStackRouter {
                   path: 'haber-list-screen',
                   parent: DashbordTabRouter.name,
                 ),
+                RouteConfig(
+                  HaberIcerikScreenRoute.name,
+                  path: 'haber-icerik-screen',
+                  parent: DashbordTabRouter.name,
+                ),
               ],
             ),
             RouteConfig(
@@ -1132,6 +1150,40 @@ class HaberListScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HaberListScreenRoute';
+}
+
+/// generated route for
+/// [HaberIcerikScreen]
+class HaberIcerikScreenRoute extends PageRouteInfo<HaberIcerikScreenRouteArgs> {
+  HaberIcerikScreenRoute({
+    Key? key,
+    required int parameter,
+  }) : super(
+          HaberIcerikScreenRoute.name,
+          path: 'haber-icerik-screen',
+          args: HaberIcerikScreenRouteArgs(
+            key: key,
+            parameter: parameter,
+          ),
+        );
+
+  static const String name = 'HaberIcerikScreenRoute';
+}
+
+class HaberIcerikScreenRouteArgs {
+  const HaberIcerikScreenRouteArgs({
+    this.key,
+    required this.parameter,
+  });
+
+  final Key? key;
+
+  final int parameter;
+
+  @override
+  String toString() {
+    return 'HaberIcerikScreenRouteArgs{key: $key, parameter: $parameter}';
+  }
 }
 
 /// generated route for

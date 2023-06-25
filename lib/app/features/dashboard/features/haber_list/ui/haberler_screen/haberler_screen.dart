@@ -1,3 +1,4 @@
+import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:revogarageapp/app/features/dashboard/features/haber_list/bloc/haber_list_bloc.dart";
@@ -38,13 +39,17 @@ class _HaberListScreenState extends State<HaberListScreen> {
                       itemCount: state.haberList.length,
                       itemBuilder: (final context, final index) {
                         return DataInfoCard(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.router.navigate(
+                              HaberIcerikScreenRoute(
+                                parameter: index
+                              ),
+                            );
+                          },
                           imagePath: state.haberList[index].gorsel,
                           icon: Icons.abc,
-                          // icerik: state.haberList[index].aciklama,
                           baslik: state.haberList[index].baslik,
                         );
-                        //Text("https://amasya.bel.tr/${state.haberList[index].gorsel}");
                       },
                     );
             },
