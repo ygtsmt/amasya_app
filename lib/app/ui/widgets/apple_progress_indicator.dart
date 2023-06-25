@@ -1,27 +1,34 @@
-import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/core/images.dart";
+import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:revogarageapp/app/bloc/app_bloc.dart';
+import 'package:revogarageapp/core/core.dart';
 
 class AppleProgressIndicator extends StatefulWidget {
-  const AppleProgressIndicator({
-    super.key,
-  });
+  const AppleProgressIndicator({super.key});
 
   @override
-  State<AppleProgressIndicator> createState() => _AppleProgressIndicatorState();
+  _AppleProgressIndicatorState createState() => _AppleProgressIndicatorState();
 }
 
 class _AppleProgressIndicatorState extends State<AppleProgressIndicator> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
+    super.initState();
+
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     )..repeat();
-    super.initState();
+
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(_controller);
   }
 
   @override
@@ -31,21 +38,33 @@ class _AppleProgressIndicatorState extends State<AppleProgressIndicator> with Si
   }
 
   @override
-  Widget build(final BuildContext context) {
-    return Center(
-      child: BlocBuilder<AppBloc, AppState>(
-        builder: (context, state) {
-          return RotationTransition(
-            alignment: Alignment.center,
-            filterQuality: FilterQuality.high,
-            turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-            child: Image.asset(
-              Images.logo,
-              color: state.themeMode == ThemeMode.dark ? Colors.white : Colors.black,
-              height: MediaQuery.of(context).size.height / 15,
-            ),
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      child: AnimatedBuilder(
+        animation: _animation,
+        builder: (BuildContext context, Widget? child) {
+          final double value = _animation.value;
+          const double radius = 20.0; // Dairenin yarıçapı
+          final double angle = value * 2 * math.pi;
+          final double x = radius * math.cos(angle);
+          final double y = radius * math.sin(angle);
+
+          return BlocBuilder<AppBloc, AppState>(
+            builder: (context, state) {
+              return Transform.translate(
+                offset: Offset(x, y),
+                child: Transform.scale(
+                  scale: 0.2, // Resim boyutunu ayarlayın
+                  child: Image.asset(
+                    Images.logo,
+                    color: state.themeMode == ThemeMode.dark ? Colors.white : Colors.black,
+                  ),
+                ),
+              );
+            },
           );
         },
+        child: const Text("data"),
       ),
     );
   }

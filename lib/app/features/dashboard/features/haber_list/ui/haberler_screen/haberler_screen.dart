@@ -1,9 +1,12 @@
 import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
 import "package:revogarageapp/app/features/dashboard/features/haber_list/bloc/haber_list_bloc.dart";
 import "package:revogarageapp/app/features/dashboard/features/haber_list/bloc/haber_list_event.dart";
+import "package:revogarageapp/app/features/dashboard/features/haber_list/bloc/haber_list_state.dart";
 import "package:revogarageapp/app/ui/widgets/apple_progress_indicator.dart";
+import "package:revogarageapp/app/ui/widgets/data_info_card.dart";
 import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/injection/injection.dart";
+import "package:revogarageapp/core/core.dart";
 
 class HaberListScreen extends StatefulWidget {
   const HaberListScreen({super.key});
@@ -22,31 +25,31 @@ class _HaberListScreenState extends State<HaberListScreen> {
   @override
   Widget build(final BuildContext context) {
     return Column(
-      children: const [
-        RevoScreenHeader(
+      children: [
+        const RevoScreenHeader(
           title: "Haberler",
         ),
         Expanded(
-            child:
-                AppleProgressIndicator() /* BlocBuilder<HaberListBloc, HaberListState>(
+          child: BlocBuilder<HaberListBloc, HaberListState>(
             builder: (final context, final state) {
               return state.isLoading == true
                   ? const AppleProgressIndicator()
                   : ListView.builder(
                       itemCount: state.haberList.length,
                       itemBuilder: (final context, final index) {
-                        return Card(
-                          child: ListTile(
-                            visualDensity: VisualDensity.comfortable,
-                            title: Text(state.haberList[index].baslik),
-                            trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                          ),
+                        return DataInfoCard(
+                          onPressed: () {},
+                          imagePath: state.haberList[index].gorsel,
+                          icon: Icons.abc,
+                          // icerik: state.haberList[index].aciklama,
+                          baslik: state.haberList[index].baslik,
                         );
+                        //Text("https://amasya.bel.tr/${state.haberList[index].gorsel}");
                       },
                     );
             },
-          ), */
-            ),
+          ),
+        ),
       ],
     );
   }
