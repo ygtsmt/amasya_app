@@ -188,8 +188,8 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<dynamic>(
         routeData: routeData,
         child: DuyuruIcerikScreen(
-          key: args.key,
           parameter: args.parameter,
+          key: args.key,
         ),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
@@ -200,6 +200,15 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<dynamic>(
         routeData: routeData,
         child: const DuyuruListScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    HalFiyatlariListScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child:  HalFiyatlariListScreen(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -715,6 +724,11 @@ class _$AppRouter extends RootStackRouter {
                   path: 'duyuru-list-screen',
                   parent: DashbordTabRouter.name,
                 ),
+                RouteConfig(
+                  HalFiyatlariListScreenRoute.name,
+                  path: 'hal-fiyatlari-list-screen',
+                  parent: DashbordTabRouter.name,
+                ),
               ],
             ),
             RouteConfig(
@@ -1223,14 +1237,14 @@ class HaberIcerikScreenRouteArgs {
 class DuyuruIcerikScreenRoute
     extends PageRouteInfo<DuyuruIcerikScreenRouteArgs> {
   DuyuruIcerikScreenRoute({
-    Key? key,
     required int parameter,
+    Key? key,
   }) : super(
           DuyuruIcerikScreenRoute.name,
           path: 'duyuru-icerik-screen',
           args: DuyuruIcerikScreenRouteArgs(
-            key: key,
             parameter: parameter,
+            key: key,
           ),
         );
 
@@ -1239,17 +1253,17 @@ class DuyuruIcerikScreenRoute
 
 class DuyuruIcerikScreenRouteArgs {
   const DuyuruIcerikScreenRouteArgs({
-    this.key,
     required this.parameter,
+    this.key,
   });
-
-  final Key? key;
 
   final int parameter;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'DuyuruIcerikScreenRouteArgs{key: $key, parameter: $parameter}';
+    return 'DuyuruIcerikScreenRouteArgs{parameter: $parameter, key: $key}';
   }
 }
 
@@ -1263,6 +1277,18 @@ class DuyuruListScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'DuyuruListScreenRoute';
+}
+
+/// generated route for
+/// [HalFiyatlariListScreen]
+class HalFiyatlariListScreenRoute extends PageRouteInfo<void> {
+  const HalFiyatlariListScreenRoute()
+      : super(
+          HalFiyatlariListScreenRoute.name,
+          path: 'hal-fiyatlari-list-screen',
+        );
+
+  static const String name = 'HalFiyatlariListScreenRoute';
 }
 
 /// generated route for

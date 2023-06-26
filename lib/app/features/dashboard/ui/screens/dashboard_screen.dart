@@ -111,7 +111,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   },
                   title: "DUYURULAR",
                   icon: Icons.notifications_active_outlined),
-              RevoHomeButton(onPressed: () {}, title: "HAL FİYATLARI", icon: Icons.currency_lira_outlined),
+              RevoHomeButton(
+                  onPressed: () {
+                    context.router.navigate(const HalFiyatlariListScreenRoute());
+                  },
+                  title: "HAL FİYATLARI",
+                  icon: Icons.currency_lira_outlined),
             ],
           ),
           Row(

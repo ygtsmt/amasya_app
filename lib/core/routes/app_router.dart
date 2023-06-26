@@ -29,6 +29,7 @@ import "package:revogarageapp/app/features/dashboard/features/duyuru_list/ui/duy
 import "package:revogarageapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart";
 import "package:revogarageapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haber_icerik_screen.dart";
 import "package:revogarageapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haberler_screen.dart";
+import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/ui/hal_fiyatlari_list_screen/hal_fiyatlari_list_screen.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/belediye_projeleri.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/hilal_masa.dart";
 import "package:revogarageapp/app/features/dashboard/ui/screens/%20button_screens/nobetci_eczane.dart";
@@ -112,6 +113,8 @@ part "app_router.gr.dart";
                 page: DuyuruIcerikScreen, path: "duyuru-icerik-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: DuyuruListScreen, path: "duyuru-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: HalFiyatlariListScreen, path: "hal-fiyatlari-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(
