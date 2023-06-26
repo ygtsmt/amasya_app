@@ -17,6 +17,7 @@ import "package:revogarageapp/app/features/collection/features/vehicle_detail/bl
 import "package:revogarageapp/app/features/collection/features/vehicle_list/bloc/vehicle_list_bloc.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_photo/bloc/vehicle_photo_bloc.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_tire_screen/bloc/vehicle_tire_bloc.dart";
+import "package:revogarageapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_bloc.dart";
 import 'package:revogarageapp/app/features/dashboard/features/haber_list/bloc/haber_list_bloc.dart';
 import "package:revogarageapp/app/features/pe/features/customer_form/bloc/customer_form_bloc.dart";
 import "package:revogarageapp/app/features/pe/features/customer_list/bloc/customer_list_bloc.dart";
@@ -157,6 +158,10 @@ class _AppScreenState extends State<AppScreen> {
         BlocProvider<HaberListBloc>(
           create: (final context) => getIt<HaberListBloc>(),
         ),
+        BlocProvider<DuyuruListBloc>(
+          create: (final context) => getIt<DuyuruListBloc>(),
+        ),
+        
         
       ],
       child: BlocBuilder<AppBloc, AppState>(
