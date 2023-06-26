@@ -121,7 +121,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Row(
             children: [
-              RevoHomeButton(onPressed: () {}, title: "BELEDİYE\nHİZMETLERİ", icon: Icons.text_snippet_outlined),
+              RevoHomeButton(
+                  onPressed: () {
+                    context.router.navigate(const BelediyeHizmetleriScreenRoute());
+                  },
+                  title: "BELEDİYE\nHİZMETLERİ",
+                  icon: Icons.text_snippet_outlined),
               RevoHomeButton(
                   onPressed: () {
                     context.router.navigate(const BelediyeProjeleriScreenRoute());

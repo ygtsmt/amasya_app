@@ -24,6 +24,7 @@ import "package:revogarageapp/app/features/collection/features/vehicle_list/ui/v
 import "package:revogarageapp/app/features/collection/features/vehicle_photo/ui/vehicle_photo_screen.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_services_screen/ui/vehicle_services_screen.dart";
 import "package:revogarageapp/app/features/collection/features/vehicle_tire_screen/ui/vehicle_tire_screen.dart";
+import "package:revogarageapp/app/features/dashboard/features/belediye_hizmetleri/belediye_hizmetleri_screen.dart";
 import "package:revogarageapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_icerik_screen.dart";
 import "package:revogarageapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_list_screen.dart";
 import "package:revogarageapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart";
@@ -115,6 +116,8 @@ part "app_router.gr.dart";
                 page: DuyuruListScreen, path: "duyuru-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: HalFiyatlariListScreen, path: "hal-fiyatlari-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: BelediyeHizmetleriScreen, path: "belediye-hizmetleri-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(

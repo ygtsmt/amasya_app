@@ -208,7 +208,16 @@ class _$AppRouter extends RootStackRouter {
     HalFiyatlariListScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
-        child:  HalFiyatlariListScreen(),
+        child: const HalFiyatlariListScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    BelediyeHizmetleriScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const BelediyeHizmetleriScreen(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -727,6 +736,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   HalFiyatlariListScreenRoute.name,
                   path: 'hal-fiyatlari-list-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  BelediyeHizmetleriScreenRoute.name,
+                  path: 'belediye-hizmetleri-screen',
                   parent: DashbordTabRouter.name,
                 ),
               ],
@@ -1289,6 +1303,18 @@ class HalFiyatlariListScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HalFiyatlariListScreenRoute';
+}
+
+/// generated route for
+/// [BelediyeHizmetleriScreen]
+class BelediyeHizmetleriScreenRoute extends PageRouteInfo<void> {
+  const BelediyeHizmetleriScreenRoute()
+      : super(
+          BelediyeHizmetleriScreenRoute.name,
+          path: 'belediye-hizmetleri-screen',
+        );
+
+  static const String name = 'BelediyeHizmetleriScreenRoute';
 }
 
 /// generated route for

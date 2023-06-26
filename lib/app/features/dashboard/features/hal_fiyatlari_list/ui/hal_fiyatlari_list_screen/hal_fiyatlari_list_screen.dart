@@ -4,6 +4,7 @@ import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list
 import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_event.dart";
 import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_state.dart";
 import "package:revogarageapp/app/ui/widgets/apple_progress_indicator.dart";
+import "package:revogarageapp/app/ui/widgets/custom_button.dart";
 import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
 import "package:revogarageapp/core/core.dart";
 import "package:url_launcher/url_launcher.dart";
@@ -56,27 +57,12 @@ class _HalFiyatlariScreenState extends State<HalFiyatlariListScreen> {
                       itemBuilder: (final context, final index) {
                         final Uri toLaunch =
                             Uri(scheme: 'https', host: 'amasya.bel.tr', path: state.halFiyatlariList[index].dosya);
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: 80,
-                            child: ElevatedButton(
-                                onPressed: () => setState(() {
-                                      _launched = _launchInBrowser(toLaunch);
-                                    }),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      state.halFiyatlariList[index].baslik,
-                                      style: Theme.of(context).textTheme.bodyLarge,
-                                    ),
-                                    const Icon(Icons.download_outlined)
-                                  ],
-                                )),
-                          ),
-                        );
+                        return CustomButton(
+                            onPressed: () => setState(() {
+                                  _launched = _launchInBrowser(toLaunch);
+                                }),
+                            title: state.halFiyatlariList[index].baslik,
+                            icon: Icons.download_outlined);
                       },
                     );
             },
