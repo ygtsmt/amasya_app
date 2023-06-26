@@ -45,14 +45,15 @@ class DataInfoCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-            child: Text(
-              plainText,
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
+          if (icerik != null)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+              child: Text(
+                plainText,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
           OutlinedButton.icon(
             onPressed: onPressed,
             icon: const Icon(Icons.touch_app_outlined),
