@@ -21,7 +21,7 @@ class _Communication_ScreenState extends State<Communication_Screen> {
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 5,
+              height: MediaQuery.of(context).size.height / 7,
               child: ElevatedButton(
                   onPressed: () {
                     Uri maps = Uri.parse(
@@ -97,6 +97,44 @@ class _Communication_ScreenState extends State<Communication_Screen> {
               CallCard(onPressed: () {}, name: "Zabıta", phone: "153"),
               CallCard(onPressed: () {}, name: "Su Arıza", phone: "185"),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height / 14,
+              child: ElevatedButton(
+                  onPressed: null,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          String facebook = "https://www.facebook.com/amasyabld05/";
+                          Uri facebookUri = Uri.parse(facebook);
+                          launchUrl(facebookUri, mode: LaunchMode.externalApplication);
+                        },
+                        child: const Text("Facebook"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          String instagram = "https://www.instagram.com/amasyabld05/";
+                          Uri instagramUri = Uri.parse(instagram);
+                          launchUrl(instagramUri, mode: LaunchMode.externalApplication);
+                        },
+                        child: const Text("Instagram"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          String twitter = "https://twitter.com/amasyabld05/";
+                          Uri twitterUri = Uri.parse(twitter);
+                          launchUrl(twitterUri, mode: LaunchMode.externalApplication);
+                        },
+                        child: const Text("Twitter"),
+                      ),
+                    ],
+                  )),
+            ),
           ),
         ],
       ),

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:revogarageapp/app/ui/widgets/info_card.dart";
 import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/images.dart";
+import "package:revogarageapp/core/core.dart";
 
 class PeScreen extends StatefulWidget {
   const PeScreen({super.key});
@@ -31,69 +31,23 @@ class _PeScreenState extends State<PeScreen> {
             height: 8,
           ),
           Text(
-            "Yeşilırmak vadisi Harşena Dağı eteklerine kurulan Amasya, 7 bin yılın üzerindeki eski tarihi boyunca bilim adamları, sanatkarlar, şairler yetiştirmiş, Osmanlı şehzadelerinin eğitim gördüğü, Dünyanın en güzel Misket elması, kirazı, şeftalisi ve bamyasının üretildiği, gezip görülecek pek çok tarihi ve doğal güzelliği bulunan ilginç bir şehirdir.\n Milli Mücadelenin temellerinin atıldığı Kurtuluş savaşının ilk önemli adımını teşkil eden Amasya Genelge’sinin 22 Haziran 1919’da okunduğu kent, krallık başkentliği yapmış tarihi ve doğal güzellikleriyle önemli şehirlerimizden biridir.",
+            ConstantString().amasyaTarihi,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "AMASYA KALESİ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "AYNALI MAĞARA", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "ALÇAK KÖPRÜ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "HALİFET GAZİ TÜRBESİ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "BORABAY GÖLÜ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "AMASYA ARKEOLOJİ MÜZESİ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(
-                  onPressed: () {}, title: "FERHAT VE ŞİRİN AŞIKLAR MÜZESİ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "HARŞENA KALESİ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(onPressed: () {}, title: "KRAL KAYA MEZARLIKLARI", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(
-                  onPressed: () {}, title: "SABUNCUOĞLU TIP VE CERRAHİ MÜZESİ", icon: Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-          Row(
-            children: [
-              InfoCard(
-                  onPressed: () {},
-                  title: "HAMDULLAH YAZI VE HÜSN-Ü HAT MÜZESİ",
-                  icon: Icons.arrow_forward_ios_outlined),
-            ],
+          InfoCard(onPressed: () {}, title: "AMASYA KALESİ", description: ConstantString().amasyaKalesi),
+          InfoCard(onPressed: () {}, title: "AYNALI MAĞARA", description: ConstantString().aynaliMagara),
+          InfoCard(onPressed: () {}, title: "ALÇAK KÖPRÜ", description: ConstantString().alcakKopri),
+          InfoCard(onPressed: () {}, title: "HALİFET GAZİ TÜRBESİ", description: ConstantString().halifetGaziTurbesi),
+          InfoCard(onPressed: () {}, title: "BORABAY GÖLÜ", description: ConstantString().borabayGolu),
+          InfoCard(
+              onPressed: () {}, title: "AMASYA ARKEOLOJİ MÜZESİ", description: ConstantString().amasyaArkeolojiMuzesi),
+          InfoCard(
+              onPressed: () {}, title: "FERHAT VE ŞİRİN AŞIKLAR MÜZESİ", description: ConstantString().ferhatSirin),
+          InfoCard(
+            onPressed: () {},
+            title: "AMASYA SAAT KULESİ",
+            description: ConstantString().amasyaSaatKulesi,
           ),
           const SizedBox(
             height: 8,

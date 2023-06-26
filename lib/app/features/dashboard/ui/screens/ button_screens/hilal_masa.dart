@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:revogarageapp/app/ui/widgets/info_card.dart";
 import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
 import "package:url_launcher/url_launcher.dart";
 
@@ -51,13 +50,13 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
                 height: 16,
               ),
               Row(
-                children: [
-                  InfoCard(
+                children: const [
+                  /*   InfoCard(
                       onPressed: () {
                         _launched = _launchInBrowser(toLaunch);
                       },
                       title: "İLETİŞİME GEÇ",
-                      icon: Icons.touch_app_outlined),
+                      icon: Icons.touch_app_outlined), */
                 ],
               ),
               const SizedBox(
