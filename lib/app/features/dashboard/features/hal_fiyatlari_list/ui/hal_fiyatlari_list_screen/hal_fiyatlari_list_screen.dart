@@ -68,7 +68,10 @@ class _HalFiyatlariScreenState extends State<HalFiyatlariListScreen> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    Text(state.halFiyatlariList[index].baslik),
+                                    Text(
+                                      state.halFiyatlariList[index].baslik,
+                                      style: Theme.of(context).textTheme.bodyLarge,
+                                    ),
                                     const Icon(Icons.download_outlined)
                                   ],
                                 )),
