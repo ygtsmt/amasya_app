@@ -88,7 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Row(
             children: [
               RevoHomeButton(onPressed: () {}, title: "OTOBÜS NEREDE", icon: Icons.directions_bus_filled_outlined),
-              RevoHomeButton(onPressed: () {}, title: "BELEDİYE\nBAŞKANIMIZ", icon: Icons.person_outline_outlined),
+              RevoHomeButton(onPressed: () {}, title: "ELMAKART", icon: Icons.credit_card_outlined),
               RevoHomeButton(
                   onPressed: () {
                     context.router.navigate(const HilalMasaScreenRoute());
@@ -136,7 +136,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               RevoHomeButton(
                   onPressed: () {
                     context.router.navigate(const NobetciEczaneScreenRoute());
-                    //launchUrl(_url, mode: LaunchMode.platformDefault, webOnlyWindowName: "ssssss");
                   },
                   title: "NÖBETÇİ\nECZANELER",
                   icon: Icons.e_mobiledata_outlined),

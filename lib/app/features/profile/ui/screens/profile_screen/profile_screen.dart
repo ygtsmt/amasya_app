@@ -74,43 +74,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }
       },
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const RevoScreenHeader(
-            title: "Profil",
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const RevoScreenHeader(
-                    title: "Merhaba Yiğit",
-                  ),
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.logout),
-                    onPressed: () async {
-                      context.router.popUntilRoot();
-                      context.router.popForced();
-                      await context.router.root.replaceAll([const SplashScreenRoute()]);
-                    },
-                    label: Text(
-                      AppLocalizations.of(context).logout.toUpperCase(),
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  TextButton(
-                    onPressed: () async {
-                      _displayDeleteAccountConfirmationDialog(context);
-                    },
-                    child: Text(
-                      AppLocalizations.of(context).deleteAccount.toUpperCase(),
-                      style:
-                          Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
-                    ),
-                  )
-                ],
+          Column(
+            children: const [
+              RevoScreenHeader(
+                title: "Profil",
               ),
-            ),
+              RevoScreenHeader(
+                title: "Merhaba Yiğit",
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  context.router.popUntilRoot();
+                  context.router.popForced();
+                  await context.router.root.replaceAll([const SplashScreenRoute()]);
+                },
+                label: Text(
+                  AppLocalizations.of(context).logout.toUpperCase(),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    _displayDeleteAccountConfirmationDialog(context);
+                  },
+                  icon: const Icon(Icons.delete_outline_outlined),
+                  label: Text(
+                    AppLocalizations.of(context).deleteAccount.toUpperCase(),
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
+                  ),
+                ),
+              )
+              /*  TextButton(
+                onPressed: () async {
+                  _displayDeleteAccountConfirmationDialog(context);
+                },
+                child: Text(
+                  AppLocalizations.of(context).deleteAccount.toUpperCase(),
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
+                ),
+              ) */
+            ],
           ),
         ],
       ),

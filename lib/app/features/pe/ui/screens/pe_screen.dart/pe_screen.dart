@@ -17,7 +17,6 @@ class _PeScreenState extends State<PeScreen> {
       child: Column(
         children: [
           const RevoScreenHeader(title: "KENT BİLGİSİ"),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: ClipRRect(
@@ -66,7 +65,6 @@ class _PeScreenState extends State<PeScreen> {
               InfoCard(onPressed: () {}, title: "AMASYA ARKEOLOJİ MÜZESİ", icon: Icons.arrow_forward_ios_outlined),
             ],
           ),
-
           Row(
             children: [
               InfoCard(
@@ -97,8 +95,9 @@ class _PeScreenState extends State<PeScreen> {
                   icon: Icons.arrow_forward_ios_outlined),
             ],
           ),
-
-          //   RevoHomeButton(onPressed: () {}, title: "title", icon: Icons.abc)
+          const SizedBox(
+            height: 8,
+          ),
         ],
       ),
     );
