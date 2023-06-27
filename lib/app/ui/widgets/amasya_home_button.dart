@@ -15,7 +15,8 @@ class AmasyaHomeButton extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+      padding: EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.height / 120, horizontal: MediaQuery.of(context).size.width / 80),
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,

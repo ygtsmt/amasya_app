@@ -48,35 +48,20 @@ class _GarageScreenState extends State<GarageScreen> {
                         );
                       },
                       tablet: (final BuildContext context, final Screen screen) {
-                        return Row(
-                          children: <Widget>[
-                            const Expanded(
-                              child: SideImage(),
+                        return Column(
+                          children: [
+                            GarageScreenForm(
+                              accountId: widget.accountId,
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 32),
-                                child: GarageScreenForm(
-                                  accountId: widget.accountId,
-                                ),
-                              ),
-                            )
                           ],
                         );
                       },
                       desktop: (final BuildContext context, final Screen screen) {
-                        return Row(
-                          children: <Widget>[
-                            const Expanded(flex: 3, child: SideImage()),
-                            Expanded(
-                              flex: 2,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 48),
-                                child: GarageScreenForm(
-                                  accountId: widget.accountId,
-                                ),
-                              ),
-                            )
+                        return Column(
+                          children: [
+                            GarageScreenForm(
+                              accountId: widget.accountId,
+                            ),
                           ],
                         );
                       },

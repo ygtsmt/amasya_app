@@ -40,34 +40,16 @@ class SignupScreen extends StatelessWidget {
                         );
                       },
                       tablet: (final BuildContext context, final Screen screen) {
-                        return Row(
-                          children: const <Widget>[
-                            Expanded(
-                              child: SideImage(),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 32),
-                                child: CreateAccountForm(),
-                              ),
-                            )
+                        return Column(
+                          children: const [
+                            CreateAccountForm(),
                           ],
                         );
                       },
                       desktop: (final BuildContext context, final Screen screen) {
-                        return Row(
-                          children: const <Widget>[
-                            Expanded(
-                              flex: 3,
-                              child: SideImage(),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 48),
-                                child: CreateAccountForm(),
-                              ),
-                            )
+                        return Column(
+                          children: const [
+                            CreateAccountForm(),
                           ],
                         );
                       },
