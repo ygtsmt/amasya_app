@@ -6,7 +6,6 @@ import "package:amasyaapp/app/data/app_usecase.dart";
 import "package:amasyaapp/app/data/models/account.dart";
 import "package:amasyaapp/app/data/models/account_permission_dto.dart";
 import "package:amasyaapp/app/data/models/garage.dart";
-import "package:amasyaapp/app/features/collection/features/vehicle_list/bloc/vehicle_list_bloc.dart";
 import "package:amasyaapp/core/core.dart";
 
 part "app_event.dart";
@@ -25,7 +24,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       if (result.isSuccess()) {
         emit(state.copyWith(garage: result.tryGetSuccess()));
 
-        getIt<VehicleListBloc>().add(GetVehicleListEvent());
       }
     });
 

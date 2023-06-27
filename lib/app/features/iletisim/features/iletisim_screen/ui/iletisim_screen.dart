@@ -3,14 +3,14 @@ import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:flutter/material.dart";
 import "package:url_launcher/url_launcher.dart";
 
-class Communication_Screen extends StatefulWidget {
-  const Communication_Screen({super.key});
+class IletisimScreen extends StatefulWidget {
+  const IletisimScreen({super.key});
 
   @override
-  State<Communication_Screen> createState() => _Communication_ScreenState();
+  State<IletisimScreen> createState() => _IletisimScreenState();
 }
 
-class _Communication_ScreenState extends State<Communication_Screen> {
+class _IletisimScreenState extends State<IletisimScreen> {
   @override
   Widget build(final BuildContext context) {
     return SingleChildScrollView(

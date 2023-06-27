@@ -7,7 +7,6 @@ import "package:amasyaapp/app/features/auth/features/create_account/bloc/create_
 import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/splash/bloc/splash_bloc.dart";
-import "package:amasyaapp/app/features/collection/features/vehicle_list/bloc/vehicle_list_bloc.dart";
 import "package:amasyaapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_bloc.dart";
 import 'package:amasyaapp/app/features/dashboard/features/haber_list/bloc/haber_list_bloc.dart';
 import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_bloc.dart";
@@ -44,9 +43,7 @@ class _AppScreenState extends State<AppScreen> {
           create: (final context) => getIt<AppBloc>(),
         ),
       
-        BlocProvider<VehicleListBloc>(
-          create: (final context) => getIt<VehicleListBloc>(),
-        ),
+
         BlocProvider<SplashBloc>(
           create: (final context) => getIt<SplashBloc>(),
         ),

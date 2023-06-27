@@ -223,10 +223,10 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    PeScreenRoute.name: (routeData) {
+    KentBilgisiScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: const PeScreen(),
+        child: const KentBilgisiScreen(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -241,10 +241,10 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    Communication_ScreenRoute.name: (routeData) {
+    IletisimScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: const Communication_Screen(),
+        child: const IletisimScreen(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -370,12 +370,12 @@ class _$AppRouter extends RootStackRouter {
                   '#redirect',
                   path: '',
                   parent: PeTabRouter.name,
-                  redirectTo: 'pe-screen',
+                  redirectTo: 'kent-bilgisi-screen',
                   fullMatch: true,
                 ),
                 RouteConfig(
-                  PeScreenRoute.name,
-                  path: 'pe-screen',
+                  KentBilgisiScreenRoute.name,
+                  path: 'kent-bilgisi-screen',
                   parent: PeTabRouter.name,
                 ),
                 RouteConfig(
@@ -398,7 +398,7 @@ class _$AppRouter extends RootStackRouter {
                   fullMatch: true,
                 ),
                 RouteConfig(
-                  Communication_ScreenRoute.name,
+                  IletisimScreenRoute.name,
                   path: 'communication-screen',
                   parent: CollectionTabRouter.name,
                 ),
@@ -764,15 +764,15 @@ class BelediyeHizmetleriScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [PeScreen]
-class PeScreenRoute extends PageRouteInfo<void> {
-  const PeScreenRoute()
+/// [KentBilgisiScreen]
+class KentBilgisiScreenRoute extends PageRouteInfo<void> {
+  const KentBilgisiScreenRoute()
       : super(
-          PeScreenRoute.name,
-          path: 'pe-screen',
+          KentBilgisiScreenRoute.name,
+          path: 'kent-bilgisi-screen',
         );
 
-  static const String name = 'PeScreenRoute';
+  static const String name = 'KentBilgisiScreenRoute';
 }
 
 /// generated route for
@@ -788,15 +788,15 @@ class ScanDriverLicenceScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [Communication_Screen]
-class Communication_ScreenRoute extends PageRouteInfo<void> {
-  const Communication_ScreenRoute()
+/// [IletisimScreen]
+class IletisimScreenRoute extends PageRouteInfo<void> {
+  const IletisimScreenRoute()
       : super(
-          Communication_ScreenRoute.name,
+          IletisimScreenRoute.name,
           path: 'communication-screen',
         );
 
-  static const String name = 'Communication_ScreenRoute';
+  static const String name = 'IletisimScreenRoute';
 }
 
 /// generated route for

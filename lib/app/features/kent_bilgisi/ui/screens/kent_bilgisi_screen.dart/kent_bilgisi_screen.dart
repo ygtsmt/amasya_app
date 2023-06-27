@@ -3,14 +3,14 @@ import "package:amasyaapp/app/ui/widgets/info_card.dart";
 import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/core.dart";
 
-class PeScreen extends StatefulWidget {
-  const PeScreen({super.key});
+class KentBilgisiScreen extends StatefulWidget {
+  const KentBilgisiScreen({super.key});
 
   @override
-  State<PeScreen> createState() => _PeScreenState();
+  State<KentBilgisiScreen> createState() => _KentBilgisiScreenState();
 }
 
-class _PeScreenState extends State<PeScreen> {
+class _KentBilgisiScreenState extends State<KentBilgisiScreen> {
   @override
   Widget build(final BuildContext context) {
     return SingleChildScrollView(

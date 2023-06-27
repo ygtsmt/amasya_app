@@ -23,18 +23,4 @@ class F {
         return "title";
     }
   }
-
-  static String get apiBaseUrl {
-    switch (appFlavor) {
-      case Flavor.production:
-        return "https://google.com";
-      case Flavor.staging:
-        return "https://google.com";
-      case Flavor.development:
-        return "https://google.com";
-      // ignore: no_default_cases
-      default:
-        return "https://google.com";
-    }
-  }
 }

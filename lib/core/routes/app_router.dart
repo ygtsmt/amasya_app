@@ -10,9 +10,8 @@ import "package:amasyaapp/app/features/auth/features/create_garage/ui/garage_scr
 import "package:amasyaapp/app/features/auth/features/login/ui/login_screen.dart";
 import "package:amasyaapp/app/features/auth/features/splash/ui/splash_screen.dart";
 
-import "package:amasyaapp/app/features/collection/features/vehicle_list/data/models/vehicle_short_dto.dart";
-import "package:amasyaapp/app/features/collection/features/vehicle_list/ui/scan_vehicle_card_screen.dart";
-import "package:amasyaapp/app/features/collection/features/vehicle_list/ui/vehicle_list_screen.dart";
+import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/scan_vehicle_card_screen.dart';
+import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/iletisim_screen.dart';
 
 import "package:amasyaapp/app/features/dashboard/features/belediye_hizmetleri/belediye_hizmetleri_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_icerik_screen.dart";
@@ -27,8 +26,8 @@ import "package:amasyaapp/app/features/dashboard/ui/screens/%20button_screens/no
 import "package:amasyaapp/app/features/dashboard/ui/screens/dashboard_screen.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/user_summary_screen.dart";
 
-import "package:amasyaapp/app/features/pe/ui/screens/pe_screen.dart/pe_screen.dart";
-import "package:amasyaapp/app/features/pe/ui/screens/scan_driver_licence_screen.dart";
+import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/kent_bilgisi_screen.dart/kent_bilgisi_screen.dart';
+import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/scan_driver_licence_screen.dart';
 
 import "package:amasyaapp/app/features/profile/ui/screens/profile_screen/profile_screen.dart";
 import "package:amasyaapp/app/ui/home_screen.dart";
@@ -86,8 +85,8 @@ part "app_router.gr.dart";
           transitionsBuilder: TransitionsBuilders.fadeIn,
           children: [
             CustomRoute(
-              page: PeScreen,
-              path: "pe-screen",
+              page: KentBilgisiScreen,
+              path: "kent-bilgisi-screen",
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
@@ -107,7 +106,7 @@ part "app_router.gr.dart";
           transitionsBuilder: TransitionsBuilders.fadeIn,
           children: [
             CustomRoute(
-              page: Communication_Screen,
+              page: IletisimScreen,
               path: "communication-screen",
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
