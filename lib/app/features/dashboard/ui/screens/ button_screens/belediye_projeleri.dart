@@ -1,5 +1,7 @@
+import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
+
 class BelediyeProjeleriScreen extends StatefulWidget {
   const BelediyeProjeleriScreen({super.key});
 
@@ -14,7 +16,7 @@ class _BelediyeProjeleriScreenState extends State<BelediyeProjeleriScreen> {
       enableSwipe: true,
     ).cachedFromUrl(
       "https://amasya.bel.tr/uploads/projelerimiz/proje.pdf",
-      placeholder: (progress) => const Center(child: CircularProgressIndicator()),
+      placeholder: (progress) => const Center(child: AppleProgressIndicator()),
     );
   }
 }
