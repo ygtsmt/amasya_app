@@ -20,7 +20,7 @@ class CallCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: SizedBox(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height / 8.6,
+          height: MediaQuery.of(context).size.height / 7.4,
           child: ElevatedButton(
               onPressed: () async {
                 Uri phoneno = Uri.parse('tel:$phone');
@@ -48,9 +48,6 @@ class CallCard extends StatelessWidget {
                       ),
                       const SizedBox(
                         height: 4,
-                      ),
-                      const Icon(
-                        Icons.phone_forwarded_outlined,
                       ),
                       const Text("İletişime Geç"),
                     ],

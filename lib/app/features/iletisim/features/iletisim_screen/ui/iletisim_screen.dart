@@ -21,7 +21,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 7,
+              height: MediaQuery.of(context).size.height / 5.5,
               child: ElevatedButton(
                   onPressed: () {
                     Uri maps = Uri.parse(
@@ -38,7 +38,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
                           Text(
                             "Amasya Belediye Binası",
                             textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headlineLarge,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           Text(
                             "Ellibeşevler, Mehmet Varinli Cd. No:99,\n05200 Amasya Merkez/Amasya",
@@ -73,7 +73,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
               CallCard(onPressed: () {}, name: "Temizlik İşleri", phone: "+90 358 218 80 09"),
               CallCard(
                 onPressed: () {},
-                name: "Fen İşleri Müdürlüğü",
+                name: "Fen İşleri\nMüdürlüğü",
                 phone: "+90 358 280 21 40",
               ),
             ],

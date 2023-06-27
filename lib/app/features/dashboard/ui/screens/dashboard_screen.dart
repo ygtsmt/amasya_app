@@ -1,10 +1,10 @@
 import "dart:async";
 
-import "package:auto_route/auto_route.dart";
-import "package:flutter/material.dart";
-import 'package:amasyaapp/app/ui/widgets/amasya_home_button.dart';
+import "package:amasyaapp/app/ui/widgets/amasya_home_button.dart";
 import "package:amasyaapp/core/images.dart";
 import "package:amasyaapp/core/routes/app_router.dart";
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -49,11 +49,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(final BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 260,
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+
+    final double deviceHeight = mediaQueryData.size.height;
+    final double deviceWidth = mediaQueryData.size.width;
+    return Column(
+      children: [
+        Expanded(
+          flex: 6,
+          child: SizedBox(
+            //   height: deviceHeight / 3.5,
             width: double.infinity, // İsteğe bağlı olarak ayarlayabilirsiniz
             child: PageView.builder(
               controller: pageController,
@@ -77,72 +82,100 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Text(
-              "AMASYA \nTarih ve doğanın buluştuğu yer",
-              style: Theme.of(context).textTheme.headlineLarge,
-              textAlign: TextAlign.center,
-            ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Text(
+            "Amasya\nTarih ve doğanın buluştuğu yer",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: deviceHeight / 25),
           ),
-          Row(
+        ),
+        Expanded(
+          flex: 3,
+          child: Row(
             children: [
-              AmasyaHomeButton(onPressed: () {}, title: "OTOBÜS NEREDE", icon: Icons.directions_bus_filled_outlined),
-              AmasyaHomeButton(onPressed: () {}, title: "ELMAKART", icon: Icons.credit_card_outlined),
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const HilalMasaScreenRoute());
-                  },
-                  title: "HİLAL MASA",
-                  icon: Icons.message_outlined),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {}, title: "OTOBÜS\nNEREDE", icon: Icons.directions_bus_filled_outlined),
+              ),
+              Expanded(
+                child: AmasyaHomeButton(onPressed: () {}, title: "ELMAKART", icon: Icons.credit_card_outlined),
+              ),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const HilalMasaScreenRoute());
+                    },
+                    title: "HİLAL\nMASA",
+                    icon: Icons.message_outlined),
+              )
             ],
           ),
-          Row(
+        ),
+        Expanded(
+          flex: 3,
+          child: Row(
             children: [
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const HaberListScreenRoute());
-                  },
-                  title: "HABERLER",
-                  icon: Icons.newspaper_outlined),
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const DuyuruListScreenRoute());
-                  },
-                  title: "DUYURULAR",
-                  icon: Icons.notifications_active_outlined),
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const HalFiyatlariListScreenRoute());
-                  },
-                  title: "HAL FİYATLARI",
-                  icon: Icons.currency_lira_outlined),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const HaberListScreenRoute());
+                    },
+                    title: "HABERLER",
+                    icon: Icons.newspaper_outlined),
+              ),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const DuyuruListScreenRoute());
+                    },
+                    title: "DUYURULAR",
+                    icon: Icons.notifications_active_outlined),
+              ),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const HalFiyatlariListScreenRoute());
+                    },
+                    title: "HAL\nFİYATLARI",
+                    icon: Icons.currency_lira_outlined),
+              )
             ],
           ),
-          Row(
+        ),
+        Expanded(
+          flex: 3,
+          child: Row(
             children: [
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const BelediyeHizmetleriScreenRoute());
-                  },
-                  title: "BELEDİYE\nHİZMETLERİ",
-                  icon: Icons.text_snippet_outlined),
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const BelediyeProjeleriScreenRoute());
-                  },
-                  title: "BELEDİYE\nPROJELERİ",
-                  icon: Icons.design_services_outlined),
-              AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const NobetciEczaneScreenRoute());
-                  },
-                  title: "NÖBETÇİ\nECZANELER",
-                  icon: Icons.e_mobiledata_outlined),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const BelediyeHizmetleriScreenRoute());
+                    },
+                    title: "BELEDİYE\nHİZMETLERİ",
+                    icon: Icons.text_snippet_outlined),
+              ),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const BelediyeProjeleriScreenRoute());
+                    },
+                    title: "BELEDİYE\nPROJELERİ",
+                    icon: Icons.design_services_outlined),
+              ),
+              Expanded(
+                child: AmasyaHomeButton(
+                    onPressed: () {
+                      context.router.navigate(const NobetciEczaneScreenRoute());
+                    },
+                    title: "NÖBETÇİ\nECZANELER",
+                    icon: Icons.e_mobiledata_outlined),
+              )
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
