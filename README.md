@@ -16,3 +16,4 @@ Bu proje [CC BY-NC 4.0](LICENSE.md) lisansı altında dağıtılmaktadır. Daha 
 
 This project is distributed under the [CC BY-NC 4.0](LICENSE.md) license. For more information, refer to the license file.
 
+d
