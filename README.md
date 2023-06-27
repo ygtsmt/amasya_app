@@ -4,8 +4,8 @@
 
 Bu projeyle ilgili herhangi bir sorunuz veya öneriniz varsa, lütfen benimle iletişime geçin:
 
-- E-posta: alkanatas34@gmail.com
-- Linkedin: https://www.linkedin.com/in/alkan-ata%C5%9F-101482248/
+- E-posta:ygtsmt@outlook.com
+- Linkedin: https://www.linkedin.com/in/ygtsmt
 
 
 ## Lisans
