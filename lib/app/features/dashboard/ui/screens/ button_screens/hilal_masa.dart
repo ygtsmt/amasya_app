@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:revogarageapp/app/ui/widgets/custom_button.dart";
 import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
 import "package:url_launcher/url_launcher.dart";
 
@@ -30,7 +31,7 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
         _hasCallSupport = result;
       });
     });
-  } //https://wa.me/15551234567
+  }
 
   final Uri toLaunch = Uri(scheme: 'https', host: 'wa.me', path: "05455462999");
   @override
@@ -49,16 +50,12 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
               const SizedBox(
                 height: 16,
               ),
-              Row(
-                children: const [
-                  /*   InfoCard(
-                      onPressed: () {
-                        _launched = _launchInBrowser(toLaunch);
-                      },
-                      title: "İLETİŞİME GEÇ",
-                      icon: Icons.touch_app_outlined), */
-                ],
-              ),
+              CustomButton(
+                  onPressed: () {
+                    _launched = _launchInBrowser(toLaunch);
+                  },
+                  title: "İLETİŞİME GEÇ",
+                  icon: null),
               const SizedBox(
                 height: 16,
               ),
