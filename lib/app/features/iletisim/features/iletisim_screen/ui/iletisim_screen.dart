@@ -21,7 +21,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 4.5,
+              height: MediaQuery.of(context).size.height / 7,
               child: ElevatedButton(
                   onPressed: () {
                     Uri maps = Uri.parse(

@@ -85,11 +85,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         Expanded(
           flex: 2,
-          child: Text(
-            "Amasya\nTarih ve doğanın buluştuğu yer",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: deviceHeight / 25),
-          ),
+          child: Text("Amasya\nTarih ve doğanın buluştuğu yer",
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium!
+                  .copyWith(fontSize: MediaQuery.of(context).size.height / 24)),
         ),
         Expanded(
           flex: 3,
@@ -175,6 +176,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
         ),
+        SizedBox(height: MediaQuery.of(context).size.height / 100)
       ],
     );
   }
