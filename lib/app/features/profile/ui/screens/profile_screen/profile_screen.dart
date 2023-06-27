@@ -77,9 +77,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
-            children: const [
+            children: [
               RevoScreenHeader(
                 title: "Profil",
+                actions: BlocBuilder<AppBloc, AppState>(
+                  builder: (final context, final state) {
+                    return SwitchListTile(
+                      value: state.themeMode == ThemeMode.dark,
+                      onChanged: (final bool value) {
+                        getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
+                      },
+                      title: Text(AppLocalizations.of(context).dark_mode),
+                    );
+                  },
+                ),
               ),
               RevoScreenHeader(
                 title: "Merhaba Yiğit",
