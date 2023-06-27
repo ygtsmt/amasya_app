@@ -1,5 +1,5 @@
 import "package:amasyaapp/app/ui/widgets/call_card.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:flutter/material.dart";
 import "package:url_launcher/url_launcher.dart";
 
@@ -16,7 +16,7 @@ class _Communication_ScreenState extends State<Communication_Screen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const RevoScreenHeader(title: "İLETİŞİM"),
+          const AmasyaScreenHeader(title: "İLETİŞİM"),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(

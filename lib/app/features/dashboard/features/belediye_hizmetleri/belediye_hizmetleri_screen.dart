@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:amasyaapp/app/ui/widgets/custom_button.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 
 class BelediyeHizmetleriScreen extends StatelessWidget {
   const BelediyeHizmetleriScreen({super.key});
@@ -10,7 +10,7 @@ class BelediyeHizmetleriScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const RevoScreenHeader(title: "Belediye Hizmetleri"),
+          const AmasyaScreenHeader(title: "Belediye Hizmetleri"),
           Column(
             children: [
               CustomButton(onPressed: () {}, title: "Evlendirme Hizmetleri", icon: null),

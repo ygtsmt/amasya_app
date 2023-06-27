@@ -6,7 +6,7 @@ import "package:amasyaapp/app/features/dashboard/features/haber_list/bloc/haber_
 import "package:amasyaapp/app/features/dashboard/features/haber_list/bloc/haber_list_state.dart";
 import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/components/data_info_card.dart";
 import "package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/core.dart";
 
 class HaberListScreen extends StatefulWidget {
@@ -27,7 +27,7 @@ class _HaberListScreenState extends State<HaberListScreen> {
   Widget build(final BuildContext context) {
     return Column(
       children: [
-        const RevoScreenHeader(
+        const AmasyaScreenHeader(
           title: "Haberler",
         ),
         Expanded(

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:amasyaapp/app/ui/widgets/custom_button.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:url_launcher/url_launcher.dart";
 
 class HilalMasaScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const RevoScreenHeader(title: "HİLAL MASA"),
+          const AmasyaScreenHeader(title: "HİLAL MASA"),
           Column(
             children: [
               Text(

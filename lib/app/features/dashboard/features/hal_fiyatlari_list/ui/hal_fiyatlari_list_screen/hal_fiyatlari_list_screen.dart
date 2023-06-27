@@ -3,7 +3,7 @@ import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/blo
 import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_state.dart";
 import "package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart";
 import "package:amasyaapp/app/ui/widgets/custom_button.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/core.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -44,7 +44,7 @@ class _HalFiyatlariScreenState extends State<HalFiyatlariListScreen> {
   Widget build(final BuildContext context) {
     return Column(
       children: [
-        const RevoScreenHeader(
+        const AmasyaScreenHeader(
           title: "Hal Fiyatları",
         ),
         Expanded(

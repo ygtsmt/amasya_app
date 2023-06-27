@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-class RevoHomeButton extends StatelessWidget {
-  const RevoHomeButton({
+class AmasyaHomeButton extends StatelessWidget {
+  const AmasyaHomeButton({
     required this.onPressed,
     required this.title,
     required this.icon,

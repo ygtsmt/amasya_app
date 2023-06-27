@@ -13,11 +13,11 @@ class F {
   static String get title {
     switch (appFlavor) {
       case Flavor.production:
-        return "Revo Garage";
+        return "Amasya App";
       case Flavor.staging:
-        return "Revo Garage";
+        return "Amasya App";
       case Flavor.development:
-        return "Revo Garage";
+        return "Amasya App";
       // ignore: no_default_cases
       default:
         return "title";

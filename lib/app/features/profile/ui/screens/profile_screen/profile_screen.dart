@@ -1,5 +1,5 @@
 import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
 import "package:amasyaapp/core/enums.dart";
 import "package:amasyaapp/core/injection/injection.dart";
@@ -77,8 +77,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Column(
             children: [
-              RevoScreenHeader(
-                title: "Profil",
+              AmasyaScreenHeader(
+                title: "",
                 actions: BlocBuilder<AppBloc, AppState>(
                   builder: (final context, final state) {
                     return SwitchListTile(
@@ -86,13 +86,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onChanged: (final bool value) {
                         getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
                       },
-                      title: const Text("Dark Mode"),
+                      title: const Text("Karanlık Tema"),
                     );
                   },
                 ),
-              ),
-              const RevoScreenHeader(
-                title: "Merhaba Yiğit",
               ),
             ],
           ),
@@ -107,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   await context.router.root.replaceAll([const SplashScreenRoute()]);
                 },
                 label: const Text(
-                  "Logout",
+                  "Çıkış Yap",
                 ),
               ),
               Padding(
@@ -118,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   icon: const Icon(Icons.delete_outline_outlined),
                   label: Text(
-                    "Delete Account",
+                    "Hesabı Sil",
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
                   ),
                 ),

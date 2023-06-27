@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:amasyaapp/app/ui/widgets/info_card.dart";
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/core.dart";
 
 class PeScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _PeScreenState extends State<PeScreen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const RevoScreenHeader(title: "KENT BİLGİSİ"),
+          const AmasyaScreenHeader(title: "KENT BİLGİSİ"),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: ClipRRect(
@@ -57,50 +57,3 @@ class _PeScreenState extends State<PeScreen> {
     );
   }
 }
-
-
-/* import "package:flutter/material.dart";
-import "package:revogarageapp/app/ui/widgets/revo_home_button.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/images.dart";
-
-class PeScreen extends StatelessWidget {
-  const PeScreen({super.key});
-
-  @override
-  Widget build(final BuildContext context) {
-    return Column(
-      children: [
-        const RevoScreenHeader(title: "KENT BİLGİSİ"),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      Images.kralkaya,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  "Yeşilırmak vadisi Harşena Dağı eteklerine kurulan Amasya, 7 bin yılın üzerindeki eski tarihi boyunca bilim adamları, sanatkarlar, şairler yetiştirmiş, Osmanlı şehzadelerinin eğitim gördüğü, Dünyanın en güzel Misket elması, kirazı, şeftalisi ve bamyasının üretildiği, gezip görülecek pek çok tarihi ve doğal güzelliği bulunan ilginç bir şehirdir.\n Milli Mücadelenin temellerinin atıldığı Kurtuluş savaşının ilk önemli adımını teşkil eden Amasya Genelge’sinin 22 Haziran 1919’da okunduğu kent, krallık başkentliği yapmış tarihi ve doğal güzellikleriyle önemli şehirlerimizden biridir.",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                RevoHomeButton(onPressed: () {}, title: "title", icon: Icons.abc)
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
- */

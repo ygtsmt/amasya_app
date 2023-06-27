@@ -72,26 +72,3 @@ flutter_native_splash:
   image: assets/images/amasyaapp2.png
   color: "1C1B1F"
   android_disable_fullscreen: true
-flavorizr:
-  flavors:
-    production:
-      app:
-        name: "Revo Garage"
-      android:
-        applicationId: "com.revoinnovations.revogarage"
-      ios:
-        bundleId: "com.itservicesgross.fahrzeugeapp"
-    staging:
-      app:
-        name: "Revo Garage"
-      android:
-        applicationId: "com.revoinnovations.revogarage.staging"
-      ios:
-        bundleId: "com.itservicesgross.fahrzeugeapp.staging"
-    development:
-      app:
-        name: "Revo Garage"
-      android:
-        applicationId: "com.revoinnovations.revogarage.dev"
-      ios:
-        bundleId: "com.itservicesgross.fahrzeugeapp.dev"

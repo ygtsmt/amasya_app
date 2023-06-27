@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:amasyaapp/core/images.dart";
 
-class RevoLogo extends StatelessWidget {
-  const RevoLogo({
+class AmasyaLogo extends StatelessWidget {
+  const AmasyaLogo({
     super.key,
     this.themeMode = ThemeMode.dark,
   });

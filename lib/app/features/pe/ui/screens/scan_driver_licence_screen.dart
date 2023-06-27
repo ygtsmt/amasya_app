@@ -1,4 +1,4 @@
-import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/services/ocr_service.dart";
 import "package:camera/camera.dart";
 import "package:flutter/foundation.dart";
@@ -131,7 +131,7 @@ class _ScanDriverLicenceScreenState extends State<ScanDriverLicenceScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const RevoScreenHeader(
+        const AmasyaScreenHeader(
           title: "Scan card",
         ),
         Expanded(

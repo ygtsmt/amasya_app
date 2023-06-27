@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:flutter_adaptive_ui/flutter_adaptive_ui.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/ui/widgets/revo_logo.dart";
-import "package:amasyaapp/app/ui/widgets/side_bar.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_logo.dart';
+import 'package:amasyaapp/app/ui/widgets/amasya_bar.dart';
 import "package:amasyaapp/core/routes/app_router.dart";
 
 class HomeScreen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Center(
                     child: SizedBox(
                       height: 40,
-                      child: RevoLogo(themeMode: state.themeMode),
+                      child: AmasyaLogo(themeMode: state.themeMode),
                     ),
                   ),
                   actions: [
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Row(
                           children: [
                             const Expanded(
-                              child: RevoSideBar(),
+                              child: AmasyaSideBar(),
                             ),
                             Expanded(
                               flex: 2,
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             const Expanded(
                               flex: 3,
-                              child: RevoSideBar(),
+                              child: AmasyaSideBar(),
                             ),
                             Expanded(
                               flex: 8,

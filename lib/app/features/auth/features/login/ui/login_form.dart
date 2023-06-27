@@ -115,7 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                           context.replaceRoute(const HomeScreenRoute());
                         },
                         child: const Text(
-                          "Login",
+                          "GİRİŞ YAP",
                         ),
                       );
                     },
@@ -130,7 +130,7 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   child: RichText(
                     text: TextSpan(
-                      text: "Henüz hesabınız yok mu?",
+                      text: "Henüz hesabınız yok mu? ",
                       style: Theme.of(context).textTheme.bodyMedium,
                       children: <TextSpan>[
                         TextSpan(

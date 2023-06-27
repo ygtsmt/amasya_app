@@ -2,7 +2,7 @@ import "dart:async";
 
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
-import "package:amasyaapp/app/ui/widgets/revo_home_button.dart";
+import 'package:amasyaapp/app/ui/widgets/amasya_home_button.dart';
 import "package:amasyaapp/core/images.dart";
 import "package:amasyaapp/core/routes/app_router.dart";
 
@@ -87,9 +87,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Row(
             children: [
-              RevoHomeButton(onPressed: () {}, title: "OTOBÜS NEREDE", icon: Icons.directions_bus_filled_outlined),
-              RevoHomeButton(onPressed: () {}, title: "ELMAKART", icon: Icons.credit_card_outlined),
-              RevoHomeButton(
+              AmasyaHomeButton(onPressed: () {}, title: "OTOBÜS NEREDE", icon: Icons.directions_bus_filled_outlined),
+              AmasyaHomeButton(onPressed: () {}, title: "ELMAKART", icon: Icons.credit_card_outlined),
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const HilalMasaScreenRoute());
                   },
@@ -99,19 +99,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Row(
             children: [
-              RevoHomeButton(
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const HaberListScreenRoute());
                   },
                   title: "HABERLER",
                   icon: Icons.newspaper_outlined),
-              RevoHomeButton(
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const DuyuruListScreenRoute());
                   },
                   title: "DUYURULAR",
                   icon: Icons.notifications_active_outlined),
-              RevoHomeButton(
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const HalFiyatlariListScreenRoute());
                   },
@@ -121,19 +121,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Row(
             children: [
-              RevoHomeButton(
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const BelediyeHizmetleriScreenRoute());
                   },
                   title: "BELEDİYE\nHİZMETLERİ",
                   icon: Icons.text_snippet_outlined),
-              RevoHomeButton(
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const BelediyeProjeleriScreenRoute());
                   },
                   title: "BELEDİYE\nPROJELERİ",
                   icon: Icons.design_services_outlined),
-              RevoHomeButton(
+              AmasyaHomeButton(
                   onPressed: () {
                     context.router.navigate(const NobetciEczaneScreenRoute());
                   },

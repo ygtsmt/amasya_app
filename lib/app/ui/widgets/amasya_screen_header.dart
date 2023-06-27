@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-class RevoScreenHeader extends StatelessWidget {
-  const RevoScreenHeader({
+class AmasyaScreenHeader extends StatelessWidget {
+  const AmasyaScreenHeader({
     required this.title,
     this.actions,
     super.key,
