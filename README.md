@@ -4,7 +4,7 @@
 
 Bu projeyle ilgili herhangi bir sorunuz veya öneriniz varsa, lütfen benimle iletişime geçin:
 
-- E-posta:ygtsmt@outlook.com
+- E-posta:  ygtsmt@outlook.com
 - Linkedin: https://www.linkedin.com/in/ygtsmt
 
 
