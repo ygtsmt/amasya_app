@@ -32,7 +32,6 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   flutter_html: ^3.0.0-beta.2
   flutter_image_map: ^0.9.3
-  flutter_native_splash: ^2.2.19
   flutter_secure_storage: ^8.0.0
   flutter_staggered_grid_view: ^0.6.2
   form_field_validator: ^1.1.0
@@ -56,10 +55,24 @@ dev_dependencies:
   auto_route_generator: ^5.0.3
   build_runner: ^2.3.3
   flutter_flavorizr: ^2.1.6
-  flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  image_path: "assets/images/amasya_launcher_icon.png"
+  adaptive_icon_background: "#235586"
+  adaptive_icon_foreground: "assets/images/amasya_launcher_icon.png"
+  ios: true
+  remove_alpha_ios: true
+  android: true
+  web:
+    generate: true
+  windows:
+    generate: true
+  macos:
+    generate: true
   injectable_generator: ^2.1.4
 
   json_serializable: ^6.6.1
@@ -68,7 +81,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-flutter_native_splash:
-  image: assets/images/amasyaapp2.png
-  color: "1C1B1F"
-  android_disable_fullscreen: true
