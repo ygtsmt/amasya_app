@@ -92,7 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
               ),
-              RevoScreenHeader(
+              const RevoScreenHeader(
                 title: "Merhaba Yiğit",
               ),
             ],

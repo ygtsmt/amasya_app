@@ -27,14 +27,14 @@ class F {
   static String get apiBaseUrl {
     switch (appFlavor) {
       case Flavor.production:
-        return "https://api.revo-garage.com";
+        return "https://google.com";
       case Flavor.staging:
-        return "https://api-test.revo-garage.com";
+        return "https://google.com";
       case Flavor.development:
-        return "https://api-test.revo-garage.com";
+        return "https://google.com";
       // ignore: no_default_cases
       default:
-        return "https://api-test.revo-garage.com";
+        return "https://google.com";
     }
   }
 }
