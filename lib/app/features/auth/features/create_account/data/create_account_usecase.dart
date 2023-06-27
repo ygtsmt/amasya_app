@@ -1,20 +1,19 @@
-import "package:injectable/injectable.dart";
-import "package:multiple_result/multiple_result.dart";
 import "package:amasyaapp/app/data/models/account.dart";
 import "package:amasyaapp/app/features/auth/features/create_account/data/models/create_account_request.dart";
 import "package:amasyaapp/core/core.dart";
+import 'package:dio/dio.dart';
+import "package:injectable/injectable.dart";
+import "package:multiple_result/multiple_result.dart";
 
 @injectable
 class CreateAccountUseCase {
   const CreateAccountUseCase(
-    this._httpDataSource,
     this._snackBarService,
   );
 
   Future<Result<Account, String?>> createAccount(final CreateAccountRequest request) async {
     try {
-      final result = await _httpDataSource.request(
-        RequestMethod.post,
+      final result = await Dio().post(
         "/api/Account",
         data: request.toJson(),
       );
@@ -27,6 +26,5 @@ class CreateAccountUseCase {
     }
   }
 
-  final HttpDataSource _httpDataSource;
   final SnackBarService _snackBarService;
 }

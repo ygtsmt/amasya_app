@@ -3,20 +3,18 @@ import "package:amasyaapp/app/data/models/account_permission_dto.dart";
 import "package:amasyaapp/app/data/models/garage.dart";
 import "package:amasyaapp/core/data_sources/http_data_source/http_data_source.dart";
 import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
-import "package:amasyaapp/core/enums.dart";
 import "package:amasyaapp/core/extensions.dart";
 import "package:amasyaapp/core/services/snackbar_service.dart";
 import "package:amasyaapp/generated/l10n.dart";
 import "package:flutter/material.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-
+import 'package:dio/dio.dart';
 @injectable
 class AppUseCase {
-  AppUseCase(this._secureDataStorage, this._httpDataSource, this._snackBarService);
+  AppUseCase(this._secureDataStorage, this._snackBarService);
 
   final SecureDataStorage _secureDataStorage;
-  final HttpDataSource _httpDataSource;
   final SnackBarService _snackBarService;
 
   Future<void> setThemeMode(final ThemeMode themeMode) async {
@@ -29,8 +27,7 @@ class AppUseCase {
 
   Future<Result<Garage?, String?>> getGarage() async {
     try {
-      final result = await _httpDataSource.request(
-        RequestMethod.get,
+      final result = await Dio().get(
         "/api/Garage/GetCurrentAccountGarage",
       );
 
@@ -45,9 +42,8 @@ class AppUseCase {
 
   Future<Result<Account?, String?>> getAccount() async {
     try {
-      final result = await _httpDataSource.request(
-        RequestMethod.get,
-        "/api/Account/GetCurrentAccount",
+       final result = await Dio().get(
+        "/api/Garage/GetCurrentAccountGarage",
       );
 
       final account = Account.fromJson(result.data as Map<String, dynamic>);
@@ -61,9 +57,8 @@ class AppUseCase {
 
   Future<Result<List<AccountPermissionDto>, String?>> getAccountPermissions() async {
     try {
-      final result = await _httpDataSource.request(
-        RequestMethod.get,
-        "/api/AccountPermission",
+      final result = await Dio().get(
+        "/api/Garage/GetCurrentAccountGarage",
       );
 
       final accountPermissions = (result.data as List<dynamic>)
@@ -79,8 +74,7 @@ class AppUseCase {
 
   Future<Result<void, String?>> deleteAccount(final int accountId, final String password) async {
     try {
-      await _httpDataSource.request(
-        RequestMethod.delete,
+      await Dio().delete(
         "/api/Account?Id=$accountId&Password=$password",
       );
 

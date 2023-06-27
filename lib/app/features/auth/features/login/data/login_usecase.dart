@@ -1,6 +1,7 @@
 import "dart:io";
 
 import "package:device_info_plus/device_info_plus.dart";
+import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
@@ -10,7 +11,7 @@ import "package:amasyaapp/generated/l10n.dart";
 
 @injectable
 class LoginUseCase {
-  const LoginUseCase(this._httpDataSource, this._secureDataStorage, this._snackBarService);
+  const LoginUseCase( this._secureDataStorage, this._snackBarService);
 
   Future<Result<AccountAuth, String?>> login(final String email, final String password) async {
     final deviceInfo = DeviceInfoPlugin();
@@ -36,8 +37,7 @@ class LoginUseCase {
     }
 
     try {
-      final result = await _httpDataSource.request(
-        RequestMethod.post,
+      final result = await Dio().post(
         "/api/Login",
         data: {"email": email, "password": password, "deviceName": deviceName},
       );
@@ -53,7 +53,6 @@ class LoginUseCase {
     }
   }
 
-  final HttpDataSource _httpDataSource;
   final SecureDataStorage _secureDataStorage;
   final SnackBarService _snackBarService;
 }
