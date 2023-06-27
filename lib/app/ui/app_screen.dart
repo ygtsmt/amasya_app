@@ -71,6 +71,10 @@ class _AppScreenState extends State<AppScreen> {
       ],
       child: BlocBuilder<AppBloc, AppState>(
         builder: (final context, final state) {
+          SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
           return MaterialApp.router(
             scaffoldMessengerKey: snackbarKey,
             debugShowCheckedModeBanner: false,

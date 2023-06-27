@@ -21,7 +21,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 5.5,
+              height: MediaQuery.of(context).size.height / 4.5,
               child: ElevatedButton(
                   onPressed: () {
                     Uri maps = Uri.parse(
@@ -48,13 +48,8 @@ class _IletisimScreenState extends State<IletisimScreen> {
                           const SizedBox(
                             height: 4,
                           ),
-                          const Icon(
-                            Icons.map_sharp,
-                          ),
-                          Text(
+                          const Text(
                             "Yol Tarifi Al",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ],
                       ),

@@ -20,7 +20,7 @@ class CallCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: SizedBox(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height / 7.4,
+          height: MediaQuery.of(context).size.height / 5,
           child: ElevatedButton(
               onPressed: () async {
                 Uri phoneno = Uri.parse('tel:$phone');
