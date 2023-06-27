@@ -1,6 +1,5 @@
 import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
 import "package:amasyaapp/core/services/ocr_service.dart";
-import "package:amasyaapp/generated/l10n.dart";
 import "package:camera/camera.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -132,8 +131,8 @@ class _ScanDriverLicenceScreenState extends State<ScanDriverLicenceScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        RevoScreenHeader(
-          title: AppLocalizations.of(context).scan_card,
+        const RevoScreenHeader(
+          title: "Scan card",
         ),
         Expanded(
           flex: 6,
@@ -141,9 +140,9 @@ class _ScanDriverLicenceScreenState extends State<ScanDriverLicenceScreen> {
             borderRadius: BorderRadius.circular(20),
             child: Container(
               child: controller == null
-                  ? Center(
+                  ? const Center(
                       child: Text(
-                        AppLocalizations.of(context).loading_camera,
+                        "Kamera Yükleniyor",
                       ),
                     )
                   : !controller!.value.isInitialized

@@ -1,9 +1,8 @@
+import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/core/core.dart";
-import "package:amasyaapp/generated/l10n.dart";
 
 class RevoSideBar extends StatelessWidget {
   const RevoSideBar({super.key});
@@ -40,7 +39,7 @@ class RevoSideBar extends StatelessWidget {
                       ),
                     ),
                     DrawerListTile(
-                      title: AppLocalizations.of(context).dashboard,
+                      title: "AppLocalizations.of(context).dashboard",
                       icon: Icons.dashboard_outlined,
                       press: () {
                         context.router.navigate(const HomeScreenRoute(children: [DashbordTabRouter()]));
@@ -48,7 +47,7 @@ class RevoSideBar extends StatelessWidget {
                     ),
                     if (state.hasPeAccess)
                       DrawerListTile(
-                        title: AppLocalizations.of(context).pAndE,
+                        title:" AppLocalizations.of(context).pAndE",
                         icon: Icons.track_changes_outlined,
                         press: () {
                           context.router.navigate(const HomeScreenRoute(children: [PeTabRouter()]));
@@ -56,7 +55,7 @@ class RevoSideBar extends StatelessWidget {
                       ),
                     if (state.hasCollectionAccess)
                       DrawerListTile(
-                        title: AppLocalizations.of(context).vehicle,
+                        title: "AppLocalizations.of(context).vehicle",
                         icon: Icons.directions_car_filled_outlined,
                         press: () {
                           context.router.navigate(const HomeScreenRoute(children: [CollectionTabRouter()]));
@@ -64,14 +63,14 @@ class RevoSideBar extends StatelessWidget {
                       ),
                     if (state.hasAuctionAccess)
                       DrawerListTile(
-                        title: AppLocalizations.of(context).auction,
+                        title: "AppLocalizations.of(context).auction,",
                         icon: Icons.gavel_outlined,
                         press: () {
                           context.router.navigate(const HomeScreenRoute(children: [AuctionTabRoute()]));
                         },
                       ),
                     DrawerListTile(
-                      title: AppLocalizations.of(context).profile,
+                      title:" AppLocalizations.of(context).profile",
                       icon: Icons.person_outline,
                       press: () {
                         context.router.navigate(const HomeScreenRoute(children: [ProfileTabRouter()]));
@@ -88,13 +87,13 @@ class RevoSideBar extends StatelessWidget {
                     onChanged: (final bool value) {
                       getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
                     },
-                    title: Text(AppLocalizations.of(context).dark_mode),
+                    title: const Text("Dark Mode"),
                   );
                 },
               ),
               const Divider(),
               DrawerListTile(
-                title: AppLocalizations.of(context).logout,
+                title: "Çıkış Yap",
                 icon: Icons.logout_outlined,
                 press: () {
                   final secureDataStorage = getIt<SecureDataStorage>();

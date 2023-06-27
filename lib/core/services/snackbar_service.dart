@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:injectable/injectable.dart";
 import "package:amasyaapp/core/keys.dart";
-import "package:amasyaapp/generated/l10n.dart";
 
 @injectable
 class SnackBarService {
@@ -9,7 +8,7 @@ class SnackBarService {
     final snackBar = SnackBar(
       elevation: 2,
       behavior: SnackBarBehavior.fixed,
-      content: Text(message ?? AppLocalizations.current.common_error),
+      content: Text(message ?? "error"),
     );
 
     snackbarKey.currentState?.hideCurrentSnackBar();

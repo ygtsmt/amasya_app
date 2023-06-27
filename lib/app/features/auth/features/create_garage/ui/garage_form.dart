@@ -1,11 +1,10 @@
-import "package:flutter/material.dart";
-import "package:form_field_validator/form_field_validator.dart";
 import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/create_garage/data/models/create_garage_request.dart";
 import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
 import "package:amasyaapp/core/injection/injection.dart";
 import "package:amasyaapp/core/utils.dart";
-import "package:amasyaapp/generated/l10n.dart";
+import "package:flutter/material.dart";
+import "package:form_field_validator/form_field_validator.dart";
 
 class GarageScreenForm extends StatefulWidget {
   const GarageScreenForm({required this.accountId, super.key});
@@ -48,14 +47,14 @@ class _GarageScreenFormState extends State<GarageScreenForm> {
               child: Column(
                 children: [
                   Text(
-                    AppLocalizations.of(context).create_garage,
+                    "create garage",
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   Text(
-                    AppLocalizations.of(context).create_account_form,
+                    "create account form",
                     style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.center,
                   ),
@@ -65,27 +64,27 @@ class _GarageScreenFormState extends State<GarageScreenForm> {
                   TextFormField(
                     controller: _garageNameController,
                     textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.local_convenience_store_outlined),
-                      labelText: AppLocalizations.of(context).garage_name,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.local_convenience_store_outlined),
+                      labelText: "Garage Name",
                     ),
-                    validator: RequiredValidator(errorText: AppLocalizations.current.empty_error),
+                    validator: RequiredValidator(errorText: "error"),
                   ),
                   TextFormField(
                     controller: _emailController,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context).email,
-                      prefixIcon: const Icon(Icons.email_outlined),
+                    decoration: const InputDecoration(
+                      labelText: "email",
+                      prefixIcon: Icon(Icons.email_outlined),
                     ),
                     validator: MultiValidator(
                       [
                         RequiredValidator(
-                          errorText: AppLocalizations.current.empty_error,
+                          errorText: "error",
                         ),
                         EmailValidator(
-                          errorText: AppLocalizations.current.email_error,
+                          errorText: "error",
                         ),
                       ],
                     ),
@@ -94,19 +93,19 @@ class _GarageScreenFormState extends State<GarageScreenForm> {
                     controller: _phoneNumberController,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context).phone_number,
-                      hintText: AppLocalizations.of(context).phone_number_mask_hint_text,
-                      prefixIcon: const Icon(Icons.phone_outlined),
+                    decoration: const InputDecoration(
+                      labelText: "phone number",
+                      hintText: "phone hint",
+                      prefixIcon: Icon(Icons.phone_outlined),
                     ),
                     validator: MultiValidator(
                       [
                         RequiredValidator(
-                          errorText: AppLocalizations.current.empty_error,
+                          errorText: "error",
                         ),
                         MinLengthValidator(
                           17,
-                          errorText: AppLocalizations.of(context).phone_number_error,
+                          errorText: "error",
                         )
                       ],
                     ),
@@ -116,13 +115,13 @@ class _GarageScreenFormState extends State<GarageScreenForm> {
                     controller: _addressController,
                     textInputAction: TextInputAction.done,
                     keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context).address,
-                      prefixIcon: const Icon(Icons.location_on_outlined),
+                    decoration: const InputDecoration(
+                      labelText: "error",
+                      prefixIcon: Icon(Icons.location_on_outlined),
                     ),
                     validator: MultiValidator(
                       [
-                        RequiredValidator(errorText: AppLocalizations.current.empty_error),
+                        RequiredValidator(errorText: "error"),
                       ],
                     ),
                     maxLines: 2,
@@ -152,9 +151,7 @@ class _GarageScreenFormState extends State<GarageScreenForm> {
                   );
                 }
               },
-              child: Text(
-                AppLocalizations.of(context).submit_button.toUpperCase(),
-              ),
+              child: const Text("Submit"),
             ),
           ),
         ],

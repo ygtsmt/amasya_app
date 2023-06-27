@@ -1,12 +1,8 @@
-import "package:flutter/material.dart";
-import "package:form_field_validator/form_field_validator.dart";
-import "package:intl/intl.dart";
-import "package:amasyaapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart";
 import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
-import "package:amasyaapp/core/injection/injection.dart";
 import "package:amasyaapp/core/regex.dart";
 import "package:amasyaapp/core/utils.dart";
-import "package:amasyaapp/generated/l10n.dart";
+import "package:flutter/material.dart";
+import "package:form_field_validator/form_field_validator.dart";
 
 class CreateAccountForm extends StatefulWidget {
   const CreateAccountForm({
@@ -64,14 +60,14 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
             child: Column(
               children: <Widget>[
                 Text(
-                  AppLocalizations.of(context).create_account,
+                  "Hesap Oluştur",
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  AppLocalizations.of(context).create_account_form,
+                  " AppLocalizations.of(context).create_account_form",
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -85,12 +81,12 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                         controller: _firstNameController,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: AppLocalizations.of(context).first_name,
-                          prefixIcon: const Icon(Icons.person_outline),
+                        decoration: const InputDecoration(
+                          labelText: "first name",
+                          prefixIcon: Icon(Icons.person_outline),
                         ),
                         validator: RequiredValidator(
-                          errorText: AppLocalizations.current.empty_error,
+                          errorText: "AppLocalizations.current.empty_error",
                         ),
                       ),
                     ),
@@ -102,12 +98,10 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                         controller: _lastNameController,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: AppLocalizations.of(context).last_name,
+                        decoration: const InputDecoration(
+                          labelText: "last name",
                         ),
-                        validator: RequiredValidator(
-                          errorText: AppLocalizations.current.empty_error,
-                        ),
+                        validator: RequiredValidator(errorText: "error"),
                       ),
                     ),
                   ],
@@ -116,17 +110,17 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   controller: _emailController,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).email,
-                    prefixIcon: const Icon(Icons.email_outlined),
+                  decoration: const InputDecoration(
+                    labelText: "email",
+                    prefixIcon: Icon(Icons.email_outlined),
                   ),
                   validator: MultiValidator(
                     [
                       RequiredValidator(
-                        errorText: AppLocalizations.current.empty_error,
+                        errorText: "error",
                       ),
                       EmailValidator(
-                        errorText: AppLocalizations.current.email_error,
+                        errorText: "error",
                       ),
                     ],
                   ),
@@ -135,10 +129,10 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   controller: _phoneNumberController,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).phone_number,
-                    hintText: AppLocalizations.of(context).phone_number_mask_hint_text,
-                    prefixIcon: const Icon(Icons.phone_outlined),
+                  decoration: const InputDecoration(
+                    labelText: "phone number",
+                    hintText: "error",
+                    prefixIcon: Icon(Icons.phone_outlined),
                   ),
                   inputFormatters: [PhoneTextMaskFormatter.maskFormatter],
                 ),
@@ -146,7 +140,7 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   controller: _passwordController,
                   obscureText: _obscureText,
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).password,
+                    labelText: "password",
                     prefixIcon: const Icon(Icons.password_outlined),
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -160,16 +154,24 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   textInputAction: TextInputAction.next,
                   validator: MultiValidator(
                     [
-                      RequiredValidator(errorText: AppLocalizations.current.empty_error),
-                      MinLengthValidator(8, errorText: AppLocalizations.current.password_error),
-                      PatternValidator(passwordRegex, errorText: AppLocalizations.current.password_error),
+                      RequiredValidator(
+                        errorText: "error",
+                      ),
+                      MinLengthValidator(
+                        8,
+                        errorText: "error",
+                      ),
+                      PatternValidator(
+                        passwordRegex,
+                        errorText: "error",
+                      ),
                     ],
                   ),
                 ),
                 TextFormField(
                   controller: _confirmPasswordController,
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).confirm_password,
+                    labelText: "Confirm Password",
                     prefixIcon: const Icon(Icons.password_outlined),
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -182,18 +184,19 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   ),
                   textInputAction: TextInputAction.next,
                   obscureText: _obscureTextConfirm,
-                  validator: (final String? val) =>
-                      MatchValidator(errorText: AppLocalizations.current.confirm_password_error).validateMatch(
+                  validator: (final String? val) => MatchValidator(
+                    errorText: "error",
+                  ).validateMatch(
                     _passwordController.text,
                     _confirmPasswordController.text,
                   ),
                 ),
                 TextFormField(
                   controller: _birthDateController,
-                  decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context).date_mask_hint_text,
-                    prefixIcon: const Icon(Icons.date_range_outlined),
-                    labelText: AppLocalizations.of(context).birthDate,
+                  decoration: const InputDecoration(
+                    // hintText: AppLocalizations.of(context).date_mask_hint_text,
+                    prefixIcon: Icon(Icons.date_range_outlined),
+                    labelText: "Birth Date",
                   ),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.number,
@@ -203,18 +206,18 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   controller: _inviteCodeController,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).invite_code,
-                    prefixIcon: const Icon(Icons.confirmation_number_outlined),
+                  decoration: const InputDecoration(
+                    labelText: "Invite Code",
+                    prefixIcon: Icon(Icons.confirmation_number_outlined),
                   ),
                 ),
                 TextFormField(
                   controller: _addressController,
                   textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).address,
-                    prefixIcon: const Icon(Icons.location_on_outlined),
+                  decoration: const InputDecoration(
+                    labelText: "Address",
+                    prefixIcon: Icon(Icons.location_on_outlined),
                   ),
                   maxLines: 2,
                 ),
@@ -225,8 +228,8 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                   width: double.infinity,
                   child: FilledButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        final df = DateFormat("dd/MM/yyyy");
+                      /*    if (_formKey.currentState!.validate()) {
+                       // final df = DateFormat("dd/MM/yyyy");
                         final birthDate =
                             _birthDateController.text.isEmpty ? null : df.parseUTC(_birthDateController.text);
                         getIt<CreateAccountBloc>().add(
@@ -241,10 +244,10 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
                             inviteCode: _inviteCodeController.text,
                           ),
                         );
-                      }
+                      } */
                     },
-                    child: Text(
-                      AppLocalizations.of(context).continue_text.toUpperCase(),
+                    child: const Text(
+                      " AppLocalizations.of(context).continue_text.toUpperCase()",
                     ),
                   ),
                 ),

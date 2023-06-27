@@ -1,13 +1,12 @@
-import "package:auto_route/auto_route.dart";
-import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
 import "package:amasyaapp/app/bloc/app_bloc.dart";
 import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
 import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
 import "package:amasyaapp/core/enums.dart";
 import "package:amasyaapp/core/injection/injection.dart";
 import "package:amasyaapp/core/routes/app_router.dart";
-import "package:amasyaapp/generated/l10n.dart";
+import "package:auto_route/auto_route.dart";
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -24,31 +23,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (final context) {
         return AlertDialog(
-          title: Text(AppLocalizations.current.confirmDelete),
+          title: const Text("Onayla"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(AppLocalizations.current.confirmDeleteDescription),
+              const Text("Bu hesabı silmek istiyor musun?"),
               const SizedBox(height: 16),
               TextField(
                 obscureText: true,
                 onChanged: (final value) {},
                 controller: _textFieldController,
-                decoration: InputDecoration(hintText: AppLocalizations.current.password),
+                decoration: const InputDecoration(hintText: "password"),
               ),
             ],
           ),
           actionsAlignment: MainAxisAlignment.spaceBetween,
           actions: <Widget>[
             TextButton(
-              child: Text(AppLocalizations.current.cancel),
+              child: const Text("vazgeç"),
               onPressed: () {
                 _textFieldController.text = "";
                 context.router.pop();
               },
             ),
             TextButton(
-              child: Text(AppLocalizations.current.delete),
+              child: const Text("Sil"),
               onPressed: () async {
                 context.router.popUntilRoot();
                 context.router.popForced();
@@ -87,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onChanged: (final bool value) {
                         getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
                       },
-                      title: Text(AppLocalizations.of(context).dark_mode),
+                      title: const Text("Dark Mode"),
                     );
                   },
                 ),
@@ -107,8 +106,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   context.router.popForced();
                   await context.router.root.replaceAll([const SplashScreenRoute()]);
                 },
-                label: Text(
-                  AppLocalizations.of(context).logout.toUpperCase(),
+                label: const Text(
+                  "Logout",
                 ),
               ),
               Padding(
@@ -119,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   icon: const Icon(Icons.delete_outline_outlined),
                   label: Text(
-                    AppLocalizations.of(context).deleteAccount.toUpperCase(),
+                    "Delete Account",
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
                   ),
                 ),

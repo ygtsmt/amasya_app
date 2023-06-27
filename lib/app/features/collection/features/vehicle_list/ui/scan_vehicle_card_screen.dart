@@ -1,6 +1,5 @@
 import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
 import "package:amasyaapp/core/services/ocr_service.dart";
-import "package:amasyaapp/generated/l10n.dart";
 import "package:camera/camera.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -48,7 +47,7 @@ class _ScanVehicleCardScreenState extends State<ScanVehicleCardScreen> {
               final textDetector = TextRecognizer();
               final recognizedText = await textDetector.processImage(inputImage);
               final vin = OCRFunctions().getVinNumber(recognizedText);
-             // final cardType = OCRFunctions().getCardType(recognizedText);
+              // final cardType = OCRFunctions().getCardType(recognizedText);
 
               if (vin != null) {
                 /*  // ignore: use_build_context_synchronously
@@ -129,8 +128,8 @@ class _ScanVehicleCardScreenState extends State<ScanVehicleCardScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        RevoScreenHeader(
-          title: AppLocalizations.of(context).scan_card,
+        const RevoScreenHeader(
+          title: "Scan Card",
         ),
         Expanded(
           flex: 6,
@@ -138,9 +137,9 @@ class _ScanVehicleCardScreenState extends State<ScanVehicleCardScreen> {
             borderRadius: BorderRadius.circular(20),
             child: Container(
               child: controller == null
-                  ? Center(
+                  ? const Center(
                       child: Text(
-                        AppLocalizations.of(context).loading_camera,
+                        "Kamera Yükleniyor...",
                       ),
                     )
                   : !controller!.value.isInitialized

@@ -2,7 +2,6 @@ import "dart:convert";
 
 import "package:amasyaapp/app/features/collection/features/vehicle_list/data/models/vehicle_short_dto.dart";
 import "package:amasyaapp/core/core.dart";
-import "package:amasyaapp/generated/l10n.dart";
 import "package:flutter/material.dart";
 
 class VehicleListItemWidget extends StatelessWidget {
@@ -95,7 +94,7 @@ class VehicleListItemWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Text(
-                vehicle.isNew ? AppLocalizations.of(context).new_car : AppLocalizations.of(context).used_car,
+                vehicle.isNew ? "New" : "Used",
                 style: Theme.of(context).textTheme.labelSmall,
               ),
             ),

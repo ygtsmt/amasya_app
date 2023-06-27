@@ -1,17 +1,16 @@
 import "dart:io";
 
+import "package:amasyaapp/app/features/auth/features/splash/data/models/account_auth.dart";
+import "package:amasyaapp/core/core.dart";
 import "package:device_info_plus/device_info_plus.dart";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-import "package:amasyaapp/app/features/auth/features/splash/data/models/account_auth.dart";
-import "package:amasyaapp/core/core.dart";
-import "package:amasyaapp/generated/l10n.dart";
 
 @injectable
 class LoginUseCase {
-  const LoginUseCase( this._secureDataStorage, this._snackBarService);
+  const LoginUseCase(this._secureDataStorage, this._snackBarService);
 
   Future<Result<AccountAuth, String?>> login(final String email, final String password) async {
     final deviceInfo = DeviceInfoPlugin();
@@ -48,7 +47,7 @@ class LoginUseCase {
       return Result.success(authInfo);
     } catch (e) {
       final errorMessage = e.getHttpErrorMessage();
-      _snackBarService.showSnackBar(AppLocalizations.current.login_error);
+      _snackBarService.showSnackBar("login error");
       return Result.error(errorMessage);
     }
   }

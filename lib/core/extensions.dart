@@ -5,7 +5,6 @@ import "package:image_picker/image_picker.dart";
 import "package:amasyaapp/core/data_sources/http_data_source/models/http_failure_response.dart";
 import "package:amasyaapp/core/enums.dart";
 import "package:amasyaapp/core/utils.dart";
-import "package:amasyaapp/generated/l10n.dart";
 
 extension RequestMethodX on RequestMethod {
   String get value => getEnumValue(this).toUpperCase();
@@ -29,7 +28,7 @@ extension GetErrorMessage on Object {
         errorMessage = httpError.errorMessage;
       }
     }
-    return errorMessage ?? AppLocalizations.current.common_error;
+    return errorMessage ?? "AppLocalizations.current.common_error";
   }
 }
 

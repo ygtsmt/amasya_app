@@ -2,7 +2,6 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:flutter_localizations/flutter_localizations.dart";
 import "package:amasyaapp/app/bloc/app_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
@@ -14,7 +13,6 @@ import 'package:amasyaapp/app/features/dashboard/features/haber_list/bloc/haber_
 import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_bloc.dart";
 import "package:amasyaapp/core/color_schemes.g.dart";
 import "package:amasyaapp/core/core.dart";
-import "package:amasyaapp/generated/l10n.dart";
 
 class AppScreen extends StatefulWidget {
   const AppScreen({super.key});
@@ -79,13 +77,7 @@ class _AppScreenState extends State<AppScreen> {
           return MaterialApp.router(
             scaffoldMessengerKey: snackbarKey,
             debugShowCheckedModeBanner: false,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            supportedLocales: AppLocalizations.delegate.supportedLocales,
+           
             theme: ThemeData(
               useMaterial3: true,
               colorScheme: lightColorScheme,

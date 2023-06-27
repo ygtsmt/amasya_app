@@ -4,7 +4,6 @@ import "package:amasyaapp/app/data/models/garage.dart";
 import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
 import "package:amasyaapp/core/extensions.dart";
 import "package:amasyaapp/core/services/snackbar_service.dart";
-import "package:amasyaapp/generated/l10n.dart";
 import "package:flutter/material.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
@@ -79,7 +78,7 @@ class AppUseCase {
 
       return Result.success(null);
     } catch (e) {
-      _snackBarService.showSnackBar(AppLocalizations.current.password_error);
+      _snackBarService.showSnackBar("current.password_error");
       return Result.error(null);
     }
   }

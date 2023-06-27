@@ -1,11 +1,10 @@
+import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
+import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
+import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:form_field_validator/form_field_validator.dart";
-import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
-import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
-import "package:amasyaapp/core/core.dart";
-import "package:amasyaapp/generated/l10n.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -46,14 +45,14 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    AppLocalizations.of(context).loginTitle.capitalize(),
+                    "Giriş Yap",
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   Text(
-                    AppLocalizations.of(context).loginDescription,
+                    "Giriş yapmak içim lütfen gerekli alanları doldurun.",
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(
@@ -65,16 +64,16 @@ class _LoginFormState extends State<LoginForm> {
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     autofillHints: const <String>[AutofillHints.email],
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context).email,
-                      prefixIcon: const Icon(
+                    decoration: const InputDecoration(
+                      labelText: "Email",
+                      prefixIcon: Icon(
                         Icons.person_outline_outlined,
                       ),
                     ),
                     validator: MultiValidator(
                       [
-                        RequiredValidator(errorText: AppLocalizations.current.empty_error),
-                        EmailValidator(errorText: AppLocalizations.current.email_error),
+                        RequiredValidator(errorText: "error"),
+                        EmailValidator(errorText: "error"),
                       ],
                     ),
                   ),
@@ -82,7 +81,7 @@ class _LoginFormState extends State<LoginForm> {
                     controller: _passwordController,
                     autofillHints: const <String>[AutofillHints.password],
                     decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context).password,
+                      labelText: "Şifre",
                       prefixIcon: const Icon(Icons.password_outlined),
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -97,8 +96,8 @@ class _LoginFormState extends State<LoginForm> {
                     textInputAction: TextInputAction.done,
                     validator: MultiValidator(
                       [
-                        RequiredValidator(errorText: AppLocalizations.current.empty_error),
-                        PatternValidator(passwordRegex, errorText: AppLocalizations.current.password_error),
+                        RequiredValidator(errorText: "error"),
+                        PatternValidator(passwordRegex, errorText: "error"),
                       ],
                     ),
                   ),
@@ -115,8 +114,8 @@ class _LoginFormState extends State<LoginForm> {
                         onPressed: () {
                           context.replaceRoute(const HomeScreenRoute());
                         },
-                        child: Text(
-                          AppLocalizations.of(context).loginTitle.toUpperCase(),
+                        child: const Text(
+                          "Login",
                         ),
                       );
                     },
@@ -131,11 +130,11 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   child: RichText(
                     text: TextSpan(
-                      text: AppLocalizations.of(context).signup_button_text,
+                      text: "Henüz hesabınız yok mu?",
                       style: Theme.of(context).textTheme.bodyMedium,
                       children: <TextSpan>[
                         TextSpan(
-                          text: AppLocalizations.of(context).signup_button_link,
+                          text: "Hemen Oluştur!",
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ],
