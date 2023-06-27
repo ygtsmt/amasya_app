@@ -1,4 +1,4 @@
-# Ticari Amaçla Kullanım Hakkı Sadece Efes Bilgi Teknolojileri'ne aittir. Reponun paylaşım amacı topluluğa kaynak oluşturmak içindir.
+#  Reponun paylaşım amacı sadece iş başvurularım da referans olarak göstermek içindir. Bu reponun izinsiz kullanımı veya ticari amaçla kullanımı yasaktır.
 
 ## İletişim
 
