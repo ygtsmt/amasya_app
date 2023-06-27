@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:revogarageapp/app/bloc/app_bloc.dart';
-import 'package:revogarageapp/core/core.dart';
+import 'package:amasyaapp/app/bloc/app_bloc.dart';
+import 'package:amasyaapp/core/core.dart';
 
 class AppleProgressIndicator extends StatefulWidget {
   const AppleProgressIndicator({super.key});

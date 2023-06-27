@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:revogarageapp/app/ui/widgets/info_card.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/core.dart";
+import "package:amasyaapp/app/ui/widgets/info_card.dart";
+import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import "package:amasyaapp/core/core.dart";
 
 class PeScreen extends StatefulWidget {
   const PeScreen({super.key});

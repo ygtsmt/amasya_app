@@ -1,10 +1,10 @@
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-import "package:revogarageapp/app/data/models/account.dart";
-import "package:revogarageapp/core/data_sources/http_data_source/http_data_source.dart";
-import "package:revogarageapp/core/data_sources/local_data_source/secure_data_storage.dart";
-import "package:revogarageapp/core/enums.dart";
-import "package:revogarageapp/core/extensions.dart";
+import "package:amasyaapp/app/data/models/account.dart";
+import "package:amasyaapp/core/data_sources/http_data_source/http_data_source.dart";
+import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
+import "package:amasyaapp/core/enums.dart";
+import "package:amasyaapp/core/extensions.dart";
 
 @injectable
 class SplashUseCase {

@@ -1,13 +1,13 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/data_sources/local_data_source/secure_data_storage.dart";
-import "package:revogarageapp/core/enums.dart";
-import "package:revogarageapp/core/injection/injection.dart";
-import "package:revogarageapp/core/routes/app_router.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
+import "package:amasyaapp/core/enums.dart";
+import "package:amasyaapp/core/injection/injection.dart";
+import "package:amasyaapp/core/routes/app_router.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

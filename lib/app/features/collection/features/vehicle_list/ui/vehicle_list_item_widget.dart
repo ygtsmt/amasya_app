@@ -1,11 +1,9 @@
 import "dart:convert";
 
-import "package:auto_route/auto_route.dart";
+import "package:amasyaapp/app/features/collection/features/vehicle_list/data/models/vehicle_short_dto.dart";
+import "package:amasyaapp/core/core.dart";
+import "package:amasyaapp/generated/l10n.dart";
 import "package:flutter/material.dart";
-import "package:revogarageapp/app/features/collection/features/vehicle_list/bloc/vehicle_list_bloc.dart";
-import "package:revogarageapp/app/features/collection/features/vehicle_list/data/models/vehicle_short_dto.dart";
-import "package:revogarageapp/core/core.dart";
-import "package:revogarageapp/generated/l10n.dart";
 
 class VehicleListItemWidget extends StatelessWidget {
   const VehicleListItemWidget({
@@ -55,9 +53,9 @@ class VehicleListItemWidget extends StatelessWidget {
                   onTap: !isPressable
                       ? null
                       : () {
-                          context.router.push(VehicleDetailScreenRoute(vehicleId: vehicle.id)).then((final value) {
+                          /*  context.router.push(VehicleDetailScreenRoute(vehicleId: vehicle.id)).then((final value) {
                             getIt<VehicleListBloc>().add(GetVehicleListEvent());
-                          });
+                          }); */
                         },
                   enableFeedback: true,
                   trailing: vehicle.photoBase64 == null

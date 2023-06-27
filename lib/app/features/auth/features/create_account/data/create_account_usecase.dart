@@ -1,8 +1,8 @@
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-import "package:revogarageapp/app/data/models/account.dart";
-import "package:revogarageapp/app/features/auth/features/create_account/data/models/create_account_request.dart";
-import "package:revogarageapp/core/core.dart";
+import "package:amasyaapp/app/data/models/account.dart";
+import "package:amasyaapp/app/features/auth/features/create_account/data/models/create_account_request.dart";
+import "package:amasyaapp/core/core.dart";
 
 @injectable
 class CreateAccountUseCase {

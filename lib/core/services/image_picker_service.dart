@@ -2,7 +2,7 @@ import "dart:convert";
 
 import "package:image_picker/image_picker.dart";
 import "package:injectable/injectable.dart";
-import "package:revogarageapp/app/data/models/photo_dto.dart";
+import "package:amasyaapp/app/data/models/photo_dto.dart";
 
 @injectable
 class ImagePickerService {

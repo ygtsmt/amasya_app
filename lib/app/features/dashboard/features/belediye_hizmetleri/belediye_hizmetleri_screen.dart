@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:revogarageapp/app/ui/widgets/custom_button.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
+import "package:amasyaapp/app/ui/widgets/custom_button.dart";
+import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
 
 class BelediyeHizmetleriScreen extends StatelessWidget {
   const BelediyeHizmetleriScreen({super.key});

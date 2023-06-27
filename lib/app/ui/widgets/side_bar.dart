@@ -1,9 +1,9 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/core/core.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/core/core.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 class RevoSideBar extends StatelessWidget {
   const RevoSideBar({super.key});

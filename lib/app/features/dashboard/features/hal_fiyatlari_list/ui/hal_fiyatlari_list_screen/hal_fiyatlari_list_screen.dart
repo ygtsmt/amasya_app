@@ -1,12 +1,12 @@
+import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_bloc.dart";
+import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_event.dart";
+import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_state.dart";
+import "package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart";
+import "package:amasyaapp/app/ui/widgets/custom_button.dart";
+import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import "package:amasyaapp/core/core.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_bloc.dart";
-import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_event.dart";
-import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_state.dart";
-import "package:revogarageapp/app/ui/widgets/apple_progress_indicator.dart";
-import "package:revogarageapp/app/ui/widgets/custom_button.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/core.dart";
 import "package:url_launcher/url_launcher.dart";
 
 class HalFiyatlariListScreen extends StatefulWidget {

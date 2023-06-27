@@ -1,8 +1,8 @@
 import "package:dio/dio.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-import "package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/data/models/hal_fiyatlari_model.dart";
-import "package:revogarageapp/core/core.dart";
+import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/data/models/hal_fiyatlari_model.dart";
+import "package:amasyaapp/core/core.dart";
 
 @injectable
 class HalFIyatlariListUseCase {

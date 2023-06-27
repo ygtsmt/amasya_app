@@ -1,6 +1,6 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:revogarageapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart';
+import 'package:amasyaapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart';
 
 class HaberListState extends Equatable {
   const HaberListState({

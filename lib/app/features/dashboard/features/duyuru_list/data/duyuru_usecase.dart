@@ -1,8 +1,8 @@
 import "package:dio/dio.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-import "package:revogarageapp/app/features/dashboard/features/duyuru_list/data/models/duyuru_model.dart";
-import "package:revogarageapp/core/core.dart";
+import "package:amasyaapp/app/features/dashboard/features/duyuru_list/data/models/duyuru_model.dart";
+import "package:amasyaapp/core/core.dart";
 
 @injectable
 

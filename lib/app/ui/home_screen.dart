@@ -2,10 +2,10 @@ import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_adaptive_ui/flutter_adaptive_ui.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/ui/widgets/revo_logo.dart";
-import "package:revogarageapp/app/ui/widgets/side_bar.dart";
-import "package:revogarageapp/core/routes/app_router.dart";
+import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/app/ui/widgets/revo_logo.dart";
+import "package:amasyaapp/app/ui/widgets/side_bar.dart";
+import "package:amasyaapp/core/routes/app_router.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

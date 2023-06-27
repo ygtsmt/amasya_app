@@ -1,6 +1,6 @@
 import "package:intl/intl.dart";
 import "package:mask_text_input_formatter/mask_text_input_formatter.dart";
-import "package:revogarageapp/core/regex.dart";
+import "package:amasyaapp/core/regex.dart";
 
 String getEnumValue(final Enum e) => e.toString().split(".").last;
 

@@ -1,9 +1,9 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/features/auth/features/splash/bloc/splash_bloc.dart";
-import "package:revogarageapp/app/ui/widgets/amasya_splash.dart";
-import "package:revogarageapp/core/core.dart";
+import "package:amasyaapp/app/features/auth/features/splash/bloc/splash_bloc.dart";
+import "package:amasyaapp/app/ui/widgets/amasya_splash.dart";
+import "package:amasyaapp/core/core.dart";
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

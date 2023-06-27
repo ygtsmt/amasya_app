@@ -1,13 +1,10 @@
-import "package:auto_route/auto_route.dart";
+import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import "package:amasyaapp/core/services/ocr_service.dart";
+import "package:amasyaapp/generated/l10n.dart";
 import "package:camera/camera.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart";
-import "package:revogarageapp/app/features/collection/features/vehicle_list/bloc/vehicle_list_bloc.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/core.dart";
-import "package:revogarageapp/core/services/ocr_service.dart";
-import "package:revogarageapp/generated/l10n.dart";
 
 class ScanVehicleCardScreen extends StatefulWidget {
   const ScanVehicleCardScreen({
@@ -51,10 +48,10 @@ class _ScanVehicleCardScreenState extends State<ScanVehicleCardScreen> {
               final textDetector = TextRecognizer();
               final recognizedText = await textDetector.processImage(inputImage);
               final vin = OCRFunctions().getVinNumber(recognizedText);
-              final cardType = OCRFunctions().getCardType(recognizedText);
+             // final cardType = OCRFunctions().getCardType(recognizedText);
 
               if (vin != null) {
-                // ignore: use_build_context_synchronously
+                /*  // ignore: use_build_context_synchronously
                 context.router
                     .replace(
                   VehicleBasicDetailsScreenRoute(
@@ -64,7 +61,7 @@ class _ScanVehicleCardScreenState extends State<ScanVehicleCardScreen> {
                 )
                     .then((final _) {
                   getIt<VehicleListBloc>().add(GetVehicleListEvent());
-                });
+                }); */
 
                 controller?.dispose();
               } else {

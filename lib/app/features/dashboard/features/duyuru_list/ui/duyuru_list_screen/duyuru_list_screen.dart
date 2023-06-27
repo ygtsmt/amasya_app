@@ -1,13 +1,13 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_bloc.dart";
-import "package:revogarageapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_event.dart";
-import "package:revogarageapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_state.dart";
-import "package:revogarageapp/app/features/dashboard/features/haber_list/ui/components/data_info_card.dart";
-import "package:revogarageapp/app/ui/widgets/apple_progress_indicator.dart";
-import "package:revogarageapp/app/ui/widgets/revo_screen_header.dart";
-import "package:revogarageapp/core/core.dart";
+import "package:amasyaapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_bloc.dart";
+import "package:amasyaapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_event.dart";
+import "package:amasyaapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_state.dart";
+import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/components/data_info_card.dart";
+import "package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart";
+import "package:amasyaapp/app/ui/widgets/revo_screen_header.dart";
+import "package:amasyaapp/core/core.dart";
 
 class DuyuruListScreen extends StatefulWidget {
   const DuyuruListScreen({super.key});

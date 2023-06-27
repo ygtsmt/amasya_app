@@ -2,9 +2,9 @@ import "dart:async";
 
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
-import "package:revogarageapp/app/ui/widgets/revo_home_button.dart";
-import "package:revogarageapp/core/images.dart";
-import "package:revogarageapp/core/routes/app_router.dart";
+import "package:amasyaapp/app/ui/widgets/revo_home_button.dart";
+import "package:amasyaapp/core/images.dart";
+import "package:amasyaapp/core/routes/app_router.dart";
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

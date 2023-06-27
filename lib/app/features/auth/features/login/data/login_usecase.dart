@@ -4,9 +4,9 @@ import "package:device_info_plus/device_info_plus.dart";
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:multiple_result/multiple_result.dart";
-import "package:revogarageapp/app/features/auth/features/splash/data/models/account_auth.dart";
-import "package:revogarageapp/core/core.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/app/features/auth/features/splash/data/models/account_auth.dart";
+import "package:amasyaapp/core/core.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 @injectable
 class LoginUseCase {

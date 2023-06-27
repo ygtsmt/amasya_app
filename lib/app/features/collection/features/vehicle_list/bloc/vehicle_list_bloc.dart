@@ -1,8 +1,8 @@
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:injectable/injectable.dart";
-import "package:revogarageapp/app/features/collection/features/vehicle_list/data/models/vehicle_short_dto.dart";
-import "package:revogarageapp/app/features/collection/features/vehicle_list/data/vehicle_list_usecase.dart";
+import "package:amasyaapp/app/features/collection/features/vehicle_list/data/models/vehicle_short_dto.dart";
+import "package:amasyaapp/app/features/collection/features/vehicle_list/data/vehicle_list_usecase.dart";
 
 part "vehicle_list_event.dart";
 part "vehicle_list_state.dart";

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 class UserSummaryScreen extends StatelessWidget {
   const UserSummaryScreen({super.key});

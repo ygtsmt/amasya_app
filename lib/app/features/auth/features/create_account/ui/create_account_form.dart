@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:form_field_validator/form_field_validator.dart";
 import "package:intl/intl.dart";
-import "package:revogarageapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart";
-import "package:revogarageapp/app/features/auth/ui/login_logo.dart";
-import "package:revogarageapp/core/injection/injection.dart";
-import "package:revogarageapp/core/regex.dart";
-import "package:revogarageapp/core/utils.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart";
+import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
+import "package:amasyaapp/core/injection/injection.dart";
+import "package:amasyaapp/core/regex.dart";
+import "package:amasyaapp/core/utils.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 class CreateAccountForm extends StatefulWidget {
   const CreateAccountForm({

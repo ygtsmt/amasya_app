@@ -3,7 +3,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:revogarageapp/app/features/dashboard/features/duyuru_list/data/duyuru_usecase.dart';
+import 'package:amasyaapp/app/features/dashboard/features/duyuru_list/data/duyuru_usecase.dart';
 
 import 'duyuru_list_event.dart';
 import 'duyuru_list_state.dart';

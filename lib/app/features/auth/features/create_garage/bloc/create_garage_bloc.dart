@@ -1,9 +1,9 @@
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:injectable/injectable.dart";
-import "package:revogarageapp/app/features/auth/features/create_garage/data/create_garage_usecase.dart";
-import "package:revogarageapp/app/features/auth/features/create_garage/data/models/create_garage_request.dart";
-import "package:revogarageapp/core/enums.dart";
+import "package:amasyaapp/app/features/auth/features/create_garage/data/create_garage_usecase.dart";
+import "package:amasyaapp/app/features/auth/features/create_garage/data/models/create_garage_request.dart";
+import "package:amasyaapp/core/enums.dart";
 
 part "create_garage_event.dart";
 part "create_garage_state.dart";

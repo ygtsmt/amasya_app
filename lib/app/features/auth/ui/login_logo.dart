@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_adaptive_ui/flutter_adaptive_ui.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:revogarageapp/app/bloc/app_bloc.dart";
-import "package:revogarageapp/app/ui/widgets/amasya_splash.dart";
+import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/app/ui/widgets/amasya_splash.dart";
 
 class LoginLogo extends StatelessWidget {
   const LoginLogo({

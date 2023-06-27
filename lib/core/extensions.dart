@@ -2,10 +2,10 @@ import "dart:convert";
 
 import "package:dio/dio.dart";
 import "package:image_picker/image_picker.dart";
-import "package:revogarageapp/core/data_sources/http_data_source/models/http_failure_response.dart";
-import "package:revogarageapp/core/enums.dart";
-import "package:revogarageapp/core/utils.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/core/data_sources/http_data_source/models/http_failure_response.dart";
+import "package:amasyaapp/core/enums.dart";
+import "package:amasyaapp/core/utils.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 extension RequestMethodX on RequestMethod {
   String get value => getEnumValue(this).toUpperCase();

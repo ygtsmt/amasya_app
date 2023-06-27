@@ -1,10 +1,10 @@
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:injectable/injectable.dart";
-import "package:revogarageapp/app/features/auth/features/create_account/data/create_account_usecase.dart";
-import "package:revogarageapp/app/features/auth/features/create_account/data/models/create_account_request.dart";
-import "package:revogarageapp/app/features/auth/features/login/data/login_usecase.dart";
-import "package:revogarageapp/core/enums.dart";
+import "package:amasyaapp/app/features/auth/features/create_account/data/create_account_usecase.dart";
+import "package:amasyaapp/app/features/auth/features/create_account/data/models/create_account_request.dart";
+import "package:amasyaapp/app/features/auth/features/login/data/login_usecase.dart";
+import "package:amasyaapp/core/enums.dart";
 
 part "create_account_event.dart";
 part "create_account_state.dart";

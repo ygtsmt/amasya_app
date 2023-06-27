@@ -1,6 +1,6 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:revogarageapp/app/features/dashboard/features/duyuru_list/data/models/duyuru_model.dart';
+import 'package:amasyaapp/app/features/dashboard/features/duyuru_list/data/models/duyuru_model.dart';
 
 class DuyuruListState extends Equatable {
   const DuyuruListState({

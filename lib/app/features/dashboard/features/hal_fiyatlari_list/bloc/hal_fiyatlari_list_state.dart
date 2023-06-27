@@ -1,7 +1,5 @@
-
+import 'package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/data/models/hal_fiyatlari_model.dart';
 import 'package:equatable/equatable.dart';
-import 'package:revogarageapp/app/features/dashboard/features/duyuru_list/data/models/duyuru_model.dart';
-import 'package:revogarageapp/app/features/dashboard/features/hal_fiyatlari_list/data/models/hal_fiyatlari_model.dart';
 
 class HalFiyatlariListState extends Equatable {
   const HalFiyatlariListState({
@@ -36,4 +34,3 @@ class HalFiyatlariListInitial extends HalFiyatlariListState {
           halFiyatlariList: const [],
         );
 }
- 

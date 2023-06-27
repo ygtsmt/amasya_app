@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:injectable/injectable.dart";
-import "package:revogarageapp/core/keys.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/core/keys.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 @injectable
 class SnackBarService {

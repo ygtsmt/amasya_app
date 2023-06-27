@@ -2,10 +2,10 @@ import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:form_field_validator/form_field_validator.dart";
-import "package:revogarageapp/app/features/auth/features/login/bloc/login_bloc.dart";
-import "package:revogarageapp/app/features/auth/ui/login_logo.dart";
-import "package:revogarageapp/core/core.dart";
-import "package:revogarageapp/generated/l10n.dart";
+import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
+import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
+import "package:amasyaapp/core/core.dart";
+import "package:amasyaapp/generated/l10n.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({

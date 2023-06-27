@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:revogarageapp/core/images.dart";
+import "package:amasyaapp/core/images.dart";
 
 class SideImage extends StatelessWidget {
   const SideImage({

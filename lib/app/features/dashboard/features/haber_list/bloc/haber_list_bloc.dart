@@ -3,7 +3,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:revogarageapp/app/features/dashboard/features/haber_list/data/haberler_usecase.dart';
+import 'package:amasyaapp/app/features/dashboard/features/haber_list/data/haberler_usecase.dart';
 
 import 'haber_list_event.dart';
 import 'haber_list_state.dart';
