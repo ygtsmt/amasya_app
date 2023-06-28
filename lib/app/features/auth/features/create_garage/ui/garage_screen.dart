@@ -1,11 +1,10 @@
+import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
+import "package:amasyaapp/app/features/auth/features/create_garage/ui/garage_form.dart";
+import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_adaptive_ui/flutter_adaptive_ui.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/create_garage/ui/garage_form.dart";
-import "package:amasyaapp/app/features/auth/ui/side_image.dart";
-import "package:amasyaapp/core/core.dart";
 
 class GarageScreen extends StatefulWidget {
   const GarageScreen({required this.accountId, super.key});
