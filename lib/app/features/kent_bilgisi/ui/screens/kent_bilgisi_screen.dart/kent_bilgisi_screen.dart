@@ -1,7 +1,8 @@
-import "package:flutter/material.dart";
+import "package:amasyaapp/app/ui/widgets/amasya_screen_header.dart";
 import "package:amasyaapp/app/ui/widgets/info_card.dart";
-import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
-import "package:amasyaapp/core/core.dart";
+import "package:amasyaapp/core/constants.dart";
+import "package:amasyaapp/core/images.dart";
+import "package:flutter/material.dart";
 
 class KentBilgisiScreen extends StatefulWidget {
   const KentBilgisiScreen({super.key});

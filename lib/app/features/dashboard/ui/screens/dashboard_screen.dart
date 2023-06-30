@@ -98,7 +98,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               Expanded(
                 child: AmasyaHomeButton(
-                    onPressed: () {}, title: "OTOBÜS\nNEREDE", icon: Icons.directions_bus_filled_outlined),
+                    onPressed: () {
+                      context.router.navigate(const OtobusNeredeScreenRoute());
+                    },
+                    title: "OTOBÜS\nNEREDE",
+                    icon: Icons.directions_bus_filled_outlined),
               ),
               Expanded(
                 child: AmasyaHomeButton(onPressed: () {}, title: "ELMAKART", icon: Icons.credit_card_outlined),

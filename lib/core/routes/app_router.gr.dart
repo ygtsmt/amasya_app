@@ -223,6 +223,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    OtobusNeredeScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const OtobusNeredeScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     KentBilgisiScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -357,6 +366,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   BelediyeHizmetleriScreenRoute.name,
                   path: 'belediye-hizmetleri-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  OtobusNeredeScreenRoute.name,
+                  path: 'otobus-nerede-screen',
                   parent: DashbordTabRouter.name,
                 ),
               ],
@@ -761,6 +775,18 @@ class BelediyeHizmetleriScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BelediyeHizmetleriScreenRoute';
+}
+
+/// generated route for
+/// [OtobusNeredeScreen]
+class OtobusNeredeScreenRoute extends PageRouteInfo<void> {
+  const OtobusNeredeScreenRoute()
+      : super(
+          OtobusNeredeScreenRoute.name,
+          path: 'otobus-nerede-screen',
+        );
+
+  static const String name = 'OtobusNeredeScreenRoute';
 }
 
 /// generated route for

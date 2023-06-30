@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/ui/otobus_nerede_screen.dart";
 import "package:auto_route/auto_route.dart";
 import "package:auto_route/empty_router_widgets.dart";
 import "package:flutter/material.dart";
@@ -76,6 +77,8 @@ part "app_router.gr.dart";
                 page: HalFiyatlariListScreen, path: "hal-fiyatlari-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: BelediyeHizmetleriScreen, path: "belediye-hizmetleri-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: OtobusNeredeScreen, path: "otobus-nerede-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(
