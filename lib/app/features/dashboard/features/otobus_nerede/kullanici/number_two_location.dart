@@ -8,9 +8,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
 
 class NumberTwoLocation extends StatefulWidget {
-  final String userId;
 
-  const NumberTwoLocation(this.userId, {super.key});
+  const NumberTwoLocation( {super.key});
   @override
   // ignore: library_private_types_in_public_api
   _NumberTwoLocationState createState() => _NumberTwoLocationState();
@@ -23,63 +22,65 @@ class _NumberTwoLocationState extends State<NumberTwoLocation> {
   PolylinePoints polylinePoints = PolylinePoints();
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
-  final bool _added = false;
-  final wayPoints = [
-    PolylineWayPoint(location: "40.650988, 35.825864"),
-  ];
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('guzergahlar').snapshots(),
-      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (_added) {}
-        if (!snapshot.hasData) {
+      builder: (context, AsyncSnapshot<QuerySnapshot> guzergahSnapshot) {
+        if (!guzergahSnapshot.hasData) {
           return const Center(child: AppleProgressIndicator());
         }
-        return GoogleMap(
-          // myLocationEnabled: true,
 
-          polylines: Set<Polyline>.of(polylines.values),
-          zoomGesturesEnabled: true,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(
-              snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeKonum'],
-              snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeKonum'],
-            ), //initial position
-            zoom: 12.5, //initial zoom level
-          ),
-          markers: getMarkers(
-            snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeKonum'],
-            snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeKonum'],
-            snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeTarget'],
-            snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeTarget'],
-            snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeStart'],
-            snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeStart'],
-          ),
+        return StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('users').snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> userSnapshot) {
+            if (!userSnapshot.hasData) {
+              return const Center(child: AppleProgressIndicator());
+            }
 
-          mapType: MapType.normal, //map type
-
-          onMapCreated: (controller) {
-            //method called when map is created
-            setState(() {
-              mapController = controller;
-              makeLines(
-                PointLatLng(
-                  snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeStart'],
-                  snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeStart'],
-                ), // Starting LATLANG
-                PointLatLng(
-                  snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeTarget'],
-                  snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeTarget'],
-                ), // End LATLANG
-              );
-            });
+            return GoogleMap(
+              polylines: Set<Polyline>.of(polylines.values),
+              zoomGesturesEnabled: true,
+              // ...
+              initialCameraPosition: CameraPosition(
+                target: LatLng(
+                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara2")['latitudeTarget'],
+                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara2")['longitudeTarget'],
+                ),
+                zoom: 12.5,
+              ),
+              markers: getMarkersFromUserSnapshot(userSnapshot.data!.docs,
+                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara2")),
+              mapType: MapType.normal,
+              onMapCreated: (controller) {
+                setState(() {
+                  mapController = controller;
+                  makeLines(
+                    PointLatLng(
+                      guzergahSnapshot.data!.docs
+                          .singleWhere((element) => element.id == "numara2")['latitudeStart'],
+                      guzergahSnapshot.data!.docs
+                          .singleWhere((element) => element.id == "numara2")['longitudeStart'],
+                    ), // Starting LATLANG
+                    PointLatLng(
+                      guzergahSnapshot.data!.docs
+                          .singleWhere((element) => element.id == "numara2")['latitudeTarget'],
+                      guzergahSnapshot.data!.docs
+                          .singleWhere((element) => element.id == "numara2")['longitudeTarget'],
+                    ), // End LATLANG
+                  );
+                });
+              },
+           
+            );
           },
         );
       },
     );
   }
+
+
 
 //POLYLINES OLDU DURAKLARI
   addPolyLine() {
@@ -95,10 +96,10 @@ class _NumberTwoLocationState extends State<NumberTwoLocation> {
             'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
             startingLatLng, //Starting LATLANG
             endLatLng, //End LATLANG
-
             travelMode: TravelMode.driving,
-            wayPoints: wayPoints,
-            optimizeWaypoints: true)
+            //wayPoints: wayPoints,
+            //optimizeWaypoints: true
+            )
         .then((value) {
       for (var point in value.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
@@ -108,7 +109,59 @@ class _NumberTwoLocationState extends State<NumberTwoLocation> {
     });
   }
 
-  Set<Marker> getMarkers(double latitude, double longitude, double markerLatitude, double markerLongitude,
+  Set<Marker> getMarkersFromUserSnapshot(List<QueryDocumentSnapshot> userDocs, QueryDocumentSnapshot guzergahDoc) {
+    Set<Marker> markers = {};
+
+    for (var userDoc in userDocs) {
+      if (userDoc['numara2KonumLatitude'] != null) {
+        double latitude = userDoc['numara2KonumLatitude'];
+        double longitude = userDoc['numara2KonumLongitude'];
+
+        markers.add(
+          Marker(
+            markerId: MarkerId(userDoc.id),
+            position: LatLng(latitude, longitude),
+            infoWindow: const InfoWindow(
+              title: 'Marker Title',
+              snippet: 'My Custom Subtitle',
+            ),
+            icon: BitmapDescriptor.defaultMarker,
+          ),
+        );
+      }
+    }
+    double markerLatitudeStart = guzergahDoc['latitudeStart'];
+    double markerLongitudeStart = guzergahDoc['longitudeStart'];
+    double markerLatitudeTarget = guzergahDoc['latitudeTarget'];
+    double markerLongitudeTarget = guzergahDoc['longitudeTarget'];
+
+    markers.add(
+      Marker(
+        markerId: const MarkerId("markerIdStart"),
+        position: LatLng(markerLatitudeStart, markerLongitudeStart),
+        infoWindow: const InfoWindow(
+          title: 'Marker Title Second ',
+          snippet: 'My Custom Subtitle',
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
+      ),
+    );
+    markers.add(
+      Marker(
+        markerId: const MarkerId("markerIdStart"),
+        position: LatLng(markerLatitudeTarget, markerLongitudeTarget),
+        infoWindow: const InfoWindow(
+          title: 'Marker Title Second ',
+          snippet: 'My Custom Subtitle',
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
+      ),
+    );
+
+    return markers;
+  }
+
+  /*  Set<Marker> getMarkers(double latitude, double longitude, double markerLatitude, double markerLongitude,
       double markerLatitudeStart, double markerLongitudeStart) {
     Set<Marker> markers = {};
     markers.add(
@@ -161,5 +214,5 @@ class _NumberTwoLocationState extends State<NumberTwoLocation> {
       ),
     );
     return markers;
-  }
+  } */
 }

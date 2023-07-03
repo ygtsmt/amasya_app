@@ -24,9 +24,9 @@ class _NumberTwoMapState extends State<NumberTwoMap> {
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
   final bool _added = false;
-  final wayPoints = [
-    PolylineWayPoint(location: "40.650988, 35.825864"),
-  ];
+  // final wayPoints = [
+  //   PolylineWayPoint(location: "40.650988, 35.825864"),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +91,10 @@ class _NumberTwoMapState extends State<NumberTwoMap> {
             'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
             startingLatLng, //Starting LATLANG
             endLatLng, //End LATLANG
-            travelMode: TravelMode.driving,
-            wayPoints: wayPoints,
-            optimizeWaypoints: true)
+            // travelMode: TravelMode.driving,
+            // wayPoints: wayPoints,
+            // optimizeWaypoints: true
+            )
         .then((value) {
       for (var point in value.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));

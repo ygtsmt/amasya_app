@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 
 class NumberTwoScreen extends StatefulWidget {
   const NumberTwoScreen({super.key});
@@ -17,6 +18,7 @@ class NumberTwoScreen extends StatefulWidget {
 class _NumberTwoScreenState extends State<NumberTwoScreen> {
   final loc.Location location = loc.Location();
   StreamSubscription<loc.LocationData>? _locationSubscription;
+  // bool isStop = true;
   @override
   void initState() {
     super.initState();
@@ -30,6 +32,9 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
+            setState(() {
+              // isStop = true;
+            });
             _listenLocation2();
           },
           title: "Sefere Başlıyorum Konumumu Paylaş",
@@ -52,18 +57,19 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
   }
 
   Future<void> _listenLocation2() async {
-    _locationSubscription = location.onLocationChanged.handleError((onError) {
-      debugPrint(onError);
-      _locationSubscription?.cancel();
-      setState(() {
-        _locationSubscription = null;
+      _locationSubscription = location.onLocationChanged.handleError((onError) {
+        debugPrint(onError);
+        _locationSubscription?.cancel();
+        setState(() {
+          _locationSubscription = null;
+        });
+      }).listen((loc.LocationData currentlocation) async {
+        await FirebaseFirestore.instance.collection('users').doc(deneme).set({//users1 yerine giris yapan kullanicinin kullanici adini alacak
+          'numara2KonumLatitude': currentlocation.latitude,
+          'numara2KonumLongitude': currentlocation.longitude,
+        }, SetOptions(merge: true));
       });
-    }).listen((loc.LocationData currentlocation) async {
-      await FirebaseFirestore.instance.collection('guzergahlar').doc('numara2').set({
-        'latitudeKonum': currentlocation.latitude,
-        'longitudeKonum': currentlocation.longitude,
-      }, SetOptions(merge: true));
-    });
+    
   }
 
   _stopListening2() {
