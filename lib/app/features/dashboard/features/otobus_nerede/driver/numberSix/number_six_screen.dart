@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 import 'package:amasyaapp/app/features/dashboard/features/otobus_nerede/maps/number_six_map.dart';
 import 'package:amasyaapp/app/ui/widgets/location_service_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 
 class NumberSixScreen extends StatefulWidget {
   const NumberSixScreen({super.key});
@@ -32,6 +32,7 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
+            _stopListening6();
             setState(() {
               // isStop = true;
             });
@@ -57,19 +58,19 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
   }
 
   Future<void> _listenLocation6() async {
-      _locationSubscription = location.onLocationChanged.handleError((onError) {
-        debugPrint(onError);
-        _locationSubscription?.cancel();
-        setState(() {
-          _locationSubscription = null;
-        });
-      }).listen((loc.LocationData currentlocation) async {
-        await FirebaseFirestore.instance.collection('users').doc(deneme).set({//users1 yerine giris yapan kullanicinin kullanici adini alacak
-          'numara6KonumLatitude': currentlocation.latitude,
-          'numara6KonumLongitude': currentlocation.longitude,
-        }, SetOptions(merge: true));
+    _locationSubscription = location.onLocationChanged.handleError((onError) {
+      debugPrint(onError);
+      _locationSubscription?.cancel();
+      setState(() {
+        _locationSubscription = null;
       });
-    
+    }).listen((loc.LocationData currentlocation) async {
+      await FirebaseFirestore.instance.collection('users').doc(deneme).set({
+        //users1 yerine giris yapan kullanicinin kullanici adini alacak
+        'numara6KonumLatitude': currentlocation.latitude,
+        'numara6KonumLongitude': currentlocation.longitude,
+      }, SetOptions(merge: true));
+    });
   }
 
   _stopListening6() {

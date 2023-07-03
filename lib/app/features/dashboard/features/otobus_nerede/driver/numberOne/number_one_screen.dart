@@ -31,6 +31,8 @@ class _NumberOneScreenState extends State<NumberOneScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
+                        _stopListening1();
+
             setState(() {
             });
             _listenLocation1();

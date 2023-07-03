@@ -32,6 +32,8 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
+                        _stopListening2();
+
             setState(() {
               // isStop = true;
             });
