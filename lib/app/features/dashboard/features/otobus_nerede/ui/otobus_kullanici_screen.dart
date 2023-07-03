@@ -20,7 +20,7 @@ class OtobusNeredeKullaniciScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: AmasyaHomeButton(
                     onPressed: () {
-                      context.router.navigate(NumberOneLocationRoute(userId: 'numara1'));
+                      context.router.navigate(const NumberOneLocationRoute());
                     },
                     title: "1 Numara",
                     icon: Icons.directions_bus_filled_outlined),

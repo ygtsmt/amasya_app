@@ -287,13 +287,9 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     NumberOneLocationRoute.name: (routeData) {
-      final args = routeData.argsAs<NumberOneLocationRouteArgs>();
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: NumberOneLocation(
-          args.userId,
-          key: args.key,
-        ),
+        child: const NumberOneLocation(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -979,36 +975,14 @@ class NumberSixLocationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [NumberOneLocation]
-class NumberOneLocationRoute extends PageRouteInfo<NumberOneLocationRouteArgs> {
-  NumberOneLocationRoute({
-    required String userId,
-    Key? key,
-  }) : super(
+class NumberOneLocationRoute extends PageRouteInfo<void> {
+  const NumberOneLocationRoute()
+      : super(
           NumberOneLocationRoute.name,
           path: 'number-one-location',
-          args: NumberOneLocationRouteArgs(
-            userId: userId,
-            key: key,
-          ),
         );
 
   static const String name = 'NumberOneLocationRoute';
-}
-
-class NumberOneLocationRouteArgs {
-  const NumberOneLocationRouteArgs({
-    required this.userId,
-    this.key,
-  });
-
-  final String userId;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'NumberOneLocationRouteArgs{userId: $userId, key: $key}';
-  }
 }
 
 /// generated route for

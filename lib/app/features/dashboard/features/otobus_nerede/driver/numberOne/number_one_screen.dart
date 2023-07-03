@@ -1,6 +1,6 @@
 import 'dart:async';
 
-
+import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 import 'package:amasyaapp/app/features/dashboard/features/otobus_nerede/maps/number_one_map.dart';
 import 'package:amasyaapp/app/ui/widgets/location_service_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,6 +31,8 @@ class _NumberOneScreenState extends State<NumberOneScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
+            setState(() {
+            });
             _listenLocation1();
           },
           title: "Sefere Başlıyorum Konumumu Paylaş",
@@ -53,7 +55,6 @@ class _NumberOneScreenState extends State<NumberOneScreen> {
   }
 
   Future<void> _listenLocation1() async {
-
       _locationSubscription = location.onLocationChanged.handleError((onError) {
         debugPrint(onError);
         _locationSubscription?.cancel();
@@ -61,9 +62,9 @@ class _NumberOneScreenState extends State<NumberOneScreen> {
           _locationSubscription = null;
         });
       }).listen((loc.LocationData currentlocation) async {
-        await FirebaseFirestore.instance.collection('guzergahlar').doc('numara1').set({
-          'latitudeKonum': currentlocation.latitude,
-          'longitudeKonum': currentlocation.longitude,
+        await FirebaseFirestore.instance.collection('users').doc(deneme).set({//users1 yerine giris yapan kullanicinin kullanici adini alacak
+          'numara1KonumLatitude': currentlocation.latitude,
+          'numara1KonumLongitude': currentlocation.longitude,
         }, SetOptions(merge: true));
       });
     
