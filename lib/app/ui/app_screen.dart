@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/splash/bloc/splash_bloc.dart";
@@ -50,9 +49,7 @@ class _AppScreenState extends State<AppScreen> {
         BlocProvider<LoginBloc>(
           create: (final context) => getIt<LoginBloc>(),
         ),
-        BlocProvider<CreateAccountBloc>(
-          create: (final context) => getIt<CreateAccountBloc>(),
-        ),
+       
         BlocProvider<CreateGarageBloc>(
           create: (final context) => getIt<CreateGarageBloc>(),
         ),

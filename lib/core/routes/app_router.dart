@@ -1,5 +1,13 @@
 // ignore_for_file: unused_import
 
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberOne/number_one_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberSix/number_six_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberTwo/number_two_screen.dart";
+import 'package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/ui/surucu_screen.dart';
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_one_location.dart";
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_six_location.dart";
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_two_location.dart";
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/ui/otobus_kullanici_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/ui/otobus_nerede_screen.dart";
 import "package:auto_route/auto_route.dart";
 import "package:auto_route/empty_router_widgets.dart";
@@ -79,6 +87,24 @@ part "app_router.gr.dart";
                 page: BelediyeHizmetleriScreen, path: "belediye-hizmetleri-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: OtobusNeredeScreen, path: "otobus-nerede-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                
+            CustomRoute(
+                page: OtobusNeredeSurucuScreen, path: "otobus-nerede-surucu-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: OtobusNeredeKullaniciScreen, path: "otobus-nerede-kullanici-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NumberSixScreen, path: "otobus-number-six-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NumberOneScreen, path: "otobus-number-one-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NumberTwoScreen, path: "otobus-number-two-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NumberSixLocation, path: "number-six-location", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NumberOneLocation, path: "number-one-location", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: NumberTwoLocation, path: "number-two-location", transitionsBuilder: TransitionsBuilders.fadeIn),
+                
           ],
         ),
         CustomRoute(

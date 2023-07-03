@@ -1,0 +1,70 @@
+
+  void makeLines() async {
+    await polylinePoints
+        .getRouteBetweenCoordinates(
+      'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
+      const PointLatLng(39.9730851, 32.9313301), //Starting LATLANG
+      const PointLatLng(39.967572, 32.915369), //End LATLANG
+      travelMode: TravelMode.driving,
+    )
+        .then((value) {
+      for (var point in value.points) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+      }
+    }).then((value) {
+      addPolyLine();
+    });
+  }
+
+  @override
+  void initState() {
+    makeLines();
+    super.initState();
+  }
+    addPolyLine() {
+    PolylineId id = const PolylineId("poly");
+    Polyline polyline = Polyline(polylineId: id, color: Colors.red, points: polylineCoordinates);
+    polylines[id] = polyline;
+    setState(() {});
+  }
+  GoogleMap(
+          polylines: Set<Polyline>.of(polylines.values),
+
+
+ Set<Marker> getmarkers() {
+          //markers to place on map
+
+          markers.add(Marker(
+            //add first marker
+            markerId: const MarkerId("markerId1"),
+            position: LatLng(
+              snapshot.data!.docs.singleWhere((element) => element.id == widget.user_id)['latitude'],
+              snapshot.data!.docs.singleWhere((element) => element.id == widget.user_id)['longitude'],
+            ), //position of marker
+            infoWindow: const InfoWindow(
+              //popup info
+              title: 'Marker Title First ',
+              snippet: 'My Custom Subtitle',
+            ),
+            icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+          ));
+
+          markers.add(Marker(
+            //add second marker
+            markerId: const MarkerId("markerId2"),
+            position: LatLng(
+              snapshot.data!.docs.singleWhere((element) => element.id == widget.user_id)['latitudeTarget'],
+              snapshot.data!.docs.singleWhere((element) => element.id == widget.user_id)['longitudeTarget'],
+            ), //position of marker
+            infoWindow: const InfoWindow(
+              //popup info
+              title: 'Marker Title Second ',
+              snippet: 'My Custom Subtitle',
+            ),
+            icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure), //Icon for Marker
+          ));
+
+          //add more markers here
+
+          return markers;
+        }

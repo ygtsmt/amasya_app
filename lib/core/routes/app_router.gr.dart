@@ -232,6 +232,86 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    OtobusNeredeSurucuScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const OtobusNeredeSurucuScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    OtobusNeredeKullaniciScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const OtobusNeredeKullaniciScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NumberSixScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const NumberSixScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NumberOneScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const NumberOneScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NumberTwoScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const NumberTwoScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NumberSixLocationRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const NumberSixLocation(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NumberOneLocationRoute.name: (routeData) {
+      final args = routeData.argsAs<NumberOneLocationRouteArgs>();
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: NumberOneLocation(
+          args.userId,
+          key: args.key,
+        ),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    NumberTwoLocationRoute.name: (routeData) {
+      final args = routeData.argsAs<NumberTwoLocationRouteArgs>();
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: NumberTwoLocation(
+          args.userId,
+          key: args.key,
+        ),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     KentBilgisiScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -371,6 +451,46 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   OtobusNeredeScreenRoute.name,
                   path: 'otobus-nerede-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  OtobusNeredeSurucuScreenRoute.name,
+                  path: 'otobus-nerede-surucu-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  OtobusNeredeKullaniciScreenRoute.name,
+                  path: 'otobus-nerede-kullanici-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NumberSixScreenRoute.name,
+                  path: 'otobus-number-six-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NumberOneScreenRoute.name,
+                  path: 'otobus-number-one-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NumberTwoScreenRoute.name,
+                  path: 'otobus-number-two-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NumberSixLocationRoute.name,
+                  path: 'number-six-location',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NumberOneLocationRoute.name,
+                  path: 'number-one-location',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  NumberTwoLocationRoute.name,
+                  path: 'number-two-location',
                   parent: DashbordTabRouter.name,
                 ),
               ],
@@ -787,6 +907,146 @@ class OtobusNeredeScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OtobusNeredeScreenRoute';
+}
+
+/// generated route for
+/// [OtobusNeredeSurucuScreen]
+class OtobusNeredeSurucuScreenRoute extends PageRouteInfo<void> {
+  const OtobusNeredeSurucuScreenRoute()
+      : super(
+          OtobusNeredeSurucuScreenRoute.name,
+          path: 'otobus-nerede-surucu-screen',
+        );
+
+  static const String name = 'OtobusNeredeSurucuScreenRoute';
+}
+
+/// generated route for
+/// [OtobusNeredeKullaniciScreen]
+class OtobusNeredeKullaniciScreenRoute extends PageRouteInfo<void> {
+  const OtobusNeredeKullaniciScreenRoute()
+      : super(
+          OtobusNeredeKullaniciScreenRoute.name,
+          path: 'otobus-nerede-kullanici-screen',
+        );
+
+  static const String name = 'OtobusNeredeKullaniciScreenRoute';
+}
+
+/// generated route for
+/// [NumberSixScreen]
+class NumberSixScreenRoute extends PageRouteInfo<void> {
+  const NumberSixScreenRoute()
+      : super(
+          NumberSixScreenRoute.name,
+          path: 'otobus-number-six-screen',
+        );
+
+  static const String name = 'NumberSixScreenRoute';
+}
+
+/// generated route for
+/// [NumberOneScreen]
+class NumberOneScreenRoute extends PageRouteInfo<void> {
+  const NumberOneScreenRoute()
+      : super(
+          NumberOneScreenRoute.name,
+          path: 'otobus-number-one-screen',
+        );
+
+  static const String name = 'NumberOneScreenRoute';
+}
+
+/// generated route for
+/// [NumberTwoScreen]
+class NumberTwoScreenRoute extends PageRouteInfo<void> {
+  const NumberTwoScreenRoute()
+      : super(
+          NumberTwoScreenRoute.name,
+          path: 'otobus-number-two-screen',
+        );
+
+  static const String name = 'NumberTwoScreenRoute';
+}
+
+/// generated route for
+/// [NumberSixLocation]
+class NumberSixLocationRoute extends PageRouteInfo<void> {
+  const NumberSixLocationRoute()
+      : super(
+          NumberSixLocationRoute.name,
+          path: 'number-six-location',
+        );
+
+  static const String name = 'NumberSixLocationRoute';
+}
+
+/// generated route for
+/// [NumberOneLocation]
+class NumberOneLocationRoute extends PageRouteInfo<NumberOneLocationRouteArgs> {
+  NumberOneLocationRoute({
+    required String userId,
+    Key? key,
+  }) : super(
+          NumberOneLocationRoute.name,
+          path: 'number-one-location',
+          args: NumberOneLocationRouteArgs(
+            userId: userId,
+            key: key,
+          ),
+        );
+
+  static const String name = 'NumberOneLocationRoute';
+}
+
+class NumberOneLocationRouteArgs {
+  const NumberOneLocationRouteArgs({
+    required this.userId,
+    this.key,
+  });
+
+  final String userId;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'NumberOneLocationRouteArgs{userId: $userId, key: $key}';
+  }
+}
+
+/// generated route for
+/// [NumberTwoLocation]
+class NumberTwoLocationRoute extends PageRouteInfo<NumberTwoLocationRouteArgs> {
+  NumberTwoLocationRoute({
+    required String userId,
+    Key? key,
+  }) : super(
+          NumberTwoLocationRoute.name,
+          path: 'number-two-location',
+          args: NumberTwoLocationRouteArgs(
+            userId: userId,
+            key: key,
+          ),
+        );
+
+  static const String name = 'NumberTwoLocationRoute';
+}
+
+class NumberTwoLocationRouteArgs {
+  const NumberTwoLocationRouteArgs({
+    required this.userId,
+    this.key,
+  });
+
+  final String userId;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'NumberTwoLocationRouteArgs{userId: $userId, key: $key}';
+  }
 }
 
 /// generated route for

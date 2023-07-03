@@ -1,15 +1,18 @@
-import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
-import "package:amasyaapp/app/features/auth/ui/login_logo.dart";
-import "package:amasyaapp/core/core.dart";
-import "package:auto_route/auto_route.dart";
-import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:form_field_validator/form_field_validator.dart";
+import 'package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart';
+import 'package:amasyaapp/app/features/auth/ui/login_logo.dart';
+import 'package:amasyaapp/core/core.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+
+String deneme = "";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -17,16 +20,42 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   bool _obscureText = true;
-  late final TextEditingController _emailController;
-  late final TextEditingController _passwordController;
+  final TextEditingController _userIdController = TextEditingController(text: "users1");
+  final TextEditingController _passwordController = TextEditingController(text: "users1Sifre");
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
     _obscureText = true;
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
+  }
+
+  void login(BuildContext context) async {
+    String kullaniciAdi = _userIdController.text;
+    String password = _passwordController.text;
+
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .where('kullaniciAdi', isEqualTo: kullaniciAdi)
+        .where('sifre', isEqualTo: password)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      deneme = _userIdController.text;
+
+      context.router.replace(const HomeScreenRoute());
+    } else {
+      deneme = "";
+      context.router.replace(const HomeScreenRoute()); 
+
+      /* ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Başarısız',
+          ),
+        ),
+      ); */
+    }
   }
 
   @override
@@ -45,35 +74,33 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "Giriş Yap",
+                    'Giriş Yap',
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   Text(
-                    "Giriş yapmak içim lütfen gerekli alanları doldurun.",
+                    'Giriş yapmak için lütfen gerekli alanları doldurun.',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(
                     height: 24,
                   ),
                   TextFormField(
-                    controller: _emailController,
+                    controller: _userIdController,
                     textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.text,
                     autocorrect: false,
-                    autofillHints: const <String>[AutofillHints.email],
                     decoration: const InputDecoration(
-                      labelText: "Email",
+                      labelText: 'Kullanıcı Adı',
                       prefixIcon: Icon(
                         Icons.person_outline_outlined,
                       ),
                     ),
                     validator: MultiValidator(
                       [
-                        RequiredValidator(errorText: "error"),
-                        EmailValidator(errorText: "error"),
+                        RequiredValidator(errorText: 'error'),
                       ],
                     ),
                   ),
@@ -81,7 +108,7 @@ class _LoginFormState extends State<LoginForm> {
                     controller: _passwordController,
                     autofillHints: const <String>[AutofillHints.password],
                     decoration: InputDecoration(
-                      labelText: "Şifre",
+                      labelText: 'Şifre',
                       prefixIcon: const Icon(Icons.password_outlined),
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -96,8 +123,8 @@ class _LoginFormState extends State<LoginForm> {
                     textInputAction: TextInputAction.done,
                     validator: MultiValidator(
                       [
-                        RequiredValidator(errorText: "error"),
-                        PatternValidator(passwordRegex, errorText: "error"),
+                        RequiredValidator(errorText: 'error'),
+                        PatternValidator(passwordRegex, errorText: 'error'),
                       ],
                     ),
                   ),
@@ -111,11 +138,11 @@ class _LoginFormState extends State<LoginForm> {
                   child: BlocBuilder<LoginBloc, LoginState>(
                     builder: (final context, final state) {
                       return FilledButton(
-                        onPressed: () {
-                          context.replaceRoute(const HomeScreenRoute());
+                        onPressed: () async {
+                          login(context);
                         },
                         child: const Text(
-                          "GİRİŞ YAP",
+                          'GİRİŞ YAP',
                         ),
                       );
                     },
@@ -130,11 +157,11 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   child: RichText(
                     text: TextSpan(
-                      text: "Henüz hesabınız yok mu? ",
+                      text: 'Henüz hesabınız yok mu? ',
                       style: Theme.of(context).textTheme.bodyMedium,
                       children: <TextSpan>[
                         TextSpan(
-                          text: "Hemen Oluştur!",
+                          text: 'Hemen Oluştur!',
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ],

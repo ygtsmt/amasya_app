@@ -11,10 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:amasyaapp/app/bloc/app_bloc.dart' as _i24;
 import 'package:amasyaapp/app/data/app_usecase.dart' as _i14;
-import 'package:amasyaapp/app/features/auth/features/create_account/bloc/create_account_bloc.dart'
-    as _i25;
-import 'package:amasyaapp/app/features/auth/features/create_account/data/create_account_usecase.dart'
-    as _i15;
+
 import 'package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart'
     as _i26;
 import 'package:amasyaapp/app/features/auth/features/create_garage/data/create_garage_usecase.dart'
@@ -93,8 +90,7 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i10.SecureDataStorage>(),
           gh<_i11.SnackBarService>(),
         ));
-    gh.factory<_i15.CreateAccountUseCase>(
-        () => _i15.CreateAccountUseCase(gh<_i16.SnackBarService>()));
+
     gh.factory<_i17.CreateGarageUseCase>(
         () => _i17.CreateGarageUseCase(gh<_i16.SnackBarService>()));
     gh.factory<_i18.DuyuruListUseCase>(
@@ -111,10 +107,7 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.singleton<_i23.SplashBloc>(_i23.SplashBloc(gh<_i12.SplashUseCase>()));
     gh.singleton<_i24.AppBloc>(_i24.AppBloc(gh<_i14.AppUseCase>()));
-    gh.singleton<_i25.CreateAccountBloc>(_i25.CreateAccountBloc(
-      gh<_i15.CreateAccountUseCase>(),
-      gh<_i22.LoginUseCase>(),
-    ));
+ 
     gh.singleton<_i26.CreateGarageBloc>(
         _i26.CreateGarageBloc(gh<_i17.CreateGarageUseCase>()));
     gh.singleton<_i27.DuyuruListBloc>(
