@@ -27,6 +27,7 @@ class _AppScreenState extends State<AppScreen> {
     super.initState();
 
     if (kIsWeb) {
+      // ignore: deprecated_member_use
       final String defaultRouteName = WidgetsBinding.instance.window.defaultRouteName;
       if (defaultRouteName != "/") {
         SystemNavigator.routeInformationUpdated(location: "/", replace: true);

@@ -1,6 +1,6 @@
-import "package:flutter/material.dart";
-import "package:amasyaapp/app/ui/widgets/custom_button.dart";
 import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
+import "package:amasyaapp/app/ui/widgets/custom_button.dart";
+import "package:flutter/material.dart";
 import "package:url_launcher/url_launcher.dart";
 
 class HilalMasaScreen extends StatefulWidget {
@@ -11,7 +11,9 @@ class HilalMasaScreen extends StatefulWidget {
 }
 
 class _HilalMasaScreenState extends State<HilalMasaScreen> {
+  // ignore: unused_field
   Future<void>? _launched;
+  // ignore: unused_field
   bool _hasCallSupport = false;
 
   Future<void> _launchInBrowser(Uri url) async {

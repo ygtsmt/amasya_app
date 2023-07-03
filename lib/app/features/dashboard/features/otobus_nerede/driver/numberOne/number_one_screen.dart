@@ -11,6 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 class NumberOneScreen extends StatefulWidget {
   const NumberOneScreen({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberOneScreenState createState() => _NumberOneScreenState();
 }
 
@@ -54,7 +55,7 @@ class _NumberOneScreenState extends State<NumberOneScreen> {
   Future<void> _listenLocation1() async {
 
       _locationSubscription = location.onLocationChanged.handleError((onError) {
-        print(onError);
+        debugPrint(onError);
         _locationSubscription?.cancel();
         setState(() {
           _locationSubscription = null;
@@ -78,7 +79,7 @@ class _NumberOneScreenState extends State<NumberOneScreen> {
   _requestPermission() async {
     var status = await Permission.location.request();
     if (status.isGranted) {
-      print('done');
+      debugPrint('done');
     } else if (status.isDenied) {
       _requestPermission();
     } else if (status.isPermanentlyDenied) {

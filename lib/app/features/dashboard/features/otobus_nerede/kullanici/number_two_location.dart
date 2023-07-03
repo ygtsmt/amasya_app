@@ -12,12 +12,12 @@ class NumberTwoLocation extends StatefulWidget {
 
   const NumberTwoLocation(this.userId, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberTwoLocationState createState() => _NumberTwoLocationState();
 }
 
 class _NumberTwoLocationState extends State<NumberTwoLocation> {
   final loc.Location location = loc.Location();
-  late GoogleMapController _controller;
   final Set<Marker> markers = {};
   GoogleMapController? mapController;
   PolylinePoints polylinePoints = PolylinePoints();
@@ -80,7 +80,6 @@ class _NumberTwoLocationState extends State<NumberTwoLocation> {
       },
     );
   }
-
 
 //POLYLINES OLDU DURAKLARI
   addPolyLine() {

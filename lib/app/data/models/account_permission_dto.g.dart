@@ -17,6 +17,7 @@ AccountPermissionDto _$AccountPermissionDtoFromJson(
           : DateTime.parse(json['enDate'] as String),
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$AccountPermissionDtoToJson(
         AccountPermissionDto instance) =>
     <String, dynamic>{

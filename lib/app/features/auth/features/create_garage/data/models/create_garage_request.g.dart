@@ -6,6 +6,7 @@ part of 'create_garage_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: unused_element
 CreateGarageRequest _$CreateGarageRequestFromJson(Map<String, dynamic> json) =>
     CreateGarageRequest(
       name: json['name'] as String,

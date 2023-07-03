@@ -43,9 +43,11 @@ class _LoginFormState extends State<LoginForm> {
     if (snapshot.docs.isNotEmpty) {
       deneme = _userIdController.text;
 
+      // ignore: use_build_context_synchronously
       context.router.replace(const HomeScreenRoute());
     } else {
       deneme = "";
+      // ignore: use_build_context_synchronously
       context.router.replace(const HomeScreenRoute()); 
 
       /* ScaffoldMessenger.of(context).showSnackBar(

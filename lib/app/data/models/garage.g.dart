@@ -15,6 +15,7 @@ Garage _$GarageFromJson(Map<String, dynamic> json) => Garage(
       billingType: json['billingType'] as int,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$GarageToJson(Garage instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

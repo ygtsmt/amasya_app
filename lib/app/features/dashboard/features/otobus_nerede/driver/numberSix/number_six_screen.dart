@@ -11,6 +11,7 @@ import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 class NumberSixScreen extends StatefulWidget {
   const NumberSixScreen({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberSixScreenState createState() => _NumberSixScreenState();
 }
 
@@ -57,7 +58,7 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
 
   Future<void> _listenLocation6() async {
       _locationSubscription = location.onLocationChanged.handleError((onError) {
-        print(onError);
+        debugPrint(onError);
         _locationSubscription?.cancel();
         setState(() {
           _locationSubscription = null;
@@ -81,7 +82,7 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
   _requestPermission() async {
     var status = await Permission.location.request();
     if (status.isGranted) {
-      print('done');
+      debugPrint('done');
     } else if (status.isDenied) {
       _requestPermission();
     } else if (status.isPermanentlyDenied) {

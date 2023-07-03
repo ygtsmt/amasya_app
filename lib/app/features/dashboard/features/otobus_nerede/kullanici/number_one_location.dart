@@ -11,12 +11,12 @@ class NumberOneLocation extends StatefulWidget {
 
   const NumberOneLocation(this.userId, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberOneLocationState createState() => _NumberOneLocationState();
 }
 
 class _NumberOneLocationState extends State<NumberOneLocation> {
   final loc.Location location = loc.Location();
-  late GoogleMapController _controller;
   final Set<Marker> markers = {};
   GoogleMapController? mapController;
   PolylinePoints polylinePoints = PolylinePoints();

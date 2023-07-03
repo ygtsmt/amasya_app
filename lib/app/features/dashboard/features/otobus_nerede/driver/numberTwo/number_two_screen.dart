@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 class NumberTwoScreen extends StatefulWidget {
   const NumberTwoScreen({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberTwoScreenState createState() => _NumberTwoScreenState();
 }
 
@@ -52,7 +53,7 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
 
   Future<void> _listenLocation2() async {
     _locationSubscription = location.onLocationChanged.handleError((onError) {
-      print(onError);
+      debugPrint(onError);
       _locationSubscription?.cancel();
       setState(() {
         _locationSubscription = null;
@@ -75,7 +76,7 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
   _requestPermission() async {
     var status = await Permission.location.request();
     if (status.isGranted) {
-      print('done');
+      debugPrint('done');
     } else if (status.isDenied) {
       _requestPermission();
     } else if (status.isPermanentlyDenied) {

@@ -12,12 +12,12 @@ class NumberTwoMap extends StatefulWidget {
 
   const NumberTwoMap(this.userId, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberTwoMapState createState() => _NumberTwoMapState();
 }
 
 class _NumberTwoMapState extends State<NumberTwoMap> {
   final loc.Location location = loc.Location();
-  late GoogleMapController _controller;
   final Set<Marker> markers = {};
   GoogleMapController? mapController;
   PolylinePoints polylinePoints = PolylinePoints();

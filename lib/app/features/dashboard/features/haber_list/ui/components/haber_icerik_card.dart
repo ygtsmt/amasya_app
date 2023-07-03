@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+// ignore: library_prefixes, depend_on_referenced_packages
 import "package:html/parser.dart" as htmlParser;
 
 class HaberIcerikCard extends StatelessWidget {

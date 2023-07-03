@@ -15,6 +15,7 @@ HttpFailureResponse _$HttpFailureResponseFromJson(Map<String, dynamic> json) =>
       ),
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$HttpFailureResponseToJson(
         HttpFailureResponse instance) =>
     <String, dynamic>{

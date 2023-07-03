@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
           builder: (final context, final child, final animation) {
             final tabsRouter = AutoTabsRouter.of(context);
-            final screen = Screen.fromContext(context);
 
             return GestureDetector(
               onTap: () {

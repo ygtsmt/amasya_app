@@ -12,12 +12,12 @@ class NumberOneMap extends StatefulWidget {
 
   const NumberOneMap(this.userId, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberOneMapState createState() => _NumberOneMapState();
 }
 
 class _NumberOneMapState extends State<NumberOneMap> {
   final loc.Location location = loc.Location();
-  late GoogleMapController _controller;
   final Set<Marker> markers = {};
   GoogleMapController? mapController;
   PolylinePoints polylinePoints = PolylinePoints();
@@ -25,8 +25,8 @@ class _NumberOneMapState extends State<NumberOneMap> {
   List<LatLng> polylineCoordinates = [];
   final bool _added = false;
   final wayPoints = [
-      PolylineWayPoint(location: "40.653107, 35.804547"),
-      PolylineWayPoint(location: "40.606683, 35.812084"),
+    PolylineWayPoint(location: "40.653107, 35.804547"),
+    PolylineWayPoint(location: "40.606683, 35.812084"),
   ];
 
   @override
@@ -39,7 +39,6 @@ class _NumberOneMapState extends State<NumberOneMap> {
           return const Center(child: AppleProgressIndicator());
         }
         return GoogleMap(
-          
           //myLocationEnabled: true,
           polylines: Set<Polyline>.of(polylines.values),
           zoomGesturesEnabled: true,
@@ -51,7 +50,6 @@ class _NumberOneMapState extends State<NumberOneMap> {
             zoom: 12.0, //initial zoom level
           ),
           markers: getMarkers(
-          
             snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeTarget'],
             snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['longitudeTarget'],
             snapshot.data!.docs.singleWhere((element) => element.id == widget.userId)['latitudeStart'],
@@ -79,7 +77,6 @@ class _NumberOneMapState extends State<NumberOneMap> {
       },
     );
   }
-
 
 //POLYLINES OLDU DURAKLARI
   addPolyLine() {

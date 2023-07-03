@@ -19,7 +19,9 @@ extension StringExtension on String {
 extension GetErrorMessage on Object {
   String getHttpErrorMessage() {
     String? errorMessage;
+    // ignore: deprecated_member_use
     if (this is DioError) {
+      // ignore: deprecated_member_use
       final dioError = this as DioError;
 
       if (dioError.response?.statusCode != 401) {

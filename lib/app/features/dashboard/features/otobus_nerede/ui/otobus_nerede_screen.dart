@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 import 'package:amasyaapp/app/ui/widgets/amasya_home_button.dart';
 import 'package:amasyaapp/core/routes/app_router.dart';
@@ -11,12 +9,13 @@ import 'package:permission_handler/permission_handler.dart';
 class OtobusNeredeScreen extends StatefulWidget {
   const OtobusNeredeScreen({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _OtobusNeredeScreenState createState() => _OtobusNeredeScreenState();
 }
 
 class _OtobusNeredeScreenState extends State<OtobusNeredeScreen> {
   final loc.Location location = loc.Location();
-  StreamSubscription<loc.LocationData>? _locationSubscription;
+  // StreamSubscription<loc.LocationData>? _locationSubscription;
   @override
   void initState() {
     super.initState();
@@ -62,7 +61,7 @@ class _OtobusNeredeScreenState extends State<OtobusNeredeScreen> {
   _requestPermission() async {
     var status = await Permission.location.request();
     if (status.isGranted) {
-      print('done');
+      debugPrint('done');
     } else if (status.isDenied) {
       _requestPermission();
     } else if (status.isPermanentlyDenied) {

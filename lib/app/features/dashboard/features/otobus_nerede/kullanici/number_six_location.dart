@@ -11,6 +11,7 @@ class NumberSixLocation extends StatefulWidget {
 
   const NumberSixLocation( {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _NumberSixLocationState createState() => _NumberSixLocationState();
 }
 

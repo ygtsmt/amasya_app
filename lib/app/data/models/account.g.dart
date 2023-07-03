@@ -14,6 +14,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) => Account(
       garageId: json['garageId'] as int?,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

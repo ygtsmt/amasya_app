@@ -11,6 +11,7 @@ AccountAuth _$AccountAuthFromJson(Map<String, dynamic> json) => AccountAuth(
       refreshToken: json['refreshToken'] as String,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$AccountAuthToJson(AccountAuth instance) =>
     <String, dynamic>{
       'accessToken': instance.accessToken,
