@@ -48,6 +48,7 @@ dependencies:
   google_mlkit_text_recognition: ^0.5.0
   group_button: ^5.2.2
   hive: ^2.2.3
+  http: ^0.13.6
   image_picker: ^0.8.7
   injectable: ^2.1.0
   json_annotation: ^4.8.0

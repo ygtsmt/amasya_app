@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 class NumberSixLocation extends StatefulWidget {
 
   const NumberSixLocation( {super.key});
@@ -26,6 +27,21 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     PolylineWayPoint(location: "40.653107, 35.804547"),
     PolylineWayPoint(location: "40.606683, 35.812084"),
   ];
+Future<String> getTravelDuration(String origin, String destination, String apiKey) async {
+  final url = Uri.parse('https://maps.googleapis.com/maps/api/directions/json?origin=$origin&destination=$destination&key=$apiKey');
+  final response = await http.get(url);
+
+  if (response.statusCode == 200) {
+    final jsonData = jsonDecode(response.body);
+    final duration = jsonData['routes'][0]['legs'][0]['duration']['text'];
+    return duration;
+  } else {
+    throw Exception('Failed to fetch travel duration');
+  }
+}
+final String origin = ' 40.65,35.79611';
+final String destination = '40.6027,35.818933';
+final String apiKey = 'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +127,8 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     }).then((value) {
       addPolyLine();
     });
+    final travelDuration = await getTravelDuration(origin, destination, apiKey);
+debugPrint('Sürüş süresi: $travelDuration');
   }
 
   Set<Marker> getMarkersFromUserSnapshot(List<QueryDocumentSnapshot> userDocs, QueryDocumentSnapshot guzergahDoc) {
@@ -164,59 +182,4 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
 
     return markers;
   }
-
-  /*  Set<Marker> getMarkers(double latitude, double longitude, double markerLatitude, double markerLongitude,
-      double markerLatitudeStart, double markerLongitudeStart) {
-    Set<Marker> markers = {};
-    markers.add(
-      Marker(
-        //add first marker
-        markerId: const MarkerId("markerId1"),
-        position: LatLng(
-          latitude,
-          longitude,
-        ), //position of marker
-        infoWindow: const InfoWindow(
-          //popup info
-          title: 'Marker Title First ',
-          snippet: 'My Custom Subtitle',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ),
-    );
-
-    markers.add(
-      Marker(
-        //add second marker
-        markerId: const MarkerId("markerId2"),
-        position: LatLng(
-          markerLatitude,
-          markerLongitude,
-        ), //position of marker
-        infoWindow: const InfoWindow(
-          //popup info
-          title: 'Marker Title Second ',
-          snippet: 'My Custom Subtitle',
-        ),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure), //Icon for Marker
-      ),
-    );
-    markers.add(
-      Marker(
-        //add second marker
-        markerId: const MarkerId("markerIdStart"),
-        position: LatLng(
-          markerLatitudeStart,
-          markerLongitudeStart,
-        ), //position of marker
-        infoWindow: const InfoWindow(
-          //popup info
-          title: 'Marker Title Second ',
-          snippet: 'My Custom Subtitle',
-        ),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow), //Icon for Marker
-      ),
-    );
-    return markers;
-  } */
 }
