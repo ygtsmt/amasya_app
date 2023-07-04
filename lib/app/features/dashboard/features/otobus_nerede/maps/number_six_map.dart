@@ -25,10 +25,49 @@ class _NumberSixMapState extends State<NumberSixMap> {
   List<LatLng> polylineCoordinates = [];
   final bool _added = false;
   final wayPoints = [
-    PolylineWayPoint(location: "40.653107, 35.804547"),
-    PolylineWayPoint(location: "40.606683, 35.812084"),
+    PolylineWayPoint(location: "40.649835, 35.795758"),
+    PolylineWayPoint(location: "40.650540, 35.797761"),
+    PolylineWayPoint(location: "40.651675, 35.800865"),
+    PolylineWayPoint(location: "40.652876, 35.803558"),
+    PolylineWayPoint(location: "40.651299, 35.805962"),
+    PolylineWayPoint(location: "40.646641, 35.810475"),
+    PolylineWayPoint(location: "40.643452, 35.808433"),
+    PolylineWayPoint(location: "40.637473, 35.808831"),
+    PolylineWayPoint(location: "40.616501, 35.813611"),
+    PolylineWayPoint(location: "40.602087, 35.809871"),
+    PolylineWayPoint(location: "40.606744, 35.812118"),
+    PolylineWayPoint(location: "40.603355, 35.818920"),
+    PolylineWayPoint(location: "40.607146, 35.812102"),
+    PolylineWayPoint(location: "40.617396, 35.814808"),
+    PolylineWayPoint(location: "40.633062, 35.813166"),
+    PolylineWayPoint(location: "40.646278, 35.810989"),
+    PolylineWayPoint(location: "40.650200, 35.807478"),
+    PolylineWayPoint(location: "40.652957, 35.803708"),
+    PolylineWayPoint(location: "40.652149, 35.801709"),
+    PolylineWayPoint(location: "40.650763, 35.798451"),
   ];
-  final wayPointsDurakMarkers = <LatLng>[const LatLng(40.653107, 35.804547), const LatLng(40.606683, 35.812084)];
+  final wayPointsDurakMarkers = <LatLng>[
+    const LatLng(40.649835, 35.795758),
+    const LatLng(40.650540, 35.797761),
+    const LatLng(40.651675, 35.800865),
+    const LatLng(40.652876, 35.803558),
+    const LatLng(40.651299, 35.805962),
+    const LatLng(40.646641, 35.810475),
+    const LatLng(40.643452, 35.808433),
+    const LatLng(40.637473, 35.808831),
+    const LatLng(40.616501, 35.813611),
+    const LatLng(40.602087, 35.809871),
+    const LatLng(40.606744, 35.812118),
+    const LatLng(40.603355, 35.818920), // startdan amasyaya gelis
+    const LatLng(40.607146, 35.812102),
+    const LatLng(40.617396, 35.814808),
+    const LatLng(40.633062, 35.813166),
+    const LatLng(40.646278, 35.810989),
+    const LatLng(40.650200, 35.807478),
+    const LatLng(40.652957, 35.803708),
+    const LatLng(40.652149, 35.801709),
+    const LatLng(40.650763, 35.798451),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +119,12 @@ class _NumberSixMapState extends State<NumberSixMap> {
 
   addPolyLine() {
     PolylineId id = const PolylineId("poly");
-    Polyline polyline = Polyline(polylineId: id, color: Colors.blue, points: polylineCoordinates);
+    Polyline polyline = Polyline(
+      polylineId: id,
+      color: Colors.blue,
+      points: polylineCoordinates,
+      width: 3,
+    );
     polylines[id] = polyline;
     setState(() {});
   }
