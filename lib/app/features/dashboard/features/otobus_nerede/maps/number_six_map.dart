@@ -28,6 +28,7 @@ class _NumberSixMapState extends State<NumberSixMap> {
     PolylineWayPoint(location: "40.653107, 35.804547"),
     PolylineWayPoint(location: "40.606683, 35.812084"),
   ];
+  final wayPointsDurakMarkers = <LatLng>[const LatLng(40.653107, 35.804547), const LatLng(40.606683, 35.812084)];
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +119,7 @@ class _NumberSixMapState extends State<NumberSixMap> {
           title: 'Marker Title Second ',
           snippet: 'My Custom Subtitle',
         ),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure), //Icon for Marker
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow), //Icon for Marker
       ),
     );
     markers.add(
@@ -136,6 +137,21 @@ class _NumberSixMapState extends State<NumberSixMap> {
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow), //Icon for Marker
       ),
     );
+    for (var i = 0; i < wayPointsDurakMarkers.length; i++) {
+      markers.add(
+        Marker(
+          markerId: MarkerId("markerIdWayPoint$i"),
+          position: LatLng(
+            wayPointsDurakMarkers[i].latitude,
+            wayPointsDurakMarkers[i].longitude,
+          ),
+          infoWindow: InfoWindow(
+            title: ' ${i + 1}.Durak ',
+          ),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+        ),
+      );
+    }
     return markers;
   }
 }

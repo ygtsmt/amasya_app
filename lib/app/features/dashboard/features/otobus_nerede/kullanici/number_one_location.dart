@@ -58,29 +58,22 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
                   mapController = controller;
                   makeLines(
                     PointLatLng(
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara1")['latitudeStart'],
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara1")['longitudeStart'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['latitudeStart'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['longitudeStart'],
                     ), // Starting LATLANG
                     PointLatLng(
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara1")['latitudeTarget'],
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara1")['longitudeTarget'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['latitudeTarget'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['longitudeTarget'],
                     ), // End LATLANG
                   );
                 });
               },
-           
             );
           },
         );
       },
     );
   }
-
-
 
 //POLYLINES OLDU DURAKLARI
   addPolyLine() {
@@ -93,14 +86,14 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
   void makeLines(PointLatLng startingLatLng, PointLatLng endLatLng) async {
     await polylinePoints
         .getRouteBetweenCoordinates(
-            'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
-            startingLatLng, //Starting LATLANG
-            endLatLng, //End LATLANG
+      'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
+      startingLatLng, //Starting LATLANG
+      endLatLng, //End LATLANG
 
-            travelMode: TravelMode.driving,
-           // wayPoints: wayPoints,
-            //optimizeWaypoints: true
-            )
+      travelMode: TravelMode.driving,
+      // wayPoints: wayPoints,
+      //optimizeWaypoints: true
+    )
         .then((value) {
       for (var point in value.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
@@ -114,7 +107,7 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
     Set<Marker> markers = {};
 
     for (var userDoc in userDocs) {
-          bool isActive = userDoc['isActiveLocationNumara1'];
+      bool isActive = userDoc['isActiveLocationNumara1'];
       if (isActive && userDoc['numara1KonumLatitude'] != null) {
         double latitude = userDoc['numara1KonumLatitude'];
         double longitude = userDoc['numara1KonumLongitude'];

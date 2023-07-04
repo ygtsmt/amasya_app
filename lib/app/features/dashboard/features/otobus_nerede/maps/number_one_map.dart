@@ -28,6 +28,7 @@ class _NumberOneMapState extends State<NumberOneMap> {
     PolylineWayPoint(location: "40.653107, 35.804547"),
     PolylineWayPoint(location: "40.606683, 35.812084"),
   ];
+ // final wayPointsDurakMarkers = <LatLng>[const LatLng(40.653107, 35.804547), const LatLng(40.606683, 35.812084)];
 
   @override
   Widget build(BuildContext context) {
@@ -158,8 +159,21 @@ class _NumberOneMapState extends State<NumberOneMap> {
       ),
     );
 
-    //add more markers here
-
+    // for (var i = 0; i < wayPointsDurakMarkers.length; i++) {
+    //   markers.add(
+    //     Marker(
+    //       markerId: MarkerId("markerIdWayPoint$i"),
+    //       position: LatLng(
+    //         wayPointsDurakMarkers[i].latitude,
+    //         wayPointsDurakMarkers[i].longitude,
+    //       ),
+    //       infoWindow: InfoWindow(
+    //         title: ' ${i + 1}.Durak ',
+    //       ),
+    //       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+    //     ),
+    //   );
+    // }
     return markers;
   }
 }
