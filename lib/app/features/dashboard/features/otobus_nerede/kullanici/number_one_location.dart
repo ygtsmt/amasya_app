@@ -114,7 +114,8 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
     Set<Marker> markers = {};
 
     for (var userDoc in userDocs) {
-      if (userDoc['numara1KonumLatitude'] != null) {
+          bool isActive = userDoc['isActiveLocationNumara1'];
+      if (isActive && userDoc['numara1KonumLatitude'] != null) {
         double latitude = userDoc['numara1KonumLatitude'];
         double longitude = userDoc['numara1KonumLongitude'];
 

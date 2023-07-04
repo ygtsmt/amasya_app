@@ -32,7 +32,6 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
-            _stopListening6();
             setState(() {
               // isStop = true;
             });
@@ -58,6 +57,7 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
   }
 
   Future<void> _listenLocation6() async {
+    _locationSubscription?.cancel();
     _locationSubscription = location.onLocationChanged.handleError((onError) {
       debugPrint(onError);
       _locationSubscription?.cancel();
@@ -69,11 +69,15 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
         //users1 yerine giris yapan kullanicinin kullanici adini alacak
         'numara6KonumLatitude': currentlocation.latitude,
         'numara6KonumLongitude': currentlocation.longitude,
+        'isActiveLocationNumara6': true
       }, SetOptions(merge: true));
     });
   }
 
-  _stopListening6() {
+  _stopListening6() async {
+    await FirebaseFirestore.instance.collection('users').doc(deneme).set({
+      'isActiveLocationNumara6': false,
+    }, SetOptions(merge: true));
     _locationSubscription?.cancel();
     setState(() {
       _locationSubscription = null;

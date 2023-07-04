@@ -1,16 +1,16 @@
 //Way point doğru rota oluşturuldu adamı Boyle sikerler
 
+import 'dart:convert';
+
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart' as loc;
-import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:location/location.dart' as loc;
 class NumberSixLocation extends StatefulWidget {
-
-  const NumberSixLocation( {super.key});
+  const NumberSixLocation({super.key});
   @override
   // ignore: library_private_types_in_public_api
   _NumberSixLocationState createState() => _NumberSixLocationState();
@@ -25,23 +25,24 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
   List<LatLng> polylineCoordinates = [];
   final wayPoints = [
     PolylineWayPoint(location: "40.653107, 35.804547"),
-    PolylineWayPoint(location: "40.606683, 35.812084"),
   ];
-Future<String> getTravelDuration(String origin, String destination, String apiKey) async {
-  final url = Uri.parse('https://maps.googleapis.com/maps/api/directions/json?origin=$origin&destination=$destination&key=$apiKey');
-  final response = await http.get(url);
+  Future<String> getTravelDuration(String origin, String destination, String apiKey) async {
+    final waypoints = "waypoints=via:${Uri.encodeComponent("40.653107,35.804547")}";
+    final url = Uri.parse(
+        'https://maps.googleapis.com/maps/api/directions/json?origin=$origin&destination=$destination&$waypoints&key=$apiKey');
+    final response = await http.get(url);
 
-  if (response.statusCode == 200) {
-    final jsonData = jsonDecode(response.body);
-    final duration = jsonData['routes'][0]['legs'][0]['duration']['text'];
-    return duration;
-  } else {
-    throw Exception('Failed to fetch travel duration');
+    if (response.statusCode == 200) {
+      final jsonData = jsonDecode(response.body);
+      final duration = jsonData['routes'][0]['legs'][0]['duration']['text'];
+      return duration;
+    } else {
+      throw Exception('Failed to fetch travel duration');
+    }
   }
-}
-final String origin = ' 40.65,35.79611';
-final String destination = '40.6027,35.818933';
-final String apiKey = 'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
+  final String origin = ' 40.65,35.79611';
+  final String destination = '40.6027,35.818933';
+  final String apiKey = 'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
 
   @override
   Widget build(BuildContext context) {
@@ -78,29 +79,22 @@ final String apiKey = 'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
                   mapController = controller;
                   makeLines(
                     PointLatLng(
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara6")['latitudeStart'],
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara6")['longitudeStart'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeStart'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeStart'],
                     ), // Starting LATLANG
                     PointLatLng(
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara6")['latitudeTarget'],
-                      guzergahSnapshot.data!.docs
-                          .singleWhere((element) => element.id == "numara6")['longitudeTarget'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeTarget'],
+                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeTarget'],
                     ), // End LATLANG
                   );
                 });
               },
-           
             );
           },
         );
       },
     );
   }
-
-
 
 //POLYLINES OLDU DURAKLARI
   addPolyLine() {
@@ -128,14 +122,15 @@ final String apiKey = 'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
       addPolyLine();
     });
     final travelDuration = await getTravelDuration(origin, destination, apiKey);
-debugPrint('Sürüş süresi: $travelDuration');
+    debugPrint('Sürüş süresi: $travelDuration');
   }
 
   Set<Marker> getMarkersFromUserSnapshot(List<QueryDocumentSnapshot> userDocs, QueryDocumentSnapshot guzergahDoc) {
     Set<Marker> markers = {};
 
     for (var userDoc in userDocs) {
-      if (userDoc['numara6KonumLatitude'] != null) {
+      bool isActive = userDoc['isActiveLocationNumara6'];
+      if (isActive && userDoc['numara6KonumLatitude'] != null) {
         double latitude = userDoc['numara6KonumLatitude'];
         double longitude = userDoc['numara6KonumLongitude'];
 

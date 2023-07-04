@@ -113,7 +113,8 @@ class _NumberTwoLocationState extends State<NumberTwoLocation> {
     Set<Marker> markers = {};
 
     for (var userDoc in userDocs) {
-      if (userDoc['numara2KonumLatitude'] != null) {
+          bool isActive = userDoc['isActiveLocationNumara2'];
+      if (isActive && userDoc['numara2KonumLatitude'] != null) {
         double latitude = userDoc['numara2KonumLatitude'];
         double longitude = userDoc['numara2KonumLongitude'];
 

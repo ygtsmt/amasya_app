@@ -32,7 +32,6 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
-                        _stopListening2();
 
             setState(() {
               // isStop = true;
@@ -59,6 +58,7 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
   }
 
   Future<void> _listenLocation2() async {
+        _locationSubscription?.cancel();
       _locationSubscription = location.onLocationChanged.handleError((onError) {
         debugPrint(onError);
         _locationSubscription?.cancel();
@@ -69,12 +69,16 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
         await FirebaseFirestore.instance.collection('users').doc(deneme).set({//users1 yerine giris yapan kullanicinin kullanici adini alacak
           'numara2KonumLatitude': currentlocation.latitude,
           'numara2KonumLongitude': currentlocation.longitude,
+          'isActiveLocationNumara2': true
         }, SetOptions(merge: true));
       });
     
   }
 
-  _stopListening2() {
+  _stopListening2() async{
+        await FirebaseFirestore.instance.collection('users').doc(deneme).set({
+      'isActiveLocationNumara2': false,
+    }, SetOptions(merge: true));
     _locationSubscription?.cancel();
     setState(() {
       _locationSubscription = null;
