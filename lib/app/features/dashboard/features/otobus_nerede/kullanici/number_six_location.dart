@@ -25,6 +25,8 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
   List<LatLng> polylineCoordinates = [];
   final wayPoints = [
     PolylineWayPoint(location: "40.653107, 35.804547"),
+        PolylineWayPoint(location: "40.606683, 35.812084"),
+
   ];
   Future<String> getTravelDuration(String origin, String destination, String apiKey) async {
     final waypoints = "waypoints=via:${Uri.encodeComponent("40.653107,35.804547")}";
