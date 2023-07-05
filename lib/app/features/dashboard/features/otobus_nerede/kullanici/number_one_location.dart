@@ -3,13 +3,14 @@
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
 
 class NumberOneLocation extends StatefulWidget {
-
-  const NumberOneLocation( {super.key});
+  const NumberOneLocation({super.key});
   @override
   // ignore: library_private_types_in_public_api
   _NumberOneLocationState createState() => _NumberOneLocationState();
@@ -22,6 +23,80 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
   PolylinePoints polylinePoints = PolylinePoints();
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
+  final wayPoints = [
+    PolylineWayPoint(location: "40.659990, 35.840260"),
+    PolylineWayPoint(location: "40.655381, 35.836891"),
+    PolylineWayPoint(location: "40.650584, 35.830444"),
+    PolylineWayPoint(location: "40.648980, 35.816248"),
+    PolylineWayPoint(location: "40.632924, 35.812836"),
+    PolylineWayPoint(location: "40.635513, 35.810789"),
+    PolylineWayPoint(location: "40.643598, 35.809132"),
+    PolylineWayPoint(location: "40.649832, 35.819838"),
+    PolylineWayPoint(location: "40.657410, 35.838458"),
+  ];
+  final wayPointsDurakMarkers = <LatLng>[
+    const LatLng(40.659990, 35.840260),
+    const LatLng(40.655381, 35.836891),
+    const LatLng(40.650584, 35.830444),
+    const LatLng(40.648980, 35.816248),
+    const LatLng(40.632924, 35.812836),
+    const LatLng(40.635513, 35.810789),
+    const LatLng(40.643598, 35.809132),
+    const LatLng(40.649832, 35.819838),
+    const LatLng(40.657410, 35.838458),
+  ];
+  // BitmapDescriptor? icon;
+  List<String> imagePaths = [
+    'assets/images/1.png',
+    'assets/images/2.png',
+    'assets/images/3.png',
+    'assets/images/4.png',
+    'assets/images/5.png',
+    'assets/images/6.png',
+    'assets/images/7.png',
+    'assets/images/8.png',
+    'assets/images/9.png',
+    'assets/images/10.png',
+    'assets/images/11.png',
+    'assets/images/12.png',
+    'assets/images/13.png',
+    'assets/images/14.png',
+    'assets/images/15.png',
+    'assets/images/16.png',
+    'assets/images/17.png',
+    'assets/images/18.png',
+    'assets/images/19.png',
+    'assets/images/20.png',
+  ];
+  List<BitmapDescriptor> markerIcons = [];
+
+  @override
+  void initState() {
+    getMarkerIcons();
+
+    super.initState();
+  }
+
+  Future<Uint8List?> compressImage(String imagePath) async {
+    final ByteData bytes = await rootBundle.load(imagePath);
+    final Uint8List imageData = bytes.buffer.asUint8List();
+
+    final compressedImageData = await FlutterImageCompress.compressWithList(imageData,
+        format: CompressFormat.png, minWidth: 50, minHeight: 50, inSampleSize: 2);
+
+    return compressedImageData;
+  }
+
+  Future<void> getMarkerIcons() async {
+    for (String imagePath in imagePaths) {
+      final compressedImageData = await compressImage(imagePath);
+      if (compressedImageData != null) {
+        final BitmapDescriptor markerIcon = BitmapDescriptor.fromBytes(compressedImageData);
+        markerIcons.add(markerIcon);
+      }
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +153,7 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
 //POLYLINES OLDU DURAKLARI
   addPolyLine() {
     PolylineId id = const PolylineId("poly");
-    Polyline polyline = Polyline(polylineId: id, color: Colors.blue, points: polylineCoordinates);
+    Polyline polyline = Polyline(polylineId: id, color: Colors.blue, points: polylineCoordinates, width: 3);
     polylines[id] = polyline;
     setState(() {});
   }
@@ -91,9 +166,10 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
       endLatLng, //End LATLANG
 
       travelMode: TravelMode.driving,
-      // wayPoints: wayPoints,
+      wayPoints: wayPoints,
       //optimizeWaypoints: true
     )
+    
         .then((value) {
       for (var point in value.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
@@ -152,6 +228,23 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
       ),
     );
+    for (var i = 0; i < wayPointsDurakMarkers.length; i++) {
+      int markerIconIndex = i % markerIcons.length;
+      BitmapDescriptor? markerIcon = markerIcons.isNotEmpty ? markerIcons[markerIconIndex] : null;
+      markers.add(
+        Marker(
+          markerId: MarkerId("markerIdWayPoint$i"),
+          position: LatLng(
+            wayPointsDurakMarkers[i].latitude,
+            wayPointsDurakMarkers[i].longitude,
+          ),
+          infoWindow: InfoWindow(
+            title: ' ${i + 300}',
+          ),
+          icon: markerIcon!,
+        ),
+      );
+    }
     return markers;
   }
 }

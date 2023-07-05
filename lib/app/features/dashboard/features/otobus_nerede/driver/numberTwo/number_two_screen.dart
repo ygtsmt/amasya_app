@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:amasyaapp/app/features/dashboard/features/otobus_nerede/maps/number_two_map.dart';
+import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 import 'package:amasyaapp/app/ui/widgets/location_service_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 
 class NumberTwoScreen extends StatefulWidget {
   const NumberTwoScreen({super.key});
@@ -32,7 +31,6 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
     return Column(children: [
       LocationServiceButton(
           onPressed: () {
-
             setState(() {
               // isStop = true;
             });
@@ -48,35 +46,43 @@ class _NumberTwoScreenState extends State<NumberTwoScreen> {
           title: "Seferi Tamamladım ve ya Sefere Devam Edemiyorum Konum Paylaşımını Durdur",
           description: "Yalnızca seferi tamamladıysanız ve ya sefere devam edemiyorsanız konum paylaşımını durdurun."),
       const Divider(),
-      const Expanded(
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: NumberTwoMap('numara2'),
-        ),
-      )
+      if (_locationSubscription != null)
+        Expanded(
+            child: Container(
+                color: Colors.red.shade900,
+                child: Center(
+                  child: Text(
+                    "2 NUMARALI OTOBÜS OLARAK KONUMUNUZ PAYLAŞILIYOR\n(Yolculuk bittiğinde kapatınız.)",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge!
+                        .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                )))
     ]);
   }
 
   Future<void> _listenLocation2() async {
-        _locationSubscription?.cancel();
-      _locationSubscription = location.onLocationChanged.handleError((onError) {
-        debugPrint(onError);
-        _locationSubscription?.cancel();
-        setState(() {
-          _locationSubscription = null;
-        });
-      }).listen((loc.LocationData currentlocation) async {
-        await FirebaseFirestore.instance.collection('users').doc(deneme).set({//users1 yerine giris yapan kullanicinin kullanici adini alacak
-          'numara2KonumLatitude': currentlocation.latitude,
-          'numara2KonumLongitude': currentlocation.longitude,
-          'isActiveLocationNumara2': true
-        }, SetOptions(merge: true));
+    _locationSubscription?.cancel();
+    _locationSubscription = location.onLocationChanged.handleError((onError) {
+      debugPrint(onError);
+      _locationSubscription?.cancel();
+      setState(() {
+        _locationSubscription = null;
       });
-    
+    }).listen((loc.LocationData currentlocation) async {
+      await FirebaseFirestore.instance.collection('users').doc(deneme).set({
+        //users1 yerine giris yapan kullanicinin kullanici adini alacak
+        'numara2KonumLatitude': currentlocation.latitude,
+        'numara2KonumLongitude': currentlocation.longitude,
+        'isActiveLocationNumara2': true
+      }, SetOptions(merge: true));
+    });
   }
 
-  _stopListening2() async{
-        await FirebaseFirestore.instance.collection('users').doc(deneme).set({
+  _stopListening2() async {
+    await FirebaseFirestore.instance.collection('users').doc(deneme).set({
       'isActiveLocationNumara2': false,
     }, SetOptions(merge: true));
     _locationSubscription?.cancel();

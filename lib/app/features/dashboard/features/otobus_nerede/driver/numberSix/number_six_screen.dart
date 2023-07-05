@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
-import 'package:amasyaapp/app/features/dashboard/features/otobus_nerede/maps/number_six_map.dart';
 import 'package:amasyaapp/app/ui/widgets/location_service_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -47,12 +46,23 @@ class _NumberSixScreenState extends State<NumberSixScreen> {
           title: "Seferi Tamamladım ve ya Sefere Devam Edemiyorum Konum Paylaşımını Durdur",
           description: "Yalnızca seferi tamamladıysanız ve ya sefere devam edemiyorsanız konum paylaşımını durdurun."),
       const Divider(),
-      const Expanded(
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: NumberSixMap('numara6'),
-        ),
-      )
+      // aktiflige gore degerdegsitir
+      if (_locationSubscription != null)
+        Expanded(
+          child: Container(
+            color: Colors.red.shade900,
+            child: Center(
+              child: Text(
+                "6 NUMARALI OTOBÜS OLARAK KONUMUNUZ PAYLAŞILIYOR\n(Yolculuk bittiğinde kapatınız.)",
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        )
     ]);
   }
 

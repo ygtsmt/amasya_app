@@ -1,4 +1,5 @@
 import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/app/features/auth/features/login/ui/login_form.dart";
 import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
 import "package:amasyaapp/core/enums.dart";
@@ -16,49 +17,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final TextEditingController _textFieldController = TextEditingController();
-
-  Future<void> _displayDeleteAccountConfirmationDialog(final BuildContext context) async {
-    return showDialog(
-      context: context,
-      builder: (final context) {
-        return AlertDialog(
-          title: const Text("Onayla"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text("Bu hesabı silmek istiyor musun?"),
-              const SizedBox(height: 16),
-              TextField(
-                obscureText: true,
-                onChanged: (final value) {},
-                controller: _textFieldController,
-                decoration: const InputDecoration(hintText: "password"),
-              ),
-            ],
-          ),
-          actionsAlignment: MainAxisAlignment.spaceBetween,
-          actions: <Widget>[
-            TextButton(
-              child: const Text("vazgeç"),
-              onPressed: () {
-                _textFieldController.text = "";
-                context.router.pop();
-              },
-            ),
-            TextButton(
-              child: const Text("Sil"),
-              onPressed: () async {
-                context.router.popUntilRoot();
-                context.router.popForced();
-                await context.router.root.replaceAll([const SplashScreenRoute()]);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(final BuildContext context) {
@@ -93,44 +51,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ],
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton.icon(
-                icon: const Icon(Icons.logout),
-                onPressed: () async {
-                  context.router.popUntilRoot();
-                  context.router.popForced();
-                  await context.router.root.replaceAll([const SplashScreenRoute()]);
-                },
-                label: const Text(
-                  "Çıkış Yap",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton.icon(
+          if (deneme.length > 2)
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.logout),
                   onPressed: () async {
-                    _displayDeleteAccountConfirmationDialog(context);
+                    context.router.popUntilRoot();
+                    context.router.popForced();
+                    await context.router.root.replaceAll([const SplashScreenRoute()]);
                   },
-                  icon: const Icon(Icons.delete_outline_outlined),
-                  label: Text(
-                    "Hesabı Sil",
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
+                  label: const Text(
+                    "Çıkış Yap",
                   ),
                 ),
-              )
-              /*  TextButton(
-                onPressed: () async {
-                  _displayDeleteAccountConfirmationDialog(context);
-                },
-                child: Text(
-                  AppLocalizations.of(context).deleteAccount.toUpperCase(),
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Theme.of(context).colorScheme.error),
-                ),
-              ) */
-            ],
-          ),
+              ],
+            ),
+          if (deneme.length < 2)
+            ElevatedButton.icon(
+              icon: const Icon(Icons.login_outlined),
+              onPressed: () async {
+                context.router.popUntilRoot();
+                context.router.popForced();
+                await context.router.root.replaceAll([const LoginScreenRoute()]);
+              },
+              label: const Text(
+                "Sürücü Girişi Yap",
+              ),
+            ),
         ],
       ),
     );

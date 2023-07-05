@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 import 'package:amasyaapp/app/ui/widgets/amasya_home_button.dart';
 import 'package:amasyaapp/core/images.dart';
 import 'package:amasyaapp/core/routes/app_router.dart';
@@ -84,7 +85,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Expanded(
                 child: AmasyaHomeButton(
                   onPressed: () {
-                    context.router.navigate(const OtobusNeredeScreenRoute());
+                    if (deneme.length > 2) {
+                      context.router.navigate(const OtobusNeredeSurucuScreenRoute());
+                    }
+                    if (deneme.length < 2) {
+                      context.router.navigate(const OtobusNeredeKullaniciScreenRoute());
+                    }
                   },
                   title: 'OTOBÜS\nNEREDE',
                   icon: Icons.directions_bus_filled_outlined,
