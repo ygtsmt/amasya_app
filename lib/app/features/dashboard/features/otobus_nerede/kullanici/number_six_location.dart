@@ -4,6 +4,8 @@ import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
@@ -33,7 +35,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     PolylineWayPoint(location: "40.637473, 35.808831"),
     PolylineWayPoint(location: "40.616501, 35.813611"),
     PolylineWayPoint(location: "40.602087, 35.809871"),
-    PolylineWayPoint(location: "40.606744, 35.812118"),
+    PolylineWayPoint(location: "40.606744, 35.812118"), //11
     PolylineWayPoint(location: "40.603355, 35.818920"),
     PolylineWayPoint(location: "40.607146, 35.812102"),
     PolylineWayPoint(location: "40.617396, 35.814808"),
@@ -56,7 +58,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     const LatLng(40.616501, 35.813611),
     const LatLng(40.602087, 35.809871),
     const LatLng(40.606744, 35.812118),
-    const LatLng(40.603355, 35.818920), // startdan amasyaya gelis
+    const LatLng(40.603355, 35.818920),
     const LatLng(40.607146, 35.812102),
     const LatLng(40.617396, 35.814808),
     const LatLng(40.633062, 35.813166),
@@ -66,15 +68,30 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     const LatLng(40.652149, 35.801709),
     const LatLng(40.650763, 35.798451),
   ];
-/*   void getDistanceMatrix() async {
-    try {
-      var response = await Dio().get(
-          'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=40.649682,35.825363&origins=40.641947,35.807913&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM');
-      print(response.data);
-    } catch (e) {
-      print(e);
-    }
-  } */
+  // BitmapDescriptor? icon;
+  List<String> imagePaths = [
+    'assets/images/1.png',
+    'assets/images/2.png',
+    'assets/images/3.png',
+    'assets/images/4.png',
+    'assets/images/5.png',
+    'assets/images/6.png',
+    'assets/images/7.png',
+    'assets/images/8.png',
+    'assets/images/9.png',
+    'assets/images/10.png',
+    'assets/images/11.png',
+    'assets/images/12.png',
+    'assets/images/13.png',
+    'assets/images/14.png',
+    'assets/images/15.png',
+    'assets/images/16.png',
+    'assets/images/17.png',
+    'assets/images/18.png',
+    'assets/images/19.png',
+    'assets/images/20.png',
+  ];
+  List<BitmapDescriptor> markerIcons = [];
   void getDirections() async {
     try {
       String origin = '40.685112, 35.893150';
@@ -89,16 +106,42 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
 
       var response = await Dio().get(url);
 
-      print(response.data);
+      debugPrint(response.data);
     } catch (e) {
-      print(e);
+      debugPrint(e.toString()); //print(e)
     }
   }
 
   @override
   void initState() {
+    getMarkerIcons();
     getDirections();
     super.initState();
+  }
+
+  Future<Uint8List?> compressImage(String imagePath) async {
+    final ByteData bytes = await rootBundle.load(imagePath);
+    final Uint8List imageData = bytes.buffer.asUint8List();
+
+    final compressedImageData = await FlutterImageCompress.compressWithList(imageData,
+        format: CompressFormat.png,
+        minWidth: 50,
+        minHeight: 50,
+        inSampleSize: 2
+        );
+
+    return compressedImageData;
+  }
+
+  Future<void> getMarkerIcons() async {
+    for (String imagePath in imagePaths) {
+      final compressedImageData = await compressImage(imagePath);
+      if (compressedImageData != null) {
+        final BitmapDescriptor markerIcon = BitmapDescriptor.fromBytes(compressedImageData);
+        markerIcons.add(markerIcon);
+      }
+    }
+    setState(() {});
   }
 
   @override
@@ -164,13 +207,13 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
   void makeLines(PointLatLng startingLatLng, PointLatLng endLatLng) async {
     await polylinePoints
         .getRouteBetweenCoordinates(
-            'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
-            startingLatLng, //Starting LATLANG
-            endLatLng, //End LATLANG
+      'AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM',
+      startingLatLng, //Starting LATLANG
+      endLatLng, //End LATLANG
 
-            travelMode: TravelMode.driving,
-            wayPoints: wayPoints,
-            optimizeWaypoints: true)
+      travelMode: TravelMode.driving,
+      wayPoints: wayPoints,
+    )
         .then((value) {
       for (var point in value.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
@@ -231,6 +274,8 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
       ),
     );
     for (var i = 0; i < wayPointsDurakMarkers.length; i++) {
+      int markerIconIndex = i % markerIcons.length;
+      BitmapDescriptor? markerIcon = markerIcons.isNotEmpty ? markerIcons[markerIconIndex] : null;
       markers.add(
         Marker(
           markerId: MarkerId("markerIdWayPoint$i"),
@@ -241,9 +286,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
           infoWindow: InfoWindow(
             title: ' ${i + 300}',
           ),
-          icon: i >= 11
-              ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
-              : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          icon: markerIcon!,
         ),
       );
     }
