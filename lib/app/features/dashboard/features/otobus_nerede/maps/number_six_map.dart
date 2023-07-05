@@ -190,9 +190,11 @@ class _NumberSixMapState extends State<NumberSixMap> {
             wayPointsDurakMarkers[i].longitude,
           ),
           infoWindow: InfoWindow(
-            title: ' ${i + 1}.Durak ',
+            title: ' ${i + 1}. Durak ',
           ),
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          icon: i >= 11
+              ? BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)
+              : BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
         ),
       );
     }
