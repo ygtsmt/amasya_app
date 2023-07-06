@@ -1,0 +1,81 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+class DurakNumarasiAraScreen extends StatefulWidget {
+  const DurakNumarasiAraScreen({Key? key}) : super(key: key);
+
+  @override
+  _DurakNumarasiAraScreenState createState() => _DurakNumarasiAraScreenState();
+}
+
+class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String distanceText = '';
+  String durationText = '';
+
+  Future<dynamic> getDistance(String destination, String origin) async {
+    String url =
+        'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destination&origins=$origin&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
+
+    try {
+      var response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        var responseBody = jsonDecode(response.body);
+        var elements = responseBody['rows'][0]['elements'][0];
+        var distance = elements['distance']['text'];
+        var duration = elements['duration']['text'];
+
+        setState(() {
+          distanceText = distance;
+          durationText = duration;
+        });
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'OTOBÜS NEREDE ?',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'Durak Numarası ve Otobüs Numarası Girerek Otobüsün Ne zaman Geleceğini Öğren',
+                style: Theme.of(context).textTheme.bodyLarge,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  getDistance('40.618244,35.815631', '41.651208,35.832546');
+                },
+                child: const Text('Mesafeyi Getir'),
+              ),
+              Text('Mesafe: $distanceText'),
+              Text('Süre: $durationText'),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
