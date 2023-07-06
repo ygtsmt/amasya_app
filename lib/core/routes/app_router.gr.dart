@@ -313,6 +313,21 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    OtobusVarisSuresiListScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<OtobusVarisSuresiListScreenRouteArgs>();
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: OtobusVarisSuresiListScreen(
+          key: args.key,
+          arrivalTimes: args.arrivalTimes,
+          busNumber: args.busNumber,
+          arrivalTime: args.arrivalTime,
+        ),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     KentBilgisiScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -497,6 +512,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   DurakNumarasiAraScreenRoute.name,
                   path: 'durak-numarasi-ara-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  OtobusVarisSuresiListScreenRoute.name,
+                  path: 'otobus-vars-suresi-list-screen',
                   parent: DashbordTabRouter.name,
                 ),
               ],
@@ -1021,6 +1041,51 @@ class DurakNumarasiAraScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'DurakNumarasiAraScreenRoute';
+}
+
+/// generated route for
+/// [OtobusVarisSuresiListScreen]
+class OtobusVarisSuresiListScreenRoute
+    extends PageRouteInfo<OtobusVarisSuresiListScreenRouteArgs> {
+  OtobusVarisSuresiListScreenRoute({
+    Key? key,
+    required Map<String, String> arrivalTimes,
+    required String busNumber,
+    required String arrivalTime,
+  }) : super(
+          OtobusVarisSuresiListScreenRoute.name,
+          path: 'otobus-vars-suresi-list-screen',
+          args: OtobusVarisSuresiListScreenRouteArgs(
+            key: key,
+            arrivalTimes: arrivalTimes,
+            busNumber: busNumber,
+            arrivalTime: arrivalTime,
+          ),
+        );
+
+  static const String name = 'OtobusVarisSuresiListScreenRoute';
+}
+
+class OtobusVarisSuresiListScreenRouteArgs {
+  const OtobusVarisSuresiListScreenRouteArgs({
+    this.key,
+    required this.arrivalTimes,
+    required this.busNumber,
+    required this.arrivalTime,
+  });
+
+  final Key? key;
+
+  final Map<String, String> arrivalTimes;
+
+  final String busNumber;
+
+  final String arrivalTime;
+
+  @override
+  String toString() {
+    return 'OtobusVarisSuresiListScreenRouteArgs{key: $key, arrivalTimes: $arrivalTimes, busNumber: $busNumber, arrivalTime: $arrivalTime}';
+  }
 }
 
 /// generated route for

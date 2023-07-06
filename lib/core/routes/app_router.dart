@@ -1,5 +1,17 @@
 // ignore_for_file: unused_import
 
+import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/app/features/auth/features/create_account/ui/create_account_screen.dart";
+import "package:amasyaapp/app/features/auth/features/create_garage/ui/garage_screen.dart";
+import "package:amasyaapp/app/features/auth/features/login/ui/login_screen.dart";
+import "package:amasyaapp/app/features/auth/features/splash/ui/splash_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/belediye_hizmetleri/belediye_hizmetleri_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_icerik_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_list_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart";
+import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haber_icerik_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haberler_screen.dart";
+import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/ui/hal_fiyatlari_list_screen/hal_fiyatlari_list_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberOne/number_one_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberSix/number_six_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberTwo/number_two_screen.dart";
@@ -8,40 +20,25 @@ import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanic
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_one_location.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_six_location.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_two_location.dart";
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/otobus_varis_suresi_list_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/ui/otobus_kullanici_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/ui/otobus_nerede_screen.dart";
-import "package:auto_route/auto_route.dart";
-import "package:auto_route/empty_router_widgets.dart";
-import "package:flutter/material.dart";
-import "package:injectable/injectable.dart";
-import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/create_account/ui/create_account_screen.dart";
-import "package:amasyaapp/app/features/auth/features/create_garage/ui/garage_screen.dart";
-import "package:amasyaapp/app/features/auth/features/login/ui/login_screen.dart";
-import "package:amasyaapp/app/features/auth/features/splash/ui/splash_screen.dart";
-
-import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/scan_vehicle_card_screen.dart';
-import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/iletisim_screen.dart';
-
-import "package:amasyaapp/app/features/dashboard/features/belediye_hizmetleri/belediye_hizmetleri_screen.dart";
-import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_icerik_screen.dart";
-import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_list_screen.dart";
-import "package:amasyaapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart";
-import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haber_icerik_screen.dart";
-import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haberler_screen.dart";
-import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/ui/hal_fiyatlari_list_screen/hal_fiyatlari_list_screen.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/%20button_screens/belediye_projeleri.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/%20button_screens/hilal_masa.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/%20button_screens/nobetci_eczane.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/dashboard_screen.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/user_summary_screen.dart";
-
+import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/iletisim_screen.dart';
+import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/scan_vehicle_card_screen.dart';
 import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/kent_bilgisi_screen.dart/kent_bilgisi_screen.dart';
 import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/scan_driver_licence_screen.dart';
-
 import "package:amasyaapp/app/features/profile/ui/screens/profile_screen/profile_screen.dart";
 import "package:amasyaapp/app/ui/home_screen.dart";
 import "package:amasyaapp/core/core.dart";
+import "package:auto_route/auto_route.dart";
+import "package:auto_route/empty_router_widgets.dart";
+import "package:flutter/material.dart";
+import "package:injectable/injectable.dart";
 
 part "app_router.gr.dart";
 
@@ -71,9 +68,13 @@ part "app_router.gr.dart";
             CustomRoute(
                 page: HilalMasaScreen, path: "hilalmasa-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: BelediyeProjeleriScreen, path: "belediye-projeleri-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: BelediyeProjeleriScreen,
+                path: "belediye-projeleri-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: NobetciEczaneScreen, path: "nobetci-eczane-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: NobetciEczaneScreen,
+                path: "nobetci-eczane-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: HaberListScreen, path: "haber-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
@@ -83,22 +84,35 @@ part "app_router.gr.dart";
             CustomRoute(
                 page: DuyuruListScreen, path: "duyuru-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: HalFiyatlariListScreen, path: "hal-fiyatlari-list-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: HalFiyatlariListScreen,
+                path: "hal-fiyatlari-list-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: BelediyeHizmetleriScreen, path: "belediye-hizmetleri-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: BelediyeHizmetleriScreen,
+                path: "belediye-hizmetleri-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: OtobusNeredeScreen, path: "otobus-nerede-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
-                
             CustomRoute(
-                page: OtobusNeredeSurucuScreen, path: "otobus-nerede-surucu-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: OtobusNeredeSurucuScreen,
+                path: "otobus-nerede-surucu-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: OtobusNeredeKullaniciScreen, path: "otobus-nerede-kullanici-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: OtobusNeredeKullaniciScreen,
+                path: "otobus-nerede-kullanici-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: NumberSixScreen, path: "otobus-number-six-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: NumberSixScreen,
+                path: "otobus-number-six-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: NumberOneScreen, path: "otobus-number-one-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: NumberOneScreen,
+                path: "otobus-number-one-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: NumberTwoScreen, path: "otobus-number-two-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
+                page: NumberTwoScreen,
+                path: "otobus-number-two-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: NumberSixLocation, path: "number-six-location", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
@@ -106,8 +120,13 @@ part "app_router.gr.dart";
             CustomRoute(
                 page: NumberTwoLocation, path: "number-two-location", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
-                page: DurakNumarasiAraScreen, path: "durak-numarasi-ara-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
-                
+                page: DurakNumarasiAraScreen,
+                path: "durak-numarasi-ara-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: OtobusVarisSuresiListScreen,
+                path: "otobus-vars-suresi-list-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(
@@ -122,7 +141,6 @@ part "app_router.gr.dart";
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
-           
             CustomRoute(
               page: ScanDriverLicenceScreen,
               path: "scan-driver-licence-screen",
@@ -149,7 +167,6 @@ part "app_router.gr.dart";
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
-          
           ],
         ),
         CustomRoute(
@@ -172,7 +189,6 @@ part "app_router.gr.dart";
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
-          
           ],
         ),
       ],
