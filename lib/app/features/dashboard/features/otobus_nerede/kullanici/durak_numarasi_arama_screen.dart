@@ -15,9 +15,7 @@ class DurakNumarasiAraScreen extends StatefulWidget {
 }
 
 class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
-  String distanceText = '';
-  String durationText = '';
-  int uzunluk = 555;
+  //String distanceText = '';
   String arrivalTimeBus1 = '';
   String arrivalTimeBus2 = '';
   String arrivalTimeBus3 = '';
@@ -42,13 +40,31 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
         if (response.statusCode == 200) {
           var responseBody = jsonDecode(response.body);
           var elements = responseBody['rows'][0]['elements'][0];
-          var distance = elements['distance']['text'];
+          //  var distance = elements['distance']['text'];
           var duration = elements['duration']['text'];
-          debugPrint(response.body);
           setState(() {
-            distanceText = distance;
-            durationText = duration;
+            // distanceText = distance;
             if (otobusNumberController.text == "6") {
+              if (arrivalTimeBus1.isEmpty) {
+                arrivalTimeBus1 = duration;
+              } else if (arrivalTimeBus2.isEmpty) {
+                arrivalTimeBus2 = duration;
+              } else if (arrivalTimeBus3.isEmpty) {
+                arrivalTimeBus3 = duration;
+              }
+              arrivalTimes[otobusNumberController.text] = duration;
+            }
+            if (otobusNumberController.text == "1") {
+              if (arrivalTimeBus1.isEmpty) {
+                arrivalTimeBus1 = duration;
+              } else if (arrivalTimeBus2.isEmpty) {
+                arrivalTimeBus2 = duration;
+              } else if (arrivalTimeBus3.isEmpty) {
+                arrivalTimeBus3 = duration;
+              }
+              arrivalTimes[otobusNumberController.text] = duration;
+            }
+            if (otobusNumberController.text == "2") {
               if (arrivalTimeBus1.isEmpty) {
                 arrivalTimeBus1 = duration;
               } else if (arrivalTimeBus2.isEmpty) {
@@ -141,39 +157,25 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                           ),
                           SearchButton(
                             onPressed: () {
-                              // Kullanıcının girdiği durak numarası
                               String durakNumber = durakNumberController.text;
-
-                              // Otobüs numarası
                               String otobusNumber = otobusNumberController.text;
-
-                              // Kullanıcının girdiği otobüs numarasına ait konumları almak için kullanılacak alan adı
                               String konumLatitudeFieldName = 'numara$otobusNumber' 'KonumLatitude';
                               String konumLongitudeFieldName = 'numara$otobusNumber' 'KonumLongitude';
-
-                              // Kullanıcının girdiği otobüs numarasına ait konumları alın
                               List originLatitudes =
                                   userSnapshot.data!.docs.map((element) => element[konumLatitudeFieldName]).toList();
                               List originLongitudes =
                                   userSnapshot.data!.docs.map((element) => element[konumLongitudeFieldName]).toList();
 
-                              // Otobüs güzergahını almak için kullanılacak belge ID'si
                               String guzergahDocumentId = "numara$otobusNumber";
 
-                              // Güzergahın başlangıç konumunu alın
                               double destinationLatitude = guzergahSnapshot.data!.docs
                                   .singleWhere((element) => element.id == guzergahDocumentId)['latitudeStart'];
                               double destinationLongitude = guzergahSnapshot.data!.docs
                                   .singleWhere((element) => element.id == guzergahDocumentId)['longitudeStart'];
 
-                              // Her bir konum için mesafeyi ve süreyi hesaplamak için getDistance fonksiyonunu çağırın
                               for (int i = 0; i < originLatitudes.length; i++) {
                                 double originLatitude = originLatitudes[i];
                                 double originLongitude = originLongitudes[i];
-                                setState(() {
-                                  uzunluk = originLongitudes.length;
-                                });
-                                // Mesafeyi ve süreyi hesaplamak için getDistance fonksiyonunu çağırın
                                 getDistance(originLatitude.toString(), originLongitude.toString(),
                                     destinationLatitude.toString(), destinationLongitude.toString());
                               }
@@ -181,9 +183,6 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                             title: "ARA",
                             icon: Icons.search_outlined,
                           ),
-                          Text('Mesafe: $distanceText'),
-                          Text('Süre: $durationText'),
-                          Text(' $uzunluk'),
                           Text('Varış Süresi Otobüs 1: $arrivalTimeBus1'),
                           Text('Varış Süresi Otobüs 2: $arrivalTimeBus2'),
                           Text('Varış Süresi Otobüs 3: $arrivalTimeBus3'),
