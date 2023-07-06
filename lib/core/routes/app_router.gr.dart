@@ -304,6 +304,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    DurakNumarasiAraScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const DurakNumarasiAraScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     KentBilgisiScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -483,6 +492,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   NumberTwoLocationRoute.name,
                   path: 'number-two-location',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  DurakNumarasiAraScreenRoute.name,
+                  path: 'durak-numarasi-ara-screen',
                   parent: DashbordTabRouter.name,
                 ),
               ],
@@ -995,6 +1009,18 @@ class NumberTwoLocationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'NumberTwoLocationRoute';
+}
+
+/// generated route for
+/// [DurakNumarasiAraScreen]
+class DurakNumarasiAraScreenRoute extends PageRouteInfo<void> {
+  const DurakNumarasiAraScreenRoute()
+      : super(
+          DurakNumarasiAraScreenRoute.name,
+          path: 'durak-numarasi-ara-screen',
+        );
+
+  static const String name = 'DurakNumarasiAraScreenRoute';
 }
 
 /// generated route for

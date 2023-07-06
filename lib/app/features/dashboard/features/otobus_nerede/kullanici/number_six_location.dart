@@ -106,16 +106,29 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
 
       var response = await Dio().get(url);
 
-      debugPrint(response.data);
+      // debugPrint(response.data);
     } catch (e) {
-      debugPrint(e.toString()); //print(e)
+      // debugPrint(e.toString()); //print(e)
     }
   }
 
+  void getDistanceMatrix() async {
+    try {
+      var response = await Dio().get(
+          'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=40.602677,35.818931&origins=40.649898,35.794376|40.652977,35.803939&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM');
+      print(response);
+      debugPrint("response");
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  List<String> waypoints = ["40.643466, 35.808822", "40.649737, 35.826969"];
   @override
   void initState() {
     getMarkerIcons();
     getDirections();
+    getDistanceMatrix();
     super.initState();
   }
 
@@ -124,11 +137,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     final Uint8List imageData = bytes.buffer.asUint8List();
 
     final compressedImageData = await FlutterImageCompress.compressWithList(imageData,
-        format: CompressFormat.png,
-        minWidth: 50,
-        minHeight: 50,
-        inSampleSize: 2
-        );
+        format: CompressFormat.png, minWidth: 50, minHeight: 50, inSampleSize: 2);
 
     return compressedImageData;
   }

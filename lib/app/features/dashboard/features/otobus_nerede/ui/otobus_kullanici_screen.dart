@@ -20,6 +20,27 @@ class OtobusNeredeKullaniciScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: AmasyaHomeButton(
                     onPressed: () {
+                      context.router.navigate(const DurakNumarasiAraScreenRoute());
+                    },
+                    title: "Durak Numarası İle Öğren",
+                    icon: Icons.search_outlined),
+              )),
+            ],
+          ),
+        ),
+        const Divider(),
+        Text(
+          "Otobüs Konumunu Canlı izle ",
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        Expanded(
+          child: Row(
+            children: [
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: AmasyaHomeButton(
+                    onPressed: () {
                       context.router.navigate(const NumberOneLocationRoute());
                     },
                     title: "1 Numara",

@@ -1,7 +1,7 @@
-//Way point doğru rota oluşturuldu adamı Boyle sikerler
 
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -17,6 +17,11 @@ class NumberOneLocation extends StatefulWidget {
 }
 
 class _NumberOneLocationState extends State<NumberOneLocation> {
+  final Dio _dio = Dio();
+  String dlatitude = "40.659990";
+  String dlongitude = "35.840260";
+  String slatitude = "40.657410";
+  String slongitude = "35.838458";
   final loc.Location location = loc.Location();
   final Set<Marker> markers = {};
   GoogleMapController? mapController;
@@ -69,11 +74,46 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
     'assets/images/20.png',
   ];
   List<BitmapDescriptor> markerIcons = [];
+  Future<void> calculateEstimatedArrivalTime(List<String> waypoints) async {
+    String start = "40.659990, 35.840260";
+    String destination = "40.643598, 35.809132";
+    String waypointString = waypoints.join("|");
+
+    String url =
+        "https://maps.googleapis.com/maps/api/directions/json?origin=$start&destination=$destination&waypoints=$waypointString&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM";
+
+    Response response = await Dio().get(url);
+    Map<String, dynamic> responseData = response.data;
+
+    if (responseData['status'] == 'OK') {
+      List<dynamic> routes = responseData['routes'];
+      if (routes.isNotEmpty) {
+        Map<String, dynamic> route = routes[0];
+        Map<String, dynamic> legs = route['legs'][0];
+
+        double duration = legs['duration']['value'] / 60.0; // Süreyi dakika cinsinden al
+        print('Tahmini Varış Süresi: $duration dakika');
+      }
+    } else {
+      print('Hesaplama yapılamadı. Hata Kodu: ${responseData['status']}');
+    }
+  }
+
+  double startLatitude = 40.1234;
+  double startLongitude = 30.5678;
+  double destinationLatitude = 40.9876;
+  double destinationLongitude = 30.4321;
+  List<String> waypoints = [
+  "40.655381, 35.836891"
+"40.650584, 35.830444"
+"40.648980, 35.816248"
+"40.632924, 35.812836"
+  ];
 
   @override
   void initState() {
     getMarkerIcons();
-
+    calculateEstimatedArrivalTime(waypoints);
     super.initState();
   }
 
@@ -96,6 +136,9 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
       }
     }
     setState(() {});
+ /*    Response response = await _dio.get(
+        "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$dlatitude,$dlongitude&origins=$slatitude,$slongitude&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM");
+    debugPrint(response.data.toString()); */
   }
 
   @override

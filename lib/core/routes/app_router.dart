@@ -4,6 +4,7 @@ import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/n
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberSix/number_six_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/numberTwo/number_two_screen.dart";
 import 'package:amasyaapp/app/features/dashboard/features/otobus_nerede/driver/ui/surucu_screen.dart';
+import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/durak_numarasi_arama_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_one_location.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_six_location.dart";
 import "package:amasyaapp/app/features/dashboard/features/otobus_nerede/kullanici/number_two_location.dart";
@@ -104,6 +105,8 @@ part "app_router.gr.dart";
                 page: NumberOneLocation, path: "number-one-location", transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: NumberTwoLocation, path: "number-two-location", transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: DurakNumarasiAraScreen, path: "durak-numarasi-ara-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
                 
           ],
         ),
