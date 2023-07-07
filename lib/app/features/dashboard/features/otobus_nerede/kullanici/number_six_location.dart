@@ -1,5 +1,7 @@
 //Way point doğru rota oluşturuldu adamı Boyle sikerler
 
+// ignore_for_file: avoid_print
+
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
@@ -92,7 +94,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     'assets/images/20.png',
   ];
   List<BitmapDescriptor> markerIcons = [];
-  void getDirections() async {
+  /* void getDirections() async {
     try {
       String origin = '40.685112, 35.893150';
       String destination = '40.646664, 35.812732';
@@ -110,7 +112,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     } catch (e) {
       // debugPrint(e.toString()); //print(e)
     }
-  }
+  } */
 
   void getDistanceMatrix() async {
     try {
@@ -127,7 +129,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
   @override
   void initState() {
     getMarkerIcons();
-    getDirections();
+    // getDirections();
     getDistanceMatrix();
     super.initState();
   }

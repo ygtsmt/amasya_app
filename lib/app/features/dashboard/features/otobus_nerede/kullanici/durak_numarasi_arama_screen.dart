@@ -79,6 +79,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
           return null;
         }
       } catch (e) {
+        // ignore: avoid_print
         print(e);
         return null;
       }
@@ -157,7 +158,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                           ),
                           SearchButton(
                             onPressed: () {
-                              String durakNumber = durakNumberController.text;
+                             // String durakNumber = durakNumberController.text;
                               String otobusNumber = otobusNumberController.text;
                               String konumLatitudeFieldName = 'numara$otobusNumber' 'KonumLatitude';
                               String konumLongitudeFieldName = 'numara$otobusNumber' 'KonumLongitude';

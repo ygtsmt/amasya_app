@@ -1,4 +1,6 @@
 
+// ignore_for_file: avoid_print
+
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
@@ -17,7 +19,6 @@ class NumberOneLocation extends StatefulWidget {
 }
 
 class _NumberOneLocationState extends State<NumberOneLocation> {
-  final Dio _dio = Dio();
   String dlatitude = "40.659990";
   String dlongitude = "35.840260";
   String slatitude = "40.657410";

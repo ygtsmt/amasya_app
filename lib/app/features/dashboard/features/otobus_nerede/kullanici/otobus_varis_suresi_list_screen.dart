@@ -30,8 +30,8 @@ class _OtobusVarisSuresiListScreenState extends State<OtobusVarisSuresiListScree
           child: ListView.builder(
             itemCount: widget.arrivalTimes.length,
             itemBuilder: (BuildContext context, int index) {
-              String busNumber = widget.arrivalTimes.keys.elementAt(index);
-              String arrivalTime = widget.arrivalTimes.values.elementAt(index);
+              // String busNumber = widget.arrivalTimes.keys.elementAt(index);
+              // String arrivalTime = widget.arrivalTimes.values.elementAt(index);
               return Text(widget.arrivalTime);
             },
           ),
