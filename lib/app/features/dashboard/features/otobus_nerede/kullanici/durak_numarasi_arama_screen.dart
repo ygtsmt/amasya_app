@@ -66,8 +66,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
           double latitude1 = originLatitudes[i];
           double longitude1 = originLongitudes[i];
           var response = await Dio().get(
-              'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destinationLatitude,$destinationLongitude&origins=$latitude1,$longitude1&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM'
-              );
+              'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destinationLatitude,$destinationLongitude&origins=$latitude1,$longitude1&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM');
           print(response);
           debugPrint(originLongitudes.length.toString());
         } catch (e) {
