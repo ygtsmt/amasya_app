@@ -50,134 +50,149 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text(
+          "Amasya App",
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
         Expanded(
-          flex: 6,
-          child: SizedBox(
-            width: double.infinity,
-            child: PageView.builder(
-              controller: pageController,
-              itemCount: images.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      images[index],
-                      fit: BoxFit.cover,
-                    ),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 6,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: PageView.builder(
+                    controller: pageController,
+                    itemCount: images.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            images[index],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                    onPageChanged: (index) {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
                   ),
-                );
-              },
-              onPageChanged: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 3,
-          child: Row(
-            children: [
+                ),
+              ),
               Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    if (deneme.length > 2) {
-                      context.router.navigate(const OtobusNeredeSurucuScreenRoute());
-                    }
-                    if (deneme.length < 2) {
+                flex: 3,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          if (deneme.length > 2) {
+                            context.router.navigate(const OtobusNeredeSurucuScreenRoute());
+                          }
+                          if (deneme.length < 2) {
                       context.router.navigate(const OtobusNeredeKullaniciScreenRoute());
-                    }
-                  },
-                  title: 'OTOBÜS\nNEREDE',
-                  icon: Icons.directions_bus_filled_outlined,
+                          }
+                        },
+                        title: 'OTOBÜS\nNEREDE',
+                        icon: Icons.directions_bus_filled_outlined,
+                      ),
+                    ),
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {},
+                        title: 'ELMAKART',
+                        icon: Icons.credit_card_outlined,
+                      ),
+                    ),
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const HilalMasaScreenRoute());
+                        },
+                        title: 'HİLAL\nMASA',
+                        icon: Icons.message_outlined,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {},
-                  title: 'ELMAKART',
-                  icon: Icons.credit_card_outlined,
+                flex: 3,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const HaberListScreenRoute());
+                        },
+                        title: 'HABERLER',
+                        icon: Icons.newspaper_outlined,
+                      ),
+                    ),
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const DuyuruListScreenRoute());
+                        },
+                        title: 'DUYURULAR',
+                        icon: Icons.notifications_active_outlined,
+                      ),
+                    ),
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const HalFiyatlariListScreenRoute());
+                        },
+                        title: 'HAL\nFİYATLARI',
+                        icon: Icons.currency_lira_outlined,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const HilalMasaScreenRoute());
-                  },
-                  title: 'HİLAL\nMASA',
-                  icon: Icons.message_outlined,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 3,
-          child: Row(
-            children: [
-              Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const HaberListScreenRoute());
-                  },
-                  title: 'HABERLER',
-                  icon: Icons.newspaper_outlined,
-                ),
-              ),
-              Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const DuyuruListScreenRoute());
-                  },
-                  title: 'DUYURULAR',
-                  icon: Icons.notifications_active_outlined,
-                ),
-              ),
-              Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const HalFiyatlariListScreenRoute());
-                  },
-                  title: 'HAL\nFİYATLARI',
-                  icon: Icons.currency_lira_outlined,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 3,
-          child: Row(
-            children: [
-              Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const BelediyeHizmetleriScreenRoute());
-                  },
-                  title: 'BELEDİYE\nHİZMETLERİ',
-                  icon: Icons.text_snippet_outlined,
-                ),
-              ),
-              Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const BelediyeProjeleriScreenRoute());
-                  },
-                  title: 'BELEDİYE\nPROJELERİ',
-                  icon: Icons.design_services_outlined,
-                ),
-              ),
-              Expanded(
-                child: AmasyaHomeButton(
-                  onPressed: () {
-                    context.router.navigate(const NobetciEczaneScreenRoute());
-                  },
-                  title: 'NÖBETÇİ\nECZANELER',
-                  icon: Icons.e_mobiledata_outlined,
+                flex: 3,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const BelediyeHizmetleriScreenRoute());
+                        },
+                        title: 'BELEDİYE\nHİZMETLERİ',
+                        icon: Icons.text_snippet_outlined,
+                      ),
+                    ),
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const BelediyeProjeleriScreenRoute());
+                        },
+                        title: 'BELEDİYE\nPROJELERİ',
+                        icon: Icons.design_services_outlined,
+                      ),
+                    ),
+                    Expanded(
+                      child: AmasyaHomeButton(
+                        onPressed: () {
+                          context.router.navigate(const NobetciEczaneScreenRoute());
+                        },
+                        title: 'NÖBETÇİ\nECZANELER',
+                        icon: Icons.e_mobiledata_outlined,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
