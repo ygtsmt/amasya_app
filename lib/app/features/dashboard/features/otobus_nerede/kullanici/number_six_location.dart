@@ -174,9 +174,11 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
               zoomGesturesEnabled: true,
               // ...
               initialCameraPosition: CameraPosition(
+                // bearing: ,
+                tilt: 90,
                 target: LatLng(
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeTarget'],
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeTarget'],
+                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeStart'],
+                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeStart'],
                 ),
                 zoom: 12.5,
               ),
