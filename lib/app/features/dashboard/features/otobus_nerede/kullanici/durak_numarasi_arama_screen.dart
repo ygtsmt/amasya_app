@@ -1,11 +1,10 @@
-import 'dart:convert';
-
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:amasyaapp/app/ui/widgets/search_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:http/http.dart' as http;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DurakNumarasiAraScreen extends StatefulWidget {
   const DurakNumarasiAraScreen({super.key});
@@ -15,73 +14,65 @@ class DurakNumarasiAraScreen extends StatefulWidget {
 }
 
 class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
-  //String distanceText = '';
-  String arrivalTimeBus1 = '';
-  String arrivalTimeBus2 = '';
-  String arrivalTimeBus3 = '';
-
   @override
   Widget build(BuildContext context) {
-    Map<String, String> arrivalTimes = {};
-
-    final TextEditingController durakNumberController = TextEditingController(text: "300");
+    final TextEditingController durakNumberController = TextEditingController();
     final TextEditingController otobusNumberController = TextEditingController(text: "6");
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    Future<dynamic> getDistance(
-        String originLatitude, String originLongitude, String destinationLatitude, String destinationLongitude) async {
-      String origin = "$originLatitude, $originLongitude";
-      String destination = "$destinationLatitude, $destinationLongitude";
+    final wayPointsDurakMarkers = <LatLng>[
+      const LatLng(40.649835, 35.795758),
+      const LatLng(40.650540, 35.797761),
+      const LatLng(40.651675, 35.800865),
+      const LatLng(40.652876, 35.803558),
+      const LatLng(40.651299, 35.805962),
+      const LatLng(40.646641, 35.810475),
+      const LatLng(40.643452, 35.808433),
+      const LatLng(40.637473, 35.808831),
+      const LatLng(40.616501, 35.813611),
+      const LatLng(40.602087, 35.809871),
+      const LatLng(40.606744, 35.812118),
+      const LatLng(40.603355, 35.818920),
+      const LatLng(40.607146, 35.812102),
+      const LatLng(40.617396, 35.814808),
+      const LatLng(40.633062, 35.813166),
+      const LatLng(40.646278, 35.810989),
+      const LatLng(40.650200, 35.807478),
+      const LatLng(40.652957, 35.803708),
+      const LatLng(40.652149, 35.801709),
+      const LatLng(40.650763, 35.798451),
+    ];
+    int durakNo;
+    void getDistanceMatrix(int durakNumarasi) async {
+      int index = durakNumarasi - 1;
+      LatLng destination = wayPointsDurakMarkers[index];
+      String? destinationLatitude;
+      String? destinationLongitude;
+      destinationLatitude = destination.latitude.toString();
+      destinationLongitude = destination.longitude.toString();
+      QuerySnapshot usersSnapshot = await FirebaseFirestore.instance.collection('users').get();
 
-      String url =
-          'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destination&origins=$origin&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM';
+      List<double> originLatitudes = [];
+      List<double> originLongitudes = [];
 
-      try {
-        var response = await http.get(Uri.parse(url));
-        if (response.statusCode == 200) {
-          var responseBody = jsonDecode(response.body);
-          var elements = responseBody['rows'][0]['elements'][0];
-          //  var distance = elements['distance']['text'];
-          var duration = elements['duration']['text'];
-          setState(() {
-            // distanceText = distance;
-            if (otobusNumberController.text == "6") {
-              if (arrivalTimeBus1.isEmpty) {
-                arrivalTimeBus1 = duration;
-              } else if (arrivalTimeBus2.isEmpty) {
-                arrivalTimeBus2 = duration;
-              } else if (arrivalTimeBus3.isEmpty) {
-                arrivalTimeBus3 = duration;
-              }
-              arrivalTimes[otobusNumberController.text] = duration;
-            }
-            if (otobusNumberController.text == "1") {
-              if (arrivalTimeBus1.isEmpty) {
-                arrivalTimeBus1 = duration;
-              } else if (arrivalTimeBus2.isEmpty) {
-                arrivalTimeBus2 = duration;
-              } else if (arrivalTimeBus3.isEmpty) {
-                arrivalTimeBus3 = duration;
-              }
-              arrivalTimes[otobusNumberController.text] = duration;
-            }
-            if (otobusNumberController.text == "2") {
-              if (arrivalTimeBus1.isEmpty) {
-                arrivalTimeBus1 = duration;
-              } else if (arrivalTimeBus2.isEmpty) {
-                arrivalTimeBus2 = duration;
-              } else if (arrivalTimeBus3.isEmpty) {
-                arrivalTimeBus3 = duration;
-              }
-              arrivalTimes[otobusNumberController.text] = duration;
-            }
-          });
-        } else {
-          return null;
+      for (QueryDocumentSnapshot doc in usersSnapshot.docs) {
+        double latitude = doc['numara6KonumLatitude'];
+        double longitude = doc['numara6KonumLongitude'];
+
+        originLatitudes.add(latitude);
+        originLongitudes.add(longitude);
+      }
+      for (int i = 0; i < originLatitudes.length; i++) {
+        try {
+          double latitude1 = originLatitudes[i];
+          double longitude1 = originLongitudes[i];
+          var response = await Dio().get(
+              'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destinationLatitude,$destinationLongitude&origins=$latitude1,$longitude1&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM'
+              );
+          print(response);
+          debugPrint(originLongitudes.length.toString());
+        } catch (e) {
+          print(e);
         }
-      } catch (e) {
-        // ignore: avoid_print
-        print(e);
-        return null;
       }
     }
 
@@ -96,7 +87,10 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
 
             return StreamBuilder(
               stream: FirebaseFirestore.instance.collection('users').snapshots(),
-              builder: (context, AsyncSnapshot<QuerySnapshot> userSnapshot) {
+              builder: (
+                context,
+                AsyncSnapshot<QuerySnapshot> userSnapshot,
+              ) {
                 if (!userSnapshot.hasData) {
                   return const Center(child: AppleProgressIndicator());
                 }
@@ -158,35 +152,12 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                           ),
                           SearchButton(
                             onPressed: () {
-                             // String durakNumber = durakNumberController.text;
-                              String otobusNumber = otobusNumberController.text;
-                              String konumLatitudeFieldName = 'numara$otobusNumber' 'KonumLatitude';
-                              String konumLongitudeFieldName = 'numara$otobusNumber' 'KonumLongitude';
-                              List originLatitudes =
-                                  userSnapshot.data!.docs.map((element) => element[konumLatitudeFieldName]).toList();
-                              List originLongitudes =
-                                  userSnapshot.data!.docs.map((element) => element[konumLongitudeFieldName]).toList();
-
-                              String guzergahDocumentId = "numara$otobusNumber";
-
-                              double destinationLatitude = guzergahSnapshot.data!.docs
-                                  .singleWhere((element) => element.id == guzergahDocumentId)['latitudeStart'];
-                              double destinationLongitude = guzergahSnapshot.data!.docs
-                                  .singleWhere((element) => element.id == guzergahDocumentId)['longitudeStart'];
-
-                              for (int i = 0; i < originLatitudes.length; i++) {
-                                double originLatitude = originLatitudes[i];
-                                double originLongitude = originLongitudes[i];
-                                getDistance(originLatitude.toString(), originLongitude.toString(),
-                                    destinationLatitude.toString(), destinationLongitude.toString());
-                              }
+                              durakNo = int.parse(durakNumberController.text);
+                              getDistanceMatrix(durakNo);
                             },
                             title: "ARA",
                             icon: Icons.search_outlined,
                           ),
-                          Text('Varış Süresi Otobüs 1: $arrivalTimeBus1'),
-                          Text('Varış Süresi Otobüs 2: $arrivalTimeBus2'),
-                          Text('Varış Süresi Otobüs 3: $arrivalTimeBus3'),
                         ],
                       ),
                     ),
