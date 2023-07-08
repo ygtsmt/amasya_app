@@ -8,6 +8,7 @@ import "package:amasyaapp/app/features/auth/features/splash/ui/splash_screen.dar
 import "package:amasyaapp/app/features/dashboard/features/belediye_hizmetleri/belediye_hizmetleri_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_icerik_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/duyuru_list/ui/duyuru_list_screen/duyuru_list_screen.dart";
+import 'package:amasyaapp/app/features/dashboard/features/elma_kart/ui/elma_kart_screen.dart';
 import "package:amasyaapp/app/features/dashboard/features/haber_list/data/models/haber_model.dart";
 import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haber_icerik_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/haber_list/ui/haberler_screen/haberler_screen.dart";
@@ -125,7 +126,11 @@ part "app_router.gr.dart";
                 transitionsBuilder: TransitionsBuilders.fadeIn),
             CustomRoute(
                 page: OtobusVarisSuresiListScreen,
-                path: "otobus-vars-suresi-list-screen",
+                path: "otobus-varis-suresi-list-screen",
+                transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(
+                page: ElmaKartScreen,
+                path: "elma-kart-screen",
                 transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),

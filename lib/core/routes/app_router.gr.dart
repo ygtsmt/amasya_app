@@ -328,6 +328,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    ElmaKartScreenRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child:  ElmaKartScreen(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     KentBilgisiScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -516,7 +525,12 @@ class _$AppRouter extends RootStackRouter {
                 ),
                 RouteConfig(
                   OtobusVarisSuresiListScreenRoute.name,
-                  path: 'otobus-vars-suresi-list-screen',
+                  path: 'otobus-varis-suresi-list-screen',
+                  parent: DashbordTabRouter.name,
+                ),
+                RouteConfig(
+                  ElmaKartScreenRoute.name,
+                  path: 'elma-kart-screen',
                   parent: DashbordTabRouter.name,
                 ),
               ],
@@ -1054,7 +1068,7 @@ class OtobusVarisSuresiListScreenRoute
     required String arrivalTime,
   }) : super(
           OtobusVarisSuresiListScreenRoute.name,
-          path: 'otobus-vars-suresi-list-screen',
+          path: 'otobus-varis-suresi-list-screen',
           args: OtobusVarisSuresiListScreenRouteArgs(
             key: key,
             arrivalTimes: arrivalTimes,
@@ -1086,6 +1100,18 @@ class OtobusVarisSuresiListScreenRouteArgs {
   String toString() {
     return 'OtobusVarisSuresiListScreenRouteArgs{key: $key, arrivalTimes: $arrivalTimes, busNumber: $busNumber, arrivalTime: $arrivalTime}';
   }
+}
+
+/// generated route for
+/// [ElmaKartScreen]
+class ElmaKartScreenRoute extends PageRouteInfo<void> {
+  const ElmaKartScreenRoute()
+      : super(
+          ElmaKartScreenRoute.name,
+          path: 'elma-kart-screen',
+        );
+
+  static const String name = 'ElmaKartScreenRoute';
 }
 
 /// generated route for

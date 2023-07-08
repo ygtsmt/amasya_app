@@ -101,7 +101,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             context.router.navigate(const OtobusNeredeSurucuScreenRoute());
                           }
                           if (deneme.length < 2) {
-                      context.router.navigate(const OtobusNeredeKullaniciScreenRoute());
+                            context.router.navigate(const OtobusNeredeKullaniciScreenRoute());
                           }
                         },
                         title: 'OTOBÜS\nNEREDE',
@@ -110,7 +110,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     Expanded(
                       child: AmasyaHomeButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.router.navigate(const ElmaKartScreenRoute());
+                        },
                         title: 'ELMAKART',
                         icon: Icons.credit_card_outlined,
                       ),
