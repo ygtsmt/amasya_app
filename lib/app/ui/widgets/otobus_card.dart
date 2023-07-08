@@ -2,13 +2,13 @@ import "package:flutter/material.dart";
 
 class OtobusCard extends StatelessWidget {
   const OtobusCard({
-    required this.onPressed,
+    required this.onTap,
     required this.otobusNo,
     required this.time,
     super.key,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback onTap;
   final String otobusNo;
   final String time;
 
@@ -24,7 +24,7 @@ class OtobusCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: GestureDetector(
-          onTap: onPressed,
+          onTap: onTap,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[

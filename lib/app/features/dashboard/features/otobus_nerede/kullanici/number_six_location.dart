@@ -2,6 +2,7 @@
 
 // ignore_for_file: avoid_print
 
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
@@ -171,37 +172,48 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
               return const Center(child: AppleProgressIndicator());
             }
 
-            return GoogleMap(
-              polylines: Set<Polyline>.of(polylines.values),
-              zoomGesturesEnabled: true,
-              // ...
-              initialCameraPosition: CameraPosition(
-                // bearing: ,
-                tilt: 90,
-                target: LatLng(
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeStart'],
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeStart'],
+            return Column(
+              children: [
+                const AmasyaScreenHeader(title: "6 NUMARA CANLI HARİTA"),
+                Expanded(
+                  child: GoogleMap(
+                    polylines: Set<Polyline>.of(polylines.values),
+                    zoomGesturesEnabled: true,
+                    // ...
+                    initialCameraPosition: CameraPosition(
+                      // bearing: ,
+                      tilt: 90,
+                      target: LatLng(
+                        guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeStart'],
+                        guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeStart'],
+                      ),
+                      zoom: 12.5,
+                    ),
+                    markers: getMarkersFromUserSnapshot(userSnapshot.data!.docs,
+                        guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")),
+                    mapType: MapType.normal,
+                    onMapCreated: (controller) {
+                      setState(() {
+                        mapController = controller;
+                        makeLines(
+                          PointLatLng(
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara6")['latitudeStart'],
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara6")['longitudeStart'],
+                          ), // Starting LATLANG
+                          PointLatLng(
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara6")['latitudeTarget'],
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara6")['longitudeTarget'],
+                          ), // End LATLANG
+                        );
+                      });
+                    },
+                  ),
                 ),
-                zoom: 12.5,
-              ),
-              markers: getMarkersFromUserSnapshot(userSnapshot.data!.docs,
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")),
-              mapType: MapType.normal,
-              onMapCreated: (controller) {
-                setState(() {
-                  mapController = controller;
-                  makeLines(
-                    PointLatLng(
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeStart'],
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeStart'],
-                    ), // Starting LATLANG
-                    PointLatLng(
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['latitudeTarget'],
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara6")['longitudeTarget'],
-                    ), // End LATLANG
-                  );
-                });
-              },
+              ],
             );
           },
         );

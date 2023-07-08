@@ -1,6 +1,8 @@
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:amasyaapp/app/ui/widgets/otobus_card.dart';
 import 'package:amasyaapp/app/ui/widgets/search_button.dart';
+import 'package:amasyaapp/core/core.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,7 @@ class DurakNumarasiAraScreen extends StatefulWidget {
 
 class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
   String? isActiveFieldName;
-
+  int? navigateControl;
   String? sure;
   List<String> sureler = [];
   final TextEditingController durakNumberController = TextEditingController();
@@ -258,8 +260,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                             ),
                             SearchButton(
                               onPressed: () {
-                                debugPrint(allWayPoints[39].toString());
-                                /* FocusScope.of(context).unfocus();
+                                FocusScope.of(context).unfocus();
 
                                 if (formKey.currentState!.validate()) {
                                   durakNo = int.parse(durakNumberController.text);
@@ -271,7 +272,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
 
                                   sureler.clear();
                                   getDistanceMatrix(durakNo!, otobusNo!);
-                                } */
+                                }
                               },
                               title: "ARA",
                               icon: Icons.search_outlined,
@@ -285,7 +286,21 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                                   itemCount: sureler.length,
                                   itemBuilder: (context, index) {
                                     return OtobusCard(
-                                        onPressed: () {}, otobusNo: otobusNumberController.text, time: sureler[index]);
+                                        onTap: () {
+                                          navigateControl = int.parse(otobusNumberController.text);
+
+                                          if (navigateControl == 6) {
+                                            context.router.navigate(const NumberSixLocationRoute());
+                                          } else if (navigateControl == 1) {
+                                            context.router.navigate(const NumberOneLocationRoute());
+                                          } else if (navigateControl == 2) {
+                                            context.router.navigate(const NumberTwoLocationRoute());
+                                          } else {
+                                            null;
+                                          }
+                                        },
+                                        otobusNo: otobusNumberController.text,
+                                        time: sureler[index]);
                                   },
                                 ),
                               ),

@@ -1,6 +1,6 @@
-
 // ignore_for_file: avoid_print
 
+import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import 'package:amasyaapp/app/ui/widgets/apple_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
@@ -105,10 +105,10 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
   double destinationLatitude = 40.9876;
   double destinationLongitude = 30.4321;
   List<String> waypoints = [
-  "40.655381, 35.836891"
-"40.650584, 35.830444"
-"40.648980, 35.816248"
-"40.632924, 35.812836"
+    "40.655381, 35.836891"
+        "40.650584, 35.830444"
+        "40.648980, 35.816248"
+        "40.632924, 35.812836"
   ];
 
   @override
@@ -137,7 +137,7 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
       }
     }
     setState(() {});
- /*    Response response = await _dio.get(
+    /*    Response response = await _dio.get(
         "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$dlatitude,$dlongitude&origins=$slatitude,$slongitude&key=AIzaSyAWhVmUEq7HXJO38JUiShDafdXwPIbWyfM");
     debugPrint(response.data.toString()); */
   }
@@ -158,35 +158,47 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
               return const Center(child: AppleProgressIndicator());
             }
 
-            return GoogleMap(
-              polylines: Set<Polyline>.of(polylines.values),
-              zoomGesturesEnabled: true,
-              // ...
-              initialCameraPosition: CameraPosition(
-                target: LatLng(
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['latitudeTarget'],
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['longitudeTarget'],
+            return Column(
+              children: [
+                const AmasyaScreenHeader(title: "1 NUMARA CANLI HARİTA"),
+                Expanded(
+                  child: GoogleMap(
+                    polylines: Set<Polyline>.of(polylines.values),
+                    zoomGesturesEnabled: true,
+                    // ...
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(
+                        guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['latitudeTarget'],
+                        guzergahSnapshot.data!.docs
+                            .singleWhere((element) => element.id == "numara1")['longitudeTarget'],
+                      ),
+                      zoom: 12.5,
+                    ),
+                    markers: getMarkersFromUserSnapshot(userSnapshot.data!.docs,
+                        guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")),
+                    mapType: MapType.normal,
+                    onMapCreated: (controller) {
+                      setState(() {
+                        mapController = controller;
+                        makeLines(
+                          PointLatLng(
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara1")['latitudeStart'],
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara1")['longitudeStart'],
+                          ), // Starting LATLANG
+                          PointLatLng(
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara1")['latitudeTarget'],
+                            guzergahSnapshot.data!.docs
+                                .singleWhere((element) => element.id == "numara1")['longitudeTarget'],
+                          ), // End LATLANG
+                        );
+                      });
+                    },
+                  ),
                 ),
-                zoom: 12.5,
-              ),
-              markers: getMarkersFromUserSnapshot(userSnapshot.data!.docs,
-                  guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")),
-              mapType: MapType.normal,
-              onMapCreated: (controller) {
-                setState(() {
-                  mapController = controller;
-                  makeLines(
-                    PointLatLng(
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['latitudeStart'],
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['longitudeStart'],
-                    ), // Starting LATLANG
-                    PointLatLng(
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['latitudeTarget'],
-                      guzergahSnapshot.data!.docs.singleWhere((element) => element.id == "numara1")['longitudeTarget'],
-                    ), // End LATLANG
-                  );
-                });
-              },
+              ],
             );
           },
         );
@@ -213,7 +225,6 @@ class _NumberOneLocationState extends State<NumberOneLocation> {
       wayPoints: wayPoints,
       //optimizeWaypoints: true
     )
-    
         .then((value) {
       for (var point in value.points) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
