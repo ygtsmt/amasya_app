@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             DashbordTabRouter(),
             PeTabRouter(),
             CollectionTabRouter(),
-            ProfileTabRouter(),
+            // ProfileTabRouter(),
           ],
           builder: (final context, final child, final animation) {
             final tabsRouter = AutoTabsRouter.of(context);
@@ -185,10 +185,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           icon: Icon(Icons.info_outlined),
                           label: "İLETİŞİM",
                         ),
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.person_outline),
-                          label: "PROFİL",
-                        ),
+                        // BottomNavigationBarItem(
+                        //   icon: Icon(Icons.person_outline),
+                        //   label: "PROFİL",
+                        // ),
                       ],
                       currentIndex: tabsRouter.activeIndex,
                       onTap: tabsRouter.setActiveIndex,
