@@ -1,6 +1,4 @@
 import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/login/ui/login_form.dart";
-import 'package:amasyaapp/app/ui/widgets/amasya_screen_header.dart';
 import "package:amasyaapp/core/data_sources/local_data_source/secure_data_storage.dart";
 import "package:amasyaapp/core/enums.dart";
 import "package:amasyaapp/core/injection/injection.dart";
@@ -17,7 +15,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   @override
   Widget build(final BuildContext context) {
     return BlocListener<AppBloc, AppState>(
@@ -34,52 +31,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AmasyaScreenHeader(
-                title: "",
-                actions: BlocBuilder<AppBloc, AppState>(
-                  builder: (final context, final state) {
-                    return SwitchListTile(
-                      value: state.themeMode == ThemeMode.dark,
-                      onChanged: (final bool value) {
-                        getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
-                      },
-                      title: const Text("Karanlık Tema"),
-                    );
-                  },
+              ElevatedButton.icon(
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  context.router.popUntilRoot();
+                  context.router.popForced();
+                  await context.router.root.replaceAll([const SplashScreenRoute()]);
+                },
+                label: const Text(
+                  "Çıkış Yap",
                 ),
               ),
             ],
           ),
-          if (deneme.length > 2)
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.logout),
-                  onPressed: () async {
-                    context.router.popUntilRoot();
-                    context.router.popForced();
-                    await context.router.root.replaceAll([const SplashScreenRoute()]);
-                  },
-                  label: const Text(
-                    "Çıkış Yap",
-                  ),
-                ),
-              ],
-            ),
-          if (deneme.length < 2)
-            ElevatedButton.icon(
-              icon: const Icon(Icons.login_outlined),
-              onPressed: () async {
-                context.router.popUntilRoot();
-                context.router.popForced();
-                await context.router.root.replaceAll([const LoginScreenRoute()]);
-              },
-              label: const Text(
-                "Sürücü Girişi Yap",
-              ),
-            ),
+          
         ],
       ),
     );

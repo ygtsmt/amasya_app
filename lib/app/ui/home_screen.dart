@@ -1,6 +1,7 @@
 import "package:amasyaapp/app/bloc/app_bloc.dart";
+import "package:amasyaapp/app/features/auth/features/login/ui/login_form.dart";
 import 'package:amasyaapp/app/ui/widgets/amasya_logo.dart';
-import "package:amasyaapp/core/routes/app_router.dart";
+import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_adaptive_ui/flutter_adaptive_ui.dart";
@@ -38,7 +39,69 @@ class _HomeScreenState extends State<HomeScreen> {
                 FocusScope.of(context).unfocus();
               },
               child: Scaffold(
-                  drawer: const Drawer(),
+                  drawer: Drawer(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 32),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            Images.logo,
+                            color: state.themeMode == ThemeMode.dark ? Colors.white : Colors.black,
+                            height: 100,
+                          ),
+                          Text(
+                            "AMASYA APP",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          SwitchListTile(
+                            value: state.themeMode == ThemeMode.dark,
+                            onChanged: (final bool value) {
+                              getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
+                            },
+                            title: const Text("Karanlık Tema"),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              if ( deneme.length > 2)
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton.icon(
+                                      icon: const Icon(Icons.logout),
+                                      onPressed: () async {
+                                        setState(() {
+                                          deneme == "";
+                                        });
+                                        context.router.popUntilRoot();
+                                        context.router.popForced();
+                                        await context.router.root.replaceAll([const SplashScreenRoute()]);
+                                      },
+                                      label: const Text(
+                                        "Çıkış Yap",
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              if (deneme.length < 2)
+                                ElevatedButton.icon(
+                                  icon: const Icon(Icons.login_outlined),
+                                  onPressed: () async {
+                                    context.router.popUntilRoot();
+                                    context.router.popForced();
+                                    await context.router.root.replaceAll([const LoginScreenRoute()]);
+                                  },
+                                  label: const Text(
+                                    "Sürücü Girişi Yap",
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   appBar: AppBar(
                     leading: const AutoLeadingButton(),
                     elevation: 0,

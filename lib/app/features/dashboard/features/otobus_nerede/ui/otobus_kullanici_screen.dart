@@ -12,23 +12,23 @@ class OtobusNeredeKullaniciScreen extends StatelessWidget {
     return Column(
       children: [
         const AmasyaScreenHeader(title: "Kullanıcı"),
-        Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                  child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: AmasyaHomeButton(
-                    onPressed: () {
-                      context.router.navigate(const DurakNumarasiAraScreenRoute());
-                    },
-                    title: "Durak Numarası İle Öğren",
-                    icon: Icons.search_outlined),
-              )),
-            ],
-          ),
-        ),
-        const Divider(),
+        // Expanded(
+        //   child: Row(
+        //     children: [
+        //       Expanded(
+        //           child: Padding(
+        //         padding: const EdgeInsets.all(16.0),
+        //         child: AmasyaHomeButton(
+        //             onPressed: () {
+        //               context.router.navigate(const DurakNumarasiAraScreenRoute());
+        //             },
+        //             title: "Durak Numarası İle Öğren",
+        //             icon: Icons.search_outlined),
+        //       )),
+        //     ],
+        //   ),
+        // ),
+        // const Divider(),
         Text(
           "Otobüs Konumunu Canlı izle ",
           style: Theme.of(context).textTheme.headlineMedium,
