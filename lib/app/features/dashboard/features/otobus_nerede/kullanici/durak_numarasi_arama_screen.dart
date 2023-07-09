@@ -17,77 +17,71 @@ class DurakNumarasiAraScreen extends StatefulWidget {
 }
 
 class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
-  String? isActiveFieldName;
-  int? navigateControl;
-  String? sure;
-  List<String> sureler = [];
+  String? isActiveFieldName; // aktiflik kontroludne kullaniyoruz
+  int? navigateControl; // hangi otobus numarasi aranmissa o live location sayfasina yonelndirmek icin kullaniyoruz
+  List<String> sureler = []; // sureleri buna atiyoruz listviewa falan gostermek icin kullaniyoruz
   final TextEditingController durakNumberController = TextEditingController();
   final TextEditingController otobusNumberController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  LatLng? destination;
+  LatLng? destination; // secilen duragin degerlerini buna atip bakiyoruz
+  int? durakNo;
+  int? otobusNo;
+  String? destinationLatitude;
+  String? destinationLongitude;
+  List<double> originLatitudes = [];
+  List<double> originLongitudes = [];
+  double? latitude;
+  double? longitude;
   @override
   Widget build(BuildContext context) {
-    final wayPointsDurakMarkers = <LatLng>[
-      //20
-      const LatLng(40.649835, 35.795758),
-      const LatLng(40.650540, 35.797761),
-      const LatLng(40.651675, 35.800865),
-      const LatLng(40.652876, 35.803558),
-      const LatLng(40.651299, 35.805962),
-      const LatLng(40.646641, 35.810475),
-      const LatLng(40.643452, 35.808433),
-      const LatLng(40.637473, 35.808831),
-      const LatLng(40.616501, 35.813611),
-      const LatLng(40.602087, 35.809871),
-      const LatLng(40.606744, 35.812118),
-      const LatLng(40.603355, 35.818920),
-      const LatLng(40.607146, 35.812102),
-      const LatLng(40.617396, 35.814808),
-      const LatLng(40.633062, 35.813166),
-      const LatLng(40.646278, 35.810989),
-      const LatLng(40.650200, 35.807478),
-      const LatLng(40.652957, 35.803708),
-      const LatLng(40.652149, 35.801709),
-      const LatLng(40.650763, 35.798451),
-    ];
-    final wayPointsDurakMarkersOne = <LatLng>[
-      //9
-      const LatLng(40.659990, 35.840260),
-      const LatLng(40.655381, 35.836891),
-      const LatLng(40.650584, 35.830444),
-      const LatLng(40.648980, 35.816248),
-      const LatLng(40.632924, 35.812836),
-      const LatLng(40.635513, 35.810789),
-      const LatLng(40.643598, 35.809132),
-      const LatLng(40.649832, 35.819838),
-      const LatLng(40.657410, 35.838458),
-    ];
-    final wayPointsDurakMarkersTwo = <LatLng>[
-      //11
-      const LatLng(40.654529, 35.824460),
-      const LatLng(40.655479, 35.817855),
-      const LatLng(40.656164, 35.814589),
-      const LatLng(40.656156, 35.805069),
-      const LatLng(40.657481, 35.797461),
-      const LatLng(40.659366, 35.796121),
-      const LatLng(40.657457, 35.796084),
-      const LatLng(40.657420, 35.800458),
-      const LatLng(40.655866, 35.805775),
-      const LatLng(40.655902, 35.816203),
-      const LatLng(40.655372, 35.833524),
-    ];
-    final allWayPoints = <LatLng>[];
-    allWayPoints.addAll(wayPointsDurakMarkers);
-    allWayPoints.addAll(wayPointsDurakMarkersOne);
-    allWayPoints.addAll(wayPointsDurakMarkersTwo);
-    int? durakNo;
-    int? otobusNo;
+    final wayPointsDurakMap = {
+      1: const LatLng(40.649835, 35.795758),
+      2: const LatLng(40.650540, 35.797761),
+      3: const LatLng(40.651675, 35.800865),
+      4: const LatLng(40.652876, 35.803558),
+      5: const LatLng(40.651299, 35.805962),
+      6: const LatLng(40.646641, 35.810475),
+      7: const LatLng(40.643452, 35.808433),
+      8: const LatLng(40.637473, 35.808831),
+      9: const LatLng(40.616501, 35.813611),
+      10: const LatLng(40.602087, 35.809871),
+      11: const LatLng(40.606744, 35.812118),
+      12: const LatLng(40.603355, 35.818920),
+      13: const LatLng(40.607146, 35.812102),
+      14: const LatLng(40.617396, 35.814808),
+      15: const LatLng(40.633062, 35.813166),
+      16: const LatLng(40.646278, 35.810989),
+      17: const LatLng(40.650200, 35.807478),
+      18: const LatLng(40.652957, 35.803708),
+      19: const LatLng(40.652149, 35.801709),
+      20: const LatLng(40.650763, 35.798451),
+      21: const LatLng(40.659990, 35.840260),
+      22: const LatLng(40.655381, 35.836891),
+      23: const LatLng(40.650584, 35.830444),
+      24: const LatLng(40.648980, 35.816248),
+      25: const LatLng(40.632924, 35.812836),
+      26: const LatLng(40.635513, 35.810789),
+      27: const LatLng(40.643598, 35.809132),
+      28: const LatLng(40.649832, 35.819838),
+      29: const LatLng(40.657410, 35.838458),
+      30: const LatLng(40.654529, 35.824460),
+      31: const LatLng(40.655479, 35.817855),
+      32: const LatLng(40.656164, 35.814589),
+      33: const LatLng(40.656156, 35.805069),
+      34: const LatLng(40.657481, 35.797461),
+      35: const LatLng(40.659366, 35.796121),
+      36: const LatLng(40.657457, 35.796084),
+      37: const LatLng(40.657420, 35.800458),
+      38: const LatLng(40.655866, 35.805775),
+      39: const LatLng(40.655902, 35.816203),
+      40: const LatLng(40.655372, 35.833524),
+    };
     void getDistanceMatrix(int durakNumarasi, int otobusNo) async {
       int index = durakNumarasi;
 
       if (otobusNo == 6) {
         if (index >= 1 && index <= 20) {
-          destination = allWayPoints[index - 1];
+          destination = wayPointsDurakMap[index];
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -98,7 +92,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
         }
       } else if (otobusNo == 1) {
         if (index >= 21 && index <= 29) {
-          destination = allWayPoints[index - 1];
+          destination = wayPointsDurakMap[index];
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -109,7 +103,7 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
         }
       } else if (otobusNo == 2) {
         if (index >= 30 && index <= 40) {
-          destination = allWayPoints[index - 1];
+          destination = wayPointsDurakMap[index];
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -119,16 +113,9 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
           return;
         }
       }
-// duragi aldik mi aldiiiik
-      String? destinationLatitude;
-      String? destinationLongitude;
       destinationLatitude = destination!.latitude.toString(); //durak seyleri
       destinationLongitude = destination!.longitude.toString(); //durak seyleri
 
-      List<double> originLatitudes = [];
-      List<double> originLongitudes = [];
-      double? latitude;
-      double? longitude;
       QuerySnapshot usersSnapshot = await FirebaseFirestore.instance.collection('users').get();
 
       if (otobusNo == 6) {
@@ -260,6 +247,9 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                             ),
                             SearchButton(
                               onPressed: () {
+                                sureler.clear();
+                                originLatitudes.clear();
+                                originLongitudes.clear();
                                 FocusScope.of(context).unfocus();
 
                                 if (formKey.currentState!.validate()) {
@@ -270,39 +260,35 @@ class _DurakNumarasiAraScreenState extends State<DurakNumarasiAraScreen> {
                                     otobusNumberController.text = otobusNo.toString();
                                   });
 
-                                  sureler.clear();
                                   getDistanceMatrix(durakNo!, otobusNo!);
                                 }
                               },
                               title: "ARA",
                               icon: Icons.search_outlined,
                             ),
-                            Container(
-                              // color: Colors.red,
-                              child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.48, // veya istediğiniz bir yükseklik değeri
-                                child: ListView.builder(
-                                  itemCount: sureler.length,
-                                  itemBuilder: (context, index) {
-                                    return OtobusCard(
-                                        onTap: () {
-                                          navigateControl = int.parse(otobusNumberController.text);
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.48, // veya istediğiniz bir yükseklik değeri
+                              child: ListView.builder(
+                                itemCount: sureler.length,
+                                itemBuilder: (context, index) {
+                                  return OtobusCard(
+                                      onTap: () {
+                                        navigateControl = int.parse(otobusNumberController.text);
 
-                                          if (navigateControl == 6) {
-                                            context.router.navigate(const NumberSixLocationRoute());
-                                          } else if (navigateControl == 1) {
-                                            context.router.navigate(const NumberOneLocationRoute());
-                                          } else if (navigateControl == 2) {
-                                            context.router.navigate(const NumberTwoLocationRoute());
-                                          } else {
-                                            null;
-                                          }
-                                        },
-                                        otobusNo: otobusNumberController.text,
-                                        time: sureler[index]);
-                                  },
-                                ),
+                                        if (navigateControl == 6) {
+                                          context.router.navigate(const NumberSixLocationRoute());
+                                        } else if (navigateControl == 1) {
+                                          context.router.navigate(const NumberOneLocationRoute());
+                                        } else if (navigateControl == 2) {
+                                          context.router.navigate(const NumberTwoLocationRoute());
+                                        } else {
+                                          null;
+                                        }
+                                      },
+                                      otobusNo: otobusNumberController.text,
+                                      time: sureler[index]);
+                                },
                               ),
                             ),
                           ],
