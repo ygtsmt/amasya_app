@@ -2,10 +2,6 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/create_garage/bloc/create_garage_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/splash/bloc/splash_bloc.dart";
 import "package:amasyaapp/app/features/dashboard/features/duyuru_list/bloc/duyuru_list_bloc.dart";
 import 'package:amasyaapp/app/features/dashboard/features/haber_list/bloc/haber_list_bloc.dart';
 import "package:amasyaapp/app/features/dashboard/features/hal_fiyatlari_list/bloc/hal_fiyatlari_list_bloc.dart";
@@ -39,21 +35,6 @@ class _AppScreenState extends State<AppScreen> {
   Widget build(final BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AppBloc>(
-          create: (final context) => getIt<AppBloc>(),
-        ),
-      
-
-        BlocProvider<SplashBloc>(
-          create: (final context) => getIt<SplashBloc>(),
-        ),
-        BlocProvider<LoginBloc>(
-          create: (final context) => getIt<LoginBloc>(),
-        ),
-       
-        BlocProvider<CreateGarageBloc>(
-          create: (final context) => getIt<CreateGarageBloc>(),
-        ),
       
         BlocProvider<HaberListBloc>(
           create: (final context) => getIt<HaberListBloc>(),
@@ -67,13 +48,7 @@ class _AppScreenState extends State<AppScreen> {
         
         
       ],
-      child: BlocBuilder<AppBloc, AppState>(
-        builder: (final context, final state) {
-          SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-          return MaterialApp.router(
+      child:  MaterialApp.router(
             scaffoldMessengerKey: snackbarKey,
             debugShowCheckedModeBanner: false,
            
@@ -85,14 +60,12 @@ class _AppScreenState extends State<AppScreen> {
             darkTheme: ThemeData(
               useMaterial3: true,
               colorScheme: darkColorScheme,
-          //   fontFamily: GoogleFonts.lato().fontFamily,
+             //   fontFamily: GoogleFonts.lato().fontFamily,
             ),
-            themeMode: state.themeMode,
+            
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),
-          );
-        },
-      ),
+          )
     );
   }
 }

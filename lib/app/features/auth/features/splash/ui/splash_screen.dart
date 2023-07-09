@@ -1,9 +1,7 @@
+import "package:amasyaapp/app/ui/widgets/amasya_splash.dart";
+import "package:amasyaapp/core/routes/app_router.dart";
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/splash/bloc/splash_bloc.dart";
-import "package:amasyaapp/app/ui/widgets/amasya_splash.dart";
-import "package:amasyaapp/core/core.dart";
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,33 +12,19 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {
-    super.initState();
-
-    Future<void>.delayed(const Duration(seconds: 4), () {
-      getIt<SplashBloc>().add(AutoLoginRequestEvent());
+  void initState() {   Future<void>.delayed(const Duration(seconds: 4), () {
+                context.replaceRoute(const HomeScreenRoute());
     });
+
+    super.initState();
   }
 
   @override
   Widget build(final BuildContext context) {
-    return BlocListener<SplashBloc, SplashState>(
-      listener: (final context, final state) {
-        if (state.autoLoginStatus == EventStatus.success) {
-          if (state.account?.garageId == null) {
-            context.replaceRoute(GarageScreenRoute(accountId: state.account!.id));
-          } else {
-            context.replaceRoute(const HomeScreenRoute());
-          }
-        } else if (state.autoLoginStatus == EventStatus.failure) {
-          context.replaceRoute(const HomeScreenRoute());
-        }
-      },
-      child: const Scaffold(
-        body: Center(
-          child: Center(
-            child: AmasyaSplash(),
-          ),
+    return const Scaffold(
+      body: Center(
+        child: Center(
+          child: AmasyaSplash(),
         ),
       ),
     );

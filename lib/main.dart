@@ -9,7 +9,6 @@ void main() async {
   await Firebase.initializeApp();
   configureDependencies();
   setPathUrlStrategy();
-  await getIt<ThemeService>().setSavedThemeMode();
 
   runApp(const AppScreen());
 }

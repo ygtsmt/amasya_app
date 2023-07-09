@@ -31,19 +31,6 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    GarageScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<GarageScreenRouteArgs>();
-      return CustomPage<dynamic>(
-        routeData: routeData,
-        child: GarageScreen(
-          accountId: args.accountId,
-          key: args.key,
-        ),
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
     LoginScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -53,15 +40,7 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    SignupScreenRoute.name: (routeData) {
-      return CustomPage<dynamic>(
-        routeData: routeData,
-        child: const SignupScreen(),
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
+
     HomeScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
@@ -331,7 +310,7 @@ class _$AppRouter extends RootStackRouter {
     ElmaKartScreenRoute.name: (routeData) {
       return CustomPage<dynamic>(
         routeData: routeData,
-        child:  ElmaKartScreen(),
+        child: const ElmaKartScreen(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -373,15 +352,6 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
-    ProfileScreenRoute.name: (routeData) {
-      return CustomPage<dynamic>(
-        routeData: routeData,
-        child: const ProfileScreen(),
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
   };
 
   @override
@@ -389,10 +359,6 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           SplashScreenRoute.name,
           path: '/',
-        ),
-        RouteConfig(
-          GarageScreenRoute.name,
-          path: '/garage',
         ),
         RouteConfig(
           LoginScreenRoute.name,
@@ -593,20 +559,6 @@ class _$AppRouter extends RootStackRouter {
               ProfileTabRouter.name,
               path: 'profile',
               parent: HomeScreenRoute.name,
-              children: [
-                RouteConfig(
-                  '#redirect',
-                  path: '',
-                  parent: ProfileTabRouter.name,
-                  redirectTo: 'profile-screen',
-                  fullMatch: true,
-                ),
-                RouteConfig(
-                  ProfileScreenRoute.name,
-                  path: 'profile-screen',
-                  parent: ProfileTabRouter.name,
-                ),
-              ],
             ),
           ],
         ),
@@ -623,40 +575,6 @@ class SplashScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashScreenRoute';
-}
-
-/// generated route for
-/// [GarageScreen]
-class GarageScreenRoute extends PageRouteInfo<GarageScreenRouteArgs> {
-  GarageScreenRoute({
-    required int accountId,
-    Key? key,
-  }) : super(
-          GarageScreenRoute.name,
-          path: '/garage',
-          args: GarageScreenRouteArgs(
-            accountId: accountId,
-            key: key,
-          ),
-        );
-
-  static const String name = 'GarageScreenRoute';
-}
-
-class GarageScreenRouteArgs {
-  const GarageScreenRouteArgs({
-    required this.accountId,
-    this.key,
-  });
-
-  final int accountId;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'GarageScreenRouteArgs{accountId: $accountId, key: $key}';
-  }
 }
 
 /// generated route for
@@ -750,11 +668,10 @@ class AuctionTabRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [EmptyRouterPage]
 class ProfileTabRouter extends PageRouteInfo<void> {
-  const ProfileTabRouter({List<PageRouteInfo>? children})
+  const ProfileTabRouter()
       : super(
           ProfileTabRouter.name,
           path: 'profile',
-          initialChildren: children,
         );
 
   static const String name = 'ProfileTabRouter';
@@ -1160,16 +1077,4 @@ class ScanVehicleCardScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ScanVehicleCardScreenRoute';
-}
-
-/// generated route for
-/// [ProfileScreen]
-class ProfileScreenRoute extends PageRouteInfo<void> {
-  const ProfileScreenRoute()
-      : super(
-          ProfileScreenRoute.name,
-          path: 'profile-screen',
-        );
-
-  static const String name = 'ProfileScreenRoute';
 }

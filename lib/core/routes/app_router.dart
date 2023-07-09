@@ -1,8 +1,5 @@
 // ignore_for_file: unused_import
 
-import "package:amasyaapp/app/bloc/app_bloc.dart";
-import "package:amasyaapp/app/features/auth/features/create_account/ui/create_account_screen.dart";
-import "package:amasyaapp/app/features/auth/features/create_garage/ui/garage_screen.dart";
 import "package:amasyaapp/app/features/auth/features/login/ui/login_screen.dart";
 import "package:amasyaapp/app/features/auth/features/splash/ui/splash_screen.dart";
 import "package:amasyaapp/app/features/dashboard/features/belediye_hizmetleri/belediye_hizmetleri_screen.dart";
@@ -33,7 +30,6 @@ import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/ilet
 import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/scan_vehicle_card_screen.dart';
 import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/kent_bilgisi_screen.dart/kent_bilgisi_screen.dart';
 import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/scan_driver_licence_screen.dart';
-import "package:amasyaapp/app/features/profile/ui/screens/profile_screen/profile_screen.dart";
 import "package:amasyaapp/app/ui/home_screen.dart";
 import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
@@ -46,9 +42,7 @@ part "app_router.gr.dart";
 @MaterialAutoRouter(
   routes: <CustomRoute>[
     CustomRoute(page: SplashScreen, path: "/", initial: true, transitionsBuilder: TransitionsBuilders.fadeIn),
-    CustomRoute(page: GarageScreen, path: "/garage", transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(page: LoginScreen, path: "/login", transitionsBuilder: TransitionsBuilders.fadeIn),
-    CustomRoute(page: SignupScreen, path: "/register", transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(
       page: HomeScreen,
       path: "/home",
@@ -128,10 +122,7 @@ part "app_router.gr.dart";
                 page: OtobusVarisSuresiListScreen,
                 path: "otobus-varis-suresi-list-screen",
                 transitionsBuilder: TransitionsBuilders.fadeIn),
-            CustomRoute(
-                page: ElmaKartScreen,
-                path: "elma-kart-screen",
-                transitionsBuilder: TransitionsBuilders.fadeIn),
+            CustomRoute(page: ElmaKartScreen, path: "elma-kart-screen", transitionsBuilder: TransitionsBuilders.fadeIn),
           ],
         ),
         CustomRoute(
@@ -187,14 +178,7 @@ part "app_router.gr.dart";
           name: "ProfileTabRouter",
           path: "profile",
           transitionsBuilder: TransitionsBuilders.fadeIn,
-          children: [
-            CustomRoute(
-              page: ProfileScreen,
-              path: "profile-screen",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
-          ],
+          children: [],
         ),
       ],
     ),
@@ -209,15 +193,6 @@ class AppRouter extends _$AppRouter {
 class AuctionGuard extends AutoRouteGuard {
   @override
   void onNavigation(final NavigationResolver resolver, final StackRouter router) {
-    final authenticated = getIt<AppBloc>().state.hasAuctionAccess;
-    if (authenticated) {
-      // if user is authenticated we continue
-      resolver.next();
-    } else {
-      // we redirect the user to our login page
-      router.replace(
-        const LoginScreenRoute(),
-      );
-    }
+    const LoginScreenRoute();
   }
 }

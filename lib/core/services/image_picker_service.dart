@@ -2,7 +2,6 @@ import "dart:convert";
 
 import "package:image_picker/image_picker.dart";
 import "package:injectable/injectable.dart";
-import "package:amasyaapp/app/data/models/photo_dto.dart";
 
 @injectable
 class ImagePickerService {
@@ -31,9 +30,5 @@ class ImagePickerService {
     return image;
   }
 
-  Future<PhotoDto> filetoBase64(final XFile file) async {
-    final bytes = await file.readAsBytes();
 
-    return PhotoDto(base64Encode(bytes), file.name);
-  }
 }

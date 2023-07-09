@@ -1,9 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:amasyaapp/app/bloc/app_bloc.dart';
 import 'package:amasyaapp/core/core.dart';
+import 'package:flutter/material.dart';
 
 class AppleProgressIndicator extends StatefulWidget {
   const AppleProgressIndicator({super.key});
@@ -50,19 +48,15 @@ class _AppleProgressIndicatorState extends State<AppleProgressIndicator> with Si
           final double x = radius * math.cos(angle);
           final double y = radius * math.sin(angle);
 
-          return BlocBuilder<AppBloc, AppState>(
-            builder: (context, state) {
-              return Transform.translate(
-                offset: Offset(x, y),
-                child: Transform.scale(
-                  scale: 0.2, // Resim boyutunu ayarlayın
-                  child: Image.asset(
-                    Images.logo,
-                    color: state.themeMode == ThemeMode.dark ? Colors.white : Colors.black,
-                  ),
-                ),
-              );
-            },
+          return Transform.translate(
+            offset: Offset(x, y),
+            child: Transform.scale(
+              scale: 0.2, // Resim boyutunu ayarlayın
+              child: Image.asset(
+                Images.logo,
+                color: Colors.white,
+              ),
+            ),
           );
         },
         child: const Text("data"),

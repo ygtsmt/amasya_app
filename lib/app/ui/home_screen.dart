@@ -1,4 +1,3 @@
-import "package:amasyaapp/app/bloc/app_bloc.dart";
 import "package:amasyaapp/app/features/auth/features/login/ui/login_form.dart";
 import 'package:amasyaapp/app/ui/widgets/amasya_logo.dart';
 import "package:amasyaapp/core/core.dart";
@@ -22,9 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(final BuildContext context) {
-    return BlocBuilder<AppBloc, AppState>(
-      builder: (final context, final state) {
-        return AutoTabsRouter(
+    return  AutoTabsRouter(
           routes: const [
             DashbordTabRouter(),
             PeTabRouter(),
@@ -46,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Image.asset(
                             Images.logo,
-                            color: state.themeMode == ThemeMode.dark ? Colors.white : Colors.black,
+                            color:  Colors.white ,
                             height: 100,
                           ),
                           Text(
@@ -54,13 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          SwitchListTile(
-                            value: state.themeMode == ThemeMode.dark,
-                            onChanged: (final bool value) {
-                              getIt<AppBloc>().add(SetThemeEvent(value ? ThemeMode.dark : ThemeMode.light));
-                            },
-                            title: const Text("Karanlık Tema"),
-                          ),
+                          
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -110,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: Center(
                       child: SizedBox(
                         height: 40,
-                        child: AmasyaLogo(themeMode: state.themeMode),
+                        child: AmasyaLogo(),
                       ),
                     ),
                     actions: [
@@ -197,7 +188,5 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         );
-      },
-    );
   }
 }

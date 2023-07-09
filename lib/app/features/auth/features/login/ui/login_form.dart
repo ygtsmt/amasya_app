@@ -1,10 +1,8 @@
-import 'package:amasyaapp/app/features/auth/features/login/bloc/login_bloc.dart';
 import 'package:amasyaapp/app/features/auth/ui/login_logo.dart';
 import 'package:amasyaapp/core/core.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 String deneme = "";
@@ -48,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
     } else {
       deneme = "";
       // ignore: use_build_context_synchronously
-      context.router.replace(const HomeScreenRoute()); 
+      context.router.replace(const HomeScreenRoute());
 
       /* ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -136,20 +134,15 @@ class _LoginFormState extends State<LoginForm> {
             Column(
               children: <Widget>[
                 SizedBox(
-                  width: double.infinity,
-                  child: BlocBuilder<LoginBloc, LoginState>(
-                    builder: (final context, final state) {
-                      return FilledButton(
-                        onPressed: () async {
-                          login(context);
-                        },
-                        child: const Text(
-                          'GİRİŞ YAP',
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed: () async {
+                        login(context);
+                      },
+                      child: const Text(
+                        'GİRİŞ YAP',
+                      ),
+                    )),
                 const SizedBox(
                   height: 8,
                 ),
