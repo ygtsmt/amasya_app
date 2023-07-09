@@ -27,6 +27,7 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
   PolylinePoints polylinePoints = PolylinePoints();
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
+  // double tolerance = 0.001; // Tolerans değeri
   final wayPoints = [
     PolylineWayPoint(location: "40.649835, 35.795758"),
     PolylineWayPoint(location: "40.650540, 35.797761"),
@@ -156,6 +157,22 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
     setState(() {});
   }
 
+  // void processUserDocs(List<QueryDocumentSnapshot> userDocs) {
+  //   for (var userDoc in userDocs) {
+  //     double latitude = userDoc['numara6KonumLatitude'];
+  //     double longitude = userDoc['numara6KonumLongitude'];
+  //     bool isActive = userDoc['isActiveLocationNumara6'];
+
+  //     for (var wayPoint in wayPointsDurakMarkers) {
+  //       if ((latitude - wayPoint.latitude).abs() < tolerance &&
+  //           (longitude - wayPoint.longitude).abs() < tolerance &&
+  //           isActive) {
+  //         print("Konuma ulaşıldı: $wayPoint");
+  //       }
+  //     }
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -171,6 +188,22 @@ class _NumberSixLocationState extends State<NumberSixLocation> {
             if (!userSnapshot.hasData) {
               return const Center(child: AppleProgressIndicator());
             }
+            // List<QueryDocumentSnapshot> userDocs = userSnapshot.data!.docs;
+
+            // processUserDocs(userDocs);
+
+            // List<QueryDocumentSnapshot> userDocs = userSnapshot.data!.docs;
+            // for (var userDoc in userDocs) {
+            //   double latitude = userDoc['numara6KonumLatitude'];
+            //   double longitude = userDoc['numara6KonumLongitude'];
+
+            //   if ((latitude - wayPointsDurakMarkers[2].latitude).abs() < tolerance &&
+            //       (longitude - wayPointsDurakMarkers[2].longitude).abs() < tolerance) {
+            //     print("İlgili konuma ulaşıldı!");
+            //   }
+
+            //   debugPrint("dogru konuma yerde");
+            // }
 
             return Column(
               children: [
