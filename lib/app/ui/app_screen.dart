@@ -54,7 +54,7 @@ class _AppScreenState extends State<AppScreen> {
            
             theme: ThemeData(
               useMaterial3: true,
-              colorScheme: lightColorScheme,
+              colorScheme: darkColorScheme,
             //  fontFamily: GoogleFonts.lato().fontFamily,
             ),
             darkTheme: ThemeData(
