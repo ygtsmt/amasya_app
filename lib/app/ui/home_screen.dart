@@ -1,4 +1,3 @@
-import "package:amasyaapp/app/features/auth/features/login/ui/login_form.dart";
 import 'package:amasyaapp/app/ui/widgets/amasya_logo.dart';
 import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
@@ -53,43 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          if (deneme.length > 2)
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ElevatedButton.icon(
-                                  icon: const Icon(Icons.logout),
-                                  onPressed: () async {
-                                    setState(() {
-                                      deneme == "";
-                                    });
-                                    context.router.popUntilRoot();
-                                    context.router.popForced();
-                                    await context.router.root.replaceAll([const SplashScreenRoute()]);
-                                  },
-                                  label: const Text(
-                                    "Çıkış Yap",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          if (deneme.length < 2)
-                            ElevatedButton.icon(
-                              icon: const Icon(Icons.login_outlined),
-                              onPressed: () async {
-                                context.router.popUntilRoot();
-                                context.router.popForced();
-                                await context.router.root.replaceAll([const LoginScreenRoute()]);
-                              },
-                              label: const Text(
-                                "Sürücü Girişi Yap",
-                              ),
-                            ),
                         ],
                       ),
                     ],
