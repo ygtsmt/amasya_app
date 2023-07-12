@@ -27,9 +27,7 @@ import "package:amasyaapp/app/features/dashboard/ui/screens/%20button_screens/no
 import "package:amasyaapp/app/features/dashboard/ui/screens/dashboard_screen.dart";
 import "package:amasyaapp/app/features/dashboard/ui/screens/user_summary_screen.dart";
 import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/iletisim_screen.dart';
-import 'package:amasyaapp/app/features/iletisim/features/iletisim_screen/ui/scan_vehicle_card_screen.dart';
 import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/kent_bilgisi_screen.dart/kent_bilgisi_screen.dart';
-import 'package:amasyaapp/app/features/kent_bilgisi/ui/screens/scan_driver_licence_screen.dart';
 import "package:amasyaapp/app/ui/home_screen.dart";
 import "package:amasyaapp/core/core.dart";
 import "package:auto_route/auto_route.dart";
@@ -137,12 +135,7 @@ part "app_router.gr.dart";
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
-            CustomRoute(
-              page: ScanDriverLicenceScreen,
-              path: "scan-driver-licence-screen",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
+          
           ],
         ),
         CustomRoute(
@@ -157,12 +150,7 @@ part "app_router.gr.dart";
               initial: true,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
-            CustomRoute(
-              page: ScanVehicleCardScreen,
-              path: "scan-vehicle-card-screen",
-              initial: true,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-            ),
+            
           ],
         ),
         CustomRoute(

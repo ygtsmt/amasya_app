@@ -9,7 +9,6 @@ dependencies:
   auto_route: ^5.0.4
   avatar_glow: ^2.0.2
   cached_network_image: ^3.2.3
-  camera: ^0.10.3+2
   carousel_slider: ^4.2.1
   cloud_firestore: ^4.8.2
   collection: ^1.17.0
@@ -46,7 +45,6 @@ dependencies:
   full_screen_image: ^2.0.0
   get_it: ^7.2.0
   google_maps_flutter: ^2.3.1
-  google_mlkit_text_recognition: ^0.5.0
   group_button: ^5.2.2
   hive: ^2.2.3
   http: ^0.13.6
