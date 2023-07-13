@@ -35,7 +35,7 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
     });
   }
 
-  final Uri toLaunch = Uri(scheme: 'https', host: 'wa.me', path: "05455462999");
+  final Uri toLaunch = Uri(scheme: 'https', host: 'wa.me', path: "5051955005");
   @override
   Widget build(final BuildContext context) {
     return SingleChildScrollView(

@@ -21,7 +21,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 7,
+              height: MediaQuery.of(context).size.height / 4,
               child: ElevatedButton(
                   onPressed: () {
                     Uri maps = Uri.parse(
@@ -29,7 +29,7 @@ class _IletisimScreenState extends State<IletisimScreen> {
 
                     launchUrl(maps);
                   },
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Column(
@@ -57,15 +57,24 @@ class _IletisimScreenState extends State<IletisimScreen> {
                   )),
             ),
           ),
+
           Row(
             children: [
               CallCard(onPressed: () {}, name: "Hizmet Binası", phone: "+90 358 218 80 00"),
-              CallCard(onPressed: () {}, name: "Kültür Merkezi", phone: "+90 358 212 01 24"),
             ],
           ),
           Row(
             children: [
+              CallCard(onPressed: () {}, name: "Kültür Merkezi", phone: "+90 358 212 01 24"),
+            ],
+          ),
+         
+          Row(children: [
               CallCard(onPressed: () {}, name: "Temizlik İşleri", phone: "+90 358 218 80 09"),
+
+          ],),
+          Row(
+            children: [
               CallCard(
                 onPressed: () {},
                 name: "Fen İşleri\nMüdürlüğü",
@@ -73,13 +82,16 @@ class _IletisimScreenState extends State<IletisimScreen> {
               ),
             ],
           ),
-          Row(
-            children: [
+           Row(children: [
               CallCard(
                 onPressed: () {},
                 name: "Park ve Bahçeler\nMüdürlüğü",
                 phone: "+90 358 218 72 79",
               ),
+          ],),
+          Row(
+            children: [
+            
               CallCard(
                 onPressed: () {},
                 name: "İtfaiye Müdürlüğü",
@@ -87,9 +99,13 @@ class _IletisimScreenState extends State<IletisimScreen> {
               ),
             ],
           ),
+            Row(children: [
+                          CallCard(onPressed: () {}, name: "Zabıta", phone: "153"),
+
+          ],),
+        
           Row(
             children: [
-              CallCard(onPressed: () {}, name: "Zabıta", phone: "153"),
               CallCard(onPressed: () {}, name: "Su Arıza", phone: "185"),
             ],
           ),
