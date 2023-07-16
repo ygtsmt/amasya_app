@@ -17,7 +17,7 @@ class _NobetciEczaneScreenState extends State<NobetciEczaneScreen> {
     super.initState();
     controller = WebViewController()
       ..loadRequest(
-        Uri.parse('https://www.eczaneler.gen.tr/nobetci-amasya'),
+        Uri.parse('https://www.eczaneler.gen.tr/nobetci-amasya-merkez'),
       );
   }
 

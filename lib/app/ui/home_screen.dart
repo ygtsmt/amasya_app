@@ -115,11 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               bottomNavigationBar: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).shadowColor,
-                      blurRadius: 1,
+                      blurRadius: 0,
                     ),
                   ],
                 ),

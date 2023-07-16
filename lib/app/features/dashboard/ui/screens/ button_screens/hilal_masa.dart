@@ -47,7 +47,7 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
               Text(
                 "+90 505 195 50 05 numaralı\nWhatsapp İhbar\nhattından bizlere\nulaşabilirsiniz.",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displaySmall,
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(
                 height: 16,
@@ -64,7 +64,7 @@ class _HilalMasaScreenState extends State<HilalMasaScreen> {
               Text(
                 "Hilal Masa nasıl çalışır ?",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displaySmall,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               Text(
                 "\n-Belediyeye gelen istek, talep, şikayet ve önerileri ilgili müdürlüklere atar ve takibini yapar.\n\n-Vatandaşı yönlendirme, bilgilendirme ve çözüm üretme konusunda yasal süre içerisinde olumlu ya da olumsuz cevap verilmesi kaydı ile tüm müdürlüklerle koordineli bir çalışma yürütür.\n\n-Müdürlüklerden verilen cevapların vatandaşa dönüşünü hızlı ve güler yüzlü yapılmasını sağlar.\n\n-İlin sorunlarıyla ilgilenerek halkla Belediye arasında köprü görevi görür.\n\n-Halkla İlişkiler ile ilgili yerel ve ulusal düzeydeki uygulamaları takip eder. Halkla İlişkiler faaliyetlerine destek verir.\n\n-İl bazında Hilal Masaya gelen taleplerin istatistik kayıtlarının düzenlenmesini sağlar.",

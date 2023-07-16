@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:amasyaapp/app/features/auth/features/login/ui/login_form.dart';
 import 'package:amasyaapp/app/ui/widgets/amasya_home_button.dart';
 import 'package:amasyaapp/core/images.dart';
 import 'package:amasyaapp/core/routes/app_router.dart';
@@ -103,12 +102,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             Expanded(
                               child: AmasyaHomeButton(
                                 onPressed: () {
-                                  if (deneme.length > 2) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      backgroundColor: Color.fromARGB(255, 147, 5, 5),
+                                      content: Text(
+                                        'Çok Yakında Hizmetinizde!',
+                                        style: TextStyle(color: Colors.white),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  );
+                                  /* if (deneme.length > 2) {
                                     context.router.navigate(const OtobusNeredeSurucuScreenRoute());
                                   }
                                   if (deneme.length < 2) {
                                     context.router.navigate(const OtobusNeredeKullaniciScreenRoute());
-                                  }
+                                  } */
                                 },
                                 title: 'OTOBÜS\nNEREDE',
                                 icon: Icons.directions_bus_filled_outlined,
@@ -119,8 +128,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 onPressed: () {
                                   context.router.navigate(const ElmaKartScreenRoute());
                                 },
-                                title: 'ELMAKART',
-                                icon: Icons.credit_card_outlined,
+                                title: 'BELEDİYE\nBAŞKANIMIZ',
+                                icon: Icons.person_outline_outlined,
                               ),
                             ),
                             Expanded(

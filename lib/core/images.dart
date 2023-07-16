@@ -12,4 +12,5 @@ class Images {
   static const String amasyaPageview3 = "assets/images/amasyaPageview3.jpeg";
   static const String amasyaPageview4 = "assets/images/amasyaPageview4.jpeg";
   static const String kralkaya = "assets/images/kralkaya.jpeg";
+  static const String bayramCelik = "assets/images/bayram-celik.jpeg";
 }

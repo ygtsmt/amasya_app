@@ -46,10 +46,20 @@ class _IletisimScreenState extends State<IletisimScreen> {
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                           const SizedBox(
-                            height: 4,
+                            height: 8,
                           ),
-                          const Text(
-                            "Yol Tarifi Al",
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Yol Tarifi Al",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Icon(
+                                Icons.touch_app_outlined,
+                                color: Colors.white,
+                              )
+                            ],
                           ),
                         ],
                       ),
@@ -57,22 +67,30 @@ class _IletisimScreenState extends State<IletisimScreen> {
                   )),
             ),
           ),
-
           Row(
             children: [
               CallCard(onPressed: () {}, name: "Hizmet Binası", phone: "+90 358 218 80 00"),
             ],
+          ),
+          const SizedBox(
+            height: 4,
           ),
           Row(
             children: [
               CallCard(onPressed: () {}, name: "Kültür Merkezi", phone: "+90 358 212 01 24"),
             ],
           ),
-         
-          Row(children: [
+          const SizedBox(
+            height: 4,
+          ),
+          Row(
+            children: [
               CallCard(onPressed: () {}, name: "Temizlik İşleri", phone: "+90 358 218 80 09"),
-
-          ],),
+            ],
+          ),
+          const SizedBox(
+            height: 4,
+          ),
           Row(
             children: [
               CallCard(
@@ -82,16 +100,23 @@ class _IletisimScreenState extends State<IletisimScreen> {
               ),
             ],
           ),
-           Row(children: [
+          const SizedBox(
+            height: 4,
+          ),
+          Row(
+            children: [
               CallCard(
                 onPressed: () {},
                 name: "Park ve Bahçeler\nMüdürlüğü",
                 phone: "+90 358 218 72 79",
               ),
-          ],),
+            ],
+          ),
+          const SizedBox(
+            height: 4,
+          ),
           Row(
             children: [
-            
               CallCard(
                 onPressed: () {},
                 name: "İtfaiye Müdürlüğü",
@@ -99,15 +124,24 @@ class _IletisimScreenState extends State<IletisimScreen> {
               ),
             ],
           ),
-            Row(children: [
-                          CallCard(onPressed: () {}, name: "Zabıta", phone: "153"),
-
-          ],),
-        
+          const SizedBox(
+            height: 4,
+          ),
+          Row(
+            children: [
+              CallCard(onPressed: () {}, name: "Zabıta", phone: "153"),
+            ],
+          ),
+          const SizedBox(
+            height: 4,
+          ),
           Row(
             children: [
               CallCard(onPressed: () {}, name: "Su Arıza", phone: "185"),
             ],
+          ),
+          const SizedBox(
+            height: 4,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -125,7 +159,10 @@ class _IletisimScreenState extends State<IletisimScreen> {
                           Uri facebookUri = Uri.parse(facebook);
                           launchUrl(facebookUri, mode: LaunchMode.externalApplication);
                         },
-                        child: const Text("Facebook"),
+                        child: const Text(
+                          "Facebook",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -133,7 +170,10 @@ class _IletisimScreenState extends State<IletisimScreen> {
                           Uri instagramUri = Uri.parse(instagram);
                           launchUrl(instagramUri, mode: LaunchMode.externalApplication);
                         },
-                        child: const Text("Instagram"),
+                        child: const Text(
+                          "Instagram",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -141,11 +181,17 @@ class _IletisimScreenState extends State<IletisimScreen> {
                           Uri twitterUri = Uri.parse(twitter);
                           launchUrl(twitterUri, mode: LaunchMode.externalApplication);
                         },
-                        child: const Text("Twitter"),
+                        child: const Text(
+                          "Twitter",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ],
                   )),
             ),
+          ),
+          const SizedBox(
+            height: 4,
           ),
         ],
       ),

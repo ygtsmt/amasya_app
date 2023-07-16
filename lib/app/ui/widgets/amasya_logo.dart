@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
 import "package:amasyaapp/core/images.dart";
+import "package:flutter/material.dart";
 
 class AmasyaLogo extends StatelessWidget {
   const AmasyaLogo({
@@ -14,7 +14,7 @@ class AmasyaLogo extends StatelessWidget {
       tag: "logo",
       child: Image.asset(
         Images.logo,
-        color: themeMode == ThemeMode.dark ? Colors.white : Colors.black,
+        color: Colors.white,
       ),
     );
   }

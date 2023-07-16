@@ -14,16 +14,16 @@ class AmasyaHomeButton extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: MediaQuery.of(context).size.height / 140, horizontal: MediaQuery.of(context).size.width / 100),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: GestureDetector(
-          onTap: onPressed,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height / 140, horizontal: MediaQuery.of(context).size.width / 100),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(15),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -36,9 +36,9 @@ class AmasyaHomeButton extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      //fontWeight: FontWeight.w500,
-                      fontSize: MediaQuery.of(context).size.height / 50,
-                    ),
+                    //fontWeight: FontWeight.w500,
+                    fontSize: MediaQuery.of(context).size.height / 50,
+                    fontWeight: FontWeight.w500),
               ),
             ],
           ),

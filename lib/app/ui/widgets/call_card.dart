@@ -39,17 +39,25 @@ class CallCard extends StatelessWidget {
                       Text(
                         name,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(
                         phone,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      const SizedBox(
-                        height: 4,
+                      Row(
+                        children: [
+                          Text(
+                            "İletişime Geç",
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          const Icon(
+                            Icons.touch_app_outlined,
+                            color: Colors.white,
+                          )
+                        ],
                       ),
-                      const Text("İletişime Geç"),
                     ],
                   ),
                 ],

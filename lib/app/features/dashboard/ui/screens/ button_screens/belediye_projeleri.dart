@@ -14,6 +14,9 @@ class _BelediyeProjeleriScreenState extends State<BelediyeProjeleriScreen> {
   Widget build(final BuildContext context) {
     return const PDF(
       enableSwipe: true,
+      
+      // nightMode: true,
+      swipeHorizontal: true,
     ).cachedFromUrl(
       "https://amasya.bel.tr/uploads/projelerimiz/proje.pdf",
       placeholder: (progress) => const Center(child: AppleProgressIndicator()),

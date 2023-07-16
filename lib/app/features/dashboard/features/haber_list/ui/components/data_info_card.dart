@@ -57,8 +57,14 @@ class DataInfoCard extends StatelessWidget {
             ),
           OutlinedButton.icon(
             onPressed: onPressed,
-            icon: const Icon(Icons.touch_app_outlined),
-            label: const Text("Detaylı Bilgi"),
+            icon: const Icon(
+              Icons.touch_app_outlined,
+              color: Colors.white,
+            ),
+            label: const Text(
+              "Detaylı Bilgi",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           const Divider()
           /* Padding(
